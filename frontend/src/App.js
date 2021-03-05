@@ -4,7 +4,7 @@ import './App.css';
 
 class App extends Component {
   state = {
-    topics: ["Loading..."],
+    topics: ["Hello..."],
     question: "",
     answer: ""
   }
