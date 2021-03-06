@@ -20,7 +20,7 @@ class About extends Component {
                 break;
             }
             else {
-                commits.push(response.data);
+                commits = commits.concat(response.data);
                 ++i;
             }
         }        
@@ -51,38 +51,36 @@ class About extends Component {
         let newVals = [0, 0, 0, 0, 0];
         console.log(commits);
         for (const i in commits) {
-            for (const p in commits[i]) {
             // todo: update this switch statement once all commit identities are known
-                switch(commits[i][p]["author_name"]) {
-                    case "Kevin Liang":
-                        ++newVals[0];
-                        break;
-                    case "Kevin Chen":
-                        ++newVals[1];
-                        break;
-                    case "kevinchenftw":
-                        ++newVals[1];
-                        break;
-                    case "RedWhite KIAMI Dai":
-                        ++newVals[2];
-                        break;
-                    case "Diyuan Dai":
-                        //I changed my profile name to my real name
-                        ++newVals[2];
-                        break;
-                    case "root":
-                        //I am using SSH to push, which will be shown as root. Sorry to add complexity.
-                        ++newVals[2];
-                        break;
-                    case "Vaishnav Bipin":
-                        ++newVals[3];
-                        break;
-                    case "Anisha Kollareddy":
-                        ++newVals[4];
-                        break;    
-                    default:
-                        break;
-                }
+            switch(commits[i]["author_name"]) {
+                case "Kevin Liang":
+                    ++newVals[0];
+                    break;
+                case "Kevin Chen":
+                    ++newVals[1];
+                    break;
+                case "kevinchenftw":
+                    ++newVals[1];
+                    break;
+                case "RedWhite KIAMI Dai":
+                    ++newVals[2];
+                    break;
+                case "Diyuan Dai":
+                    //I changed my profile name to my real name
+                    ++newVals[2];
+                    break;
+                case "root":
+                    //I am using SSH to push, which will be shown as root. Sorry to add complexity.
+                    ++newVals[2];
+                    break;
+                case "Vaishnav Bipin":
+                    ++newVals[3];
+                    break;
+                case "Anisha Kollareddy":
+                    ++newVals[4];
+                    break;    
+                default:
+                    break;
             }
         }
         return newVals;
