@@ -7,6 +7,7 @@ import {NavigationBar, About} from "./Components";
 class App extends Component {
   render() {
     return (
+      <header className="App-background">
       <React.Fragment>
         <Router>
         <NavigationBar/>
@@ -20,6 +21,7 @@ class App extends Component {
           </Switch>
         </Router>
       </React.Fragment>
+      </header>
     );
   }
 }
