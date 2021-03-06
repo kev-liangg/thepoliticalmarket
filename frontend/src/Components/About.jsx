@@ -44,9 +44,24 @@ class About extends Component {
                     ++newVals[0];
                     break;
                 case "Kevin Chen":
+                    ++newVals[1];
+                    break;
                 case "kevinchenftw":
                     ++newVals[1];
                     break;
+                case "RedWhite KIAMI Dai":
+                    ++newVals[2];
+                    break;
+                case "root":
+                    //I am using SSH to push, which will be shown as root. Sorry to add complexity.
+                    ++newVals[2];
+                    break;
+                case "Vaishnav Bipin":
+                    ++newVals[3];
+                    break;
+                case "Anisha Kollareddy":
+                    ++newVals[4];
+                    break;    
                 default:
                     break;
             }
