@@ -28,6 +28,11 @@ const NavigationBar = () => (
           </Nav.Item>
           <Nav.Item>
             <Nav.Link>
+              <Link to="/Stocks">Stocks</Link>
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link>
               <Link to="/About">About</Link>
             </Nav.Link>
           </Nav.Item>
