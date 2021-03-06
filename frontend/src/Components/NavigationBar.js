@@ -28,7 +28,12 @@ export const NavigationBar = () => (
           </Nav.Item>
           <Nav.Item>
             <Nav.Link>
-              <Link to="/Contractors">About</Link>
+              <Link to="/CampFin">Campaign Finance</Link>
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link>
+              <Link to="/About">About</Link>
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
