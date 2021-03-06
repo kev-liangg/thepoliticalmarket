@@ -13,7 +13,7 @@ import Stocks from "./sto-models/stockTrends"
 import DELL from "./sto-models/sto-instances/DELL"
 import HPQ from "./sto-models/sto-instances/HPQ"
 import AAPL from "./sto-models/sto-instances/AAPL"
-import {NavigationBar, About} from "./Components";
+import {NavigationBar, About, Home} from "./Components";
 class App extends Component {
   render() {
     return (
@@ -22,6 +22,7 @@ class App extends Component {
         <Router>
         <NavigationBar/>
           <Switch>
+            <Route exact path = "/" component = {Home} />
             <Route exact path = "/Government" component = {Government} />
             <Route exact path = "/Stocks" component = {Stocks} />
             <Route exact path = "/Contractors" component = {Contractors} />
