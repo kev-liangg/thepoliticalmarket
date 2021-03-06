@@ -3,6 +3,12 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Contractors from "./gov-models/Contractors";
 import Government from "./gov-models/Government";
+
+import Members from "./cf-models/Members";
+import CfTJOssoff from "./cf-models/CfTJOssoff";
+import CfJHarrison from "./cf-models/CfJHarrison";
+import CfRWarnock from "./cf-models/CfRWarnock";
+
 import Stocks from "./sto-models/stockTrends"
 import DELL from "./sto-models/sto-instances/DELL"
 import HPQ from "./sto-models/sto-instances/HPQ"
@@ -19,6 +25,10 @@ class App extends Component {
             <Route exact path = "/Government" component = {Government} />
             <Route exact path = "/Stocks" component = {Stocks} />
             <Route exact path = "/Contractors" component = {Contractors} />
+            <Route exact path = "/CampFin" component = {Members} />
+            <Route exact path = "/CampFin/TJOssoff" component = {CfTJOssoff} />
+            <Route exact path = "/CampFin/JHarrison" component = {CfJHarrison} />
+            <Route exact path = "/CampFin/RWarnock" component = {CfRWarnock} />
             <Route exact path = "/About" component = {About} />
             <Route path = "/DELL" component = {DELL} />
             <Route path = "/HPQ" component = {HPQ} />
