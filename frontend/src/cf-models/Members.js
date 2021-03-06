@@ -46,6 +46,5 @@ class Members extends React.Component {
       )
     }
   }
-  
   export default Members;
   
