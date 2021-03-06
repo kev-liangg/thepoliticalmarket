@@ -47,6 +47,15 @@ class About extends Component {
                 case "kevinchenftw":
                     ++newVals[1];
                     break;
+                case "RedWhite KIAMI Dai":
+                    ++newVals[2];
+                    break;
+                case "Vaishnav Bipin":
+                    ++newVals[3];
+                    break;
+                case "Anisha Kollareddy":
+                    ++newVals[4];
+                    break;    
                 default:
                     break;
             }
