@@ -11,7 +11,7 @@ class About extends Component {
 
     // API calls are asynchronous. use await for the GET, returns a Promise.
     async getCommits() {
-        let response = await axios.get('https://gitlab.com/api/v4/projects/24709028/repository/commits');
+        let response = await axios.get('https://gitlab.com/api/v4/projects/24709028/repository/commits?per_page=100');
         return response.data;
     }
 
@@ -37,6 +37,7 @@ class About extends Component {
     // Parsing functions operate on unwrapped data, and returns the proper value to update the state.
     parseCommits(commits) {
         let newVals = [0, 0, 0, 0, 0];
+        console.log(commits);
         for (const i in commits) {
             // todo: update this switch statement once all commit identities are known
             switch(commits[i]["author_name"]) {
