@@ -9,3 +9,4 @@ function States(){
         </div>
     )
 }
+export default States

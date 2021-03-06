@@ -9,3 +9,4 @@ function Contracts(){
         </div>
     )
 }
+export default Contracts
