@@ -4,6 +4,9 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Contractors from "./gov-models/Contractors";
 import Government from "./gov-models/Government";
 import Stocks from "./sto-models/stockTrends"
+import DELL from "./sto-models/sto-instances/DELL"
+import HPQ from "./sto-models/sto-instances/HPQ"
+import AAPL from "./sto-models/sto-instances/AAPL"
 import {NavigationBar, About} from "./Components";
 class App extends Component {
   render() {
@@ -17,6 +20,9 @@ class App extends Component {
             <Route exact path = "/Stocks" component = {Stocks} />
             <Route exact path = "/Contractors" component = {Contractors} />
             <Route exact path = "/About" component = {About} />
+            <Route path = "/DELL" component = {DELL} />
+            <Route path = "/HPQ" component = {HPQ} />
+            <Route path = "/AAPL" component = {AAPL} />
             {/* <Route path = "/gov-models/Contracts" component = {Contracts} />
             <Route path = "/gov-models/State" component = {State} /> */}
             {/* <Route component = {NoMatch} /> */}
