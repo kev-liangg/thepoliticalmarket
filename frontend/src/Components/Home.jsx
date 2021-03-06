@@ -6,9 +6,9 @@ class Home extends Component {
 
     render() {
         return (
-            <div> 
-            <img src={bg} class="img-fluid w-100" alt="bg" />
-            <div className="centered">The Political Market</div>
+            <div className="wrapper"> 
+                <img src={bg} class="img-fluid w-100" alt="bg" />
+                <div className="centered">The Political Market</div>
             </div>
         )
     }
