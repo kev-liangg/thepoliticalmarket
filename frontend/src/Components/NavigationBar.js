@@ -20,10 +20,20 @@ const NavigationBar = () => (
             <Navbar.Brand href = "/">Home</Navbar.Brand>
             <Navbar.Toggle aria-controls = "basic-navbar-nav" />
             <Navbar.Collapse id ="basic-navbar-nav">
-            <Nav className="ml-auto">
+            <Nav className="ml-auto"> 
           <Nav.Item>
             <Nav.Link>
               <Link to="/Government">Gov-Models</Link>
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link>
+              <Link to="/Stocks">Stocks</Link>
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link>
+              <Link to="/CampFin">Campaign Finance</Link>
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>

@@ -11,8 +11,20 @@ class About extends Component {
 
     // API calls are asynchronous. use await for the GET, returns a Promise.
     async getCommits() {
-        let response = await axios.get('https://gitlab.com/api/v4/projects/24709028/repository/commits');
-        return response.data;
+        let url = 'https://gitlab.com/api/v4/projects/24709028/repository/commits?per_page=40';
+        let commits = [];
+        let i = 1;
+        while (true) {
+            let response = await axios.get(url + "&page=" + i);
+            if (!response.data.length) {
+                break;
+            }
+            else {
+                commits = commits.concat(response.data);
+                ++i;
+            }
+        }        
+        return commits;
     }
 
     async getIssues() {
@@ -37,6 +49,7 @@ class About extends Component {
     // Parsing functions operate on unwrapped data, and returns the proper value to update the state.
     parseCommits(commits) {
         let newVals = [0, 0, 0, 0, 0];
+        console.log(commits);
         for (const i in commits) {
             // todo: update this switch statement once all commit identities are known
             switch(commits[i]["author_name"]) {
@@ -44,9 +57,28 @@ class About extends Component {
                     ++newVals[0];
                     break;
                 case "Kevin Chen":
+                    ++newVals[1];
+                    break;
                 case "kevinchenftw":
                     ++newVals[1];
                     break;
+                case "RedWhite KIAMI Dai":
+                    ++newVals[2];
+                    break;
+                case "Diyuan Dai":
+                    //I changed my profile name to my real name
+                    ++newVals[2];
+                    break;
+                case "root":
+                    //I am using SSH to push, which will be shown as root. Sorry to add complexity.
+                    ++newVals[2];
+                    break;
+                case "Vaishnav Bipin":
+                    ++newVals[3];
+                    break;
+                case "Anisha Kollareddy":
+                    ++newVals[4];
+                    break;    
                 default:
                     break;
             }
