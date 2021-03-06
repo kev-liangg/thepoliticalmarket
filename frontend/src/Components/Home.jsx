@@ -8,7 +8,12 @@ class Home extends Component {
         return (
             <div className="wrapper"> 
                 <img src={bg} class="img-fluid w-100" alt="bg" />
-                <div className="centered">The Political Market</div>
+                <div className="centered">
+                    <div className="backing"></div>
+                </div>
+                <div className="centered">
+                    The Political Market
+                </div>
             </div>
         )
     }
