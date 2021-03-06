@@ -9,15 +9,6 @@
   color: white;
 }
 
-.centered {
-  position: absolute;
-  top: 25%;
-  left: 50%;
-  font-size: calc(10px + 6vmin);
-  transform: translate(-50%, -50%);
-  color: black;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
