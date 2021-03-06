@@ -24,9 +24,13 @@ class About extends Component {
     // The state will change to reflect the actual number of commits and issues when computed, which will render.
     componentDidMount() {
         const commits = this.getCommits();
+        const issues = this.getIssues();
+        // then() statements for issues and commits Promises evaluate when Promise fulfilled.
         commits.then((commits) => {
-            console.log(commits);
             this.setState({commitVals: this.parseCommits(commits)});
+        });
+        issues.then((issues) => {
+            this.setState({issueVals: this.parseIssues(issues)});
         });
     }
 
@@ -34,7 +38,7 @@ class About extends Component {
     parseCommits(commits) {
         let newVals = [0, 0, 0, 0, 0];
         for (const i in commits) {
-            console.log(commits[i]["author_name"]);
+            // todo: update this switch statement once all commit identities are known
             switch(commits[i]["author_name"]) {
                 case "Kevin Liang":
                     ++newVals[0];
@@ -42,6 +46,32 @@ class About extends Component {
                 case "Kevin Chen":
                 case "kevinchenftw":
                     ++newVals[1];
+                    break;
+                default:
+                    break;
+            }
+        }
+        return newVals;
+    }
+
+    parseIssues(issues) {
+        let newVals = [0, 0, 0, 0, 0];
+        for (const i in issues) {
+            switch(issues[i]["author"]["username"]) {
+                case "kev-liangg":
+                    ++newVals[0];
+                    break;
+                case "kevinchenftw":
+                    ++newVals[1];
+                    break;
+                case "beastblackga":
+                    ++newVals[2];
+                    break;
+                case "VaishnavBipin":
+                    ++newVals[3];
+                    break;
+                case "anishakollareddy":
+                    ++newVals[4];
                     break;
                 default:
                     break;
