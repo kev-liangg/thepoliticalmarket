@@ -13,7 +13,7 @@ function Government(){
           <Link to = "/Contractors">Contracters</Link>
         </li>
         <li>
-          <Link to = "/Contracts">Government Contracts</Link>
+          <Link to = "/Contracts">Contracts</Link>
         </li>
         <li>
           <Link to = "/state">States</Link>
