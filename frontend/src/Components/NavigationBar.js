@@ -14,16 +14,21 @@ const Styles = styled.div`
     }
 `;
 
-export const NavigationBar = () => (
+const NavigationBar = () => (
     <Styles>
         <Navbar expand="lg">
             <Navbar.Brand href = "/">Home</Navbar.Brand>
             <Navbar.Toggle aria-controls = "basic-navbar-nav" />
             <Navbar.Collapse id ="basic-navbar-nav">
-            <Nav className="ml-auto">
+            <Nav className="ml-auto"> 
           <Nav.Item>
             <Nav.Link>
               <Link to="/Government">Gov-Models</Link>
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link>
+              <Link to="/Stocks">Stocks</Link>
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
@@ -46,3 +51,5 @@ export const NavigationBar = () => (
         </Navbar>
     </Styles>
 )
+
+export default NavigationBar;

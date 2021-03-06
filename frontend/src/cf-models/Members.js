@@ -9,10 +9,10 @@ class Members extends React.Component {
     render() {
       return (
         <div className="container">
-          <h1 style={{'text-align':'center'}}>Congress Members</h1>
+          <h1 style={{'text-align':'center'}}>Campaign Finance</h1>
           <div className='row'>
             <div className='col-sm-4'>
-              <div className='card'>
+              <div className='card' style={{'backgroundColor': 'black'}}>
               <img className="card-img-top" src={jon_ossoff} alt=""></img>
                 <div className='card-body'>
                   <h4 className="card-title">T. J. Ossoff</h4>
@@ -22,7 +22,7 @@ class Members extends React.Component {
               </div>
             </div>
             <div className='col-sm-4'>
-              <div className='card'>
+              <div className='card' style={{'backgroundColor': 'black'}}>
               <img className="card-img-top" src={jaime_harrison} alt=""></img>
                 <div className='card-body'>
                   <h4 className="card-title">J. Harrison</h4>
@@ -32,7 +32,7 @@ class Members extends React.Component {
               </div>
             </div>
             <div className='col-sm-4'>
-              <div className='card'>
+              <div className='card' style={{'backgroundColor': 'black'}}>
               <img className="card-img-top" src={raphael_warnock} alt=""></img>
                 <div className='card-body'>
                   <h4 className="card-title">R. Warnock</h4>

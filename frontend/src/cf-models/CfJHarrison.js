@@ -4,7 +4,7 @@ import pplc_data from "./PropublicaData";
 
 function CfJHarrison() {
     const data = pplc_data[1]
-    const polColor = data["results"][0]["party"]==="DEM" ? 'LightBlue':'LightCoral'
+    const polColor = data["results"][0]["party"]==="DEM" ? 'Blue':'Red'
     return (
         <div>
             <h1 style={{'textAlign':'center'}}> Jaime Harrison</h1>
@@ -20,7 +20,7 @@ function CfJHarrison() {
                             state: {data["results"][0]["mailing_state"]} <br></br>
                         </p>
                     </div>
-                    <div className="col-sm-6"  style={{'backgroundColor':'LightGrey'}}>
+                    <div className="col-sm-6"  style={{'backgroundColor':'Black'}}>
                         <h3 style={{'textAlign':'center'}}> Campaign Finance</h3>
                         <p style={{'textAlign':'center'}}>
                             Dates: {data["results"][0]["date_coverage_from"]} to {data["results"][0]["date_coverage_to"]} <br></br>

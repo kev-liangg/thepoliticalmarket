@@ -4,7 +4,7 @@ import pplc_data from "./PropublicaData";
 
 function CfTJOssoff() {
     const data = pplc_data[0]
-    const polColor = data["results"][0]["party"]==="DEM" ? 'LightBlue':'LightCoral'
+    const polColor = data["results"][0]["party"]==="DEM" ? 'Blue':'Red'
     return (
         <div>
             <h1 style={{'textAlign':'center'}}> Thomas Jonathan Ossoff</h1>
@@ -20,7 +20,7 @@ function CfTJOssoff() {
                             state: {data["results"][0]["mailing_state"]} <br></br>
                         </p>
                     </div>
-                    <div className="col-sm-6"  style={{'backgroundColor':'LightGrey'}}>
+                    <div className="col-sm-6"  style={{'backgroundColor':'black'}}>
                         <h3 style={{'textAlign':'center'}}> Campaign Finance</h3>
                         <p style={{'textAlign':'center'}}>
                             Dates: {data["results"][0]["date_coverage_from"]} to {data["results"][0]["date_coverage_to"]} <br></br>
