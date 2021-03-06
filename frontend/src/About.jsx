@@ -9,11 +9,28 @@ class About extends Component {
         issueVals: [0, 0, 0, 0, 0]
     }
 
+    // API calls are asynchronous. use await for the GET, returns a Promise.
     async getCommits() {
         let response = await axios.get('https://gitlab.com/api/v4/projects/24709028/repository/commits');
         return response.data;
     }
-    
+
+    async getIssues() {
+        let response = await axios.get('https://gitlab.com/api/v4/projects/24709028/issues');
+        return response.data;
+    }
+
+    // Updates the Component if any changes occur; that is to say, when the Promises from above fulfill.
+    // The state will change to reflect the actual number of commits and issues when computed, which will render.
+    componentDidMount() {
+        const commits = this.getCommits();
+        commits.then((commits) => {
+            console.log(commits);
+            this.setState({commitVals: this.parseCommits(commits)});
+        });
+    }
+
+    // Parsing functions operate on unwrapped data, and returns the proper value to update the state.
     parseCommits(commits) {
         let newVals = [0, 0, 0, 0, 0];
         for (const i in commits) {
@@ -31,14 +48,6 @@ class About extends Component {
             }
         }
         return newVals;
-    }
-
-    componentDidMount() {
-        const commits = this.getCommits();
-        commits.then((commits) => {
-            console.log(commits);
-            this.setState({commitVals: this.parseCommits(commits)});
-        });
     }
     
     render() {
