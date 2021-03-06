@@ -52,6 +52,10 @@ class About extends Component {
                 case "RedWhite KIAMI Dai":
                     ++newVals[2];
                     break;
+                case "Diyuan Dai":
+                    //I changed my profile name to my real name
+                    ++newVals[2];
+                    break;
                 case "root":
                     //I am using SSH to push, which will be shown as root. Sorry to add complexity.
                     ++newVals[2];
