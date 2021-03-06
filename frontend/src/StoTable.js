@@ -6,7 +6,7 @@ const TableBody = (props) => {
         return (
             <tr key={index}>
                 <td >
-                    <Link to={"/" + row.Company}>{row.Company}</Link>
+                    <Link to={"/sto-models/sto-instances/" + row.Symbols}>{row.Company}</Link>
                 </td>
                 <td>{row.Time}</td>
                 <td>{row.Symbols}</td>
