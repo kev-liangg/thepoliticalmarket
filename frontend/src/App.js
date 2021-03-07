@@ -34,9 +34,9 @@ class App extends Component {
             <Route exact path = "/CampFin/JHarrison" component = {CfJHarrison} />
             <Route exact path = "/CampFin/RWarnock" component = {CfRWarnock} />
             <Route exact path = "/About" component = {About} />
-            <Route path = "/DELL" component = {DELL} />
-            <Route path = "/HPQ" component = {HPQ} />
-            <Route path = "/GOOG" component = {GOOG} />
+            <Route exact path = "/DELL" component = {DELL} />
+            <Route exact path = "/HPQ" component = {HPQ} />
+            <Route exact path = "/GOOG" component = {GOOG} />
             {/* <Route path = "/gov-models/Contracts" component = {Contracts} />
             <Route path = "/gov-models/State" component = {State} /> */}
             {/* <Route component = {NoMatch} /> */}
