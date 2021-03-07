@@ -5,7 +5,7 @@ function States(){
         <div>
             <li>Texas</li>
             <li>California</li>
-            <li>Virgina</li>
+            <li>Georgia</li>
         </div>
     )
 }

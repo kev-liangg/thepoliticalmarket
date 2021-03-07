@@ -17,6 +17,10 @@ function HPQ() {
                     <p class="card-text">Number of recommendations that fall into the Sell category: {toy_data[1]['Sell']}</p>
                     <p class="card-text">Recommendations that fall into the Strong Buy category: {toy_data[1]['StrongBuy']}</p>
                     <p class="card-text">Recommendations that fall into the Strong Sell category: {toy_data[1]['StrongSell']}</p>
+                    <p class="card-text">Candidates from States with HP Inc. Offices:</p>
+                    <li>
+                    <a href={"/CampFin/RWarnock"}>CfRWarnock</a>
+                    </li>
                 </div>
             </div>
             <br></br>
