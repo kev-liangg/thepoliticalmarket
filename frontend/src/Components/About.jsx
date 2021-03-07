@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../App.css';
+import Button from 'react-bootstrap/Button'
 
 class About extends Component {
 
@@ -23,7 +24,7 @@ class About extends Component {
                 commits = commits.concat(response.data);
                 ++i;
             }
-        }        
+        }
         return commits;
     }
 
@@ -39,10 +40,10 @@ class About extends Component {
         const issues = this.getIssues();
         // then() statements for issues and commits Promises evaluate when Promise fulfilled.
         commits.then((commits) => {
-            this.setState({commitVals: this.parseCommits(commits)});
+            this.setState({ commitVals: this.parseCommits(commits) });
         });
         issues.then((issues) => {
-            this.setState({issueVals: this.parseIssues(issues)});
+            this.setState({ issueVals: this.parseIssues(issues) });
         });
     }
 
@@ -52,7 +53,7 @@ class About extends Component {
         console.log(commits);
         for (const i in commits) {
             // todo: update this switch statement once all commit identities are known
-            switch(commits[i]["author_name"]) {
+            switch (commits[i]["author_name"]) {
                 case "Kevin Liang":
                     ++newVals[0];
                     break;
@@ -78,7 +79,10 @@ class About extends Component {
                     break;
                 case "Anisha Kollareddy":
                     ++newVals[4];
-                    break;    
+                    break;
+                case "Anisha":
+                    ++newVals[4];
+                    break;
                 default:
                     break;
             }
@@ -89,7 +93,7 @@ class About extends Component {
     parseIssues(issues) {
         let newVals = [0, 0, 0, 0, 0];
         for (const i in issues) {
-            switch(issues[i]["author"]["username"]) {
+            switch (issues[i]["author"]["username"]) {
                 case "kev-liangg":
                     ++newVals[0];
                     break;
@@ -105,52 +109,62 @@ class About extends Component {
                 case "anishakollareddy":
                     ++newVals[4];
                     break;
+                case "anisha":
+                    ++newVals[4];
+                    break;
                 default:
                     break;
             }
         }
         return newVals;
     }
-    
+
     render() {
         return (
             <div className="App">
-              <header className="App-header">
-                <table>
-                    <tr>
-                        <th>Member Name</th>
-                        <th># Commits</th>
-                        <th># Issues</th>
-                    </tr>
-                    <tr>
-                        <td>Kevin Liang</td>
-                        <td>{this.state.commitVals[0]}</td>
-                        <td>{this.state.issueVals[0]}</td>
-                    </tr>
-                    <tr>
-                        <td>Kevin Chen</td>
-                        <td>{this.state.commitVals[1]}</td>
-                        <td>{this.state.issueVals[1]}</td>
-                    </tr>
-                    <tr>
-                        <td>Diyuan Dai</td>
-                        <td>{this.state.commitVals[2]}</td>
-                        <td>{this.state.issueVals[2]}</td>
-                    </tr>
-                    <tr>
-                        <td>Vaishnav Bipin</td>
-                        <td>{this.state.commitVals[3]}</td>
-                        <td>{this.state.issueVals[3]}</td>
-                    </tr>
-                    <tr>
-                        <td>Anisha Kollareddy</td>
-                        <td>{this.state.commitVals[4]}</td>
-                        <td>{this.state.issueVals[4]}</td>
-                    </tr>
-                    </table>  
-              </header>  
-            </div>
-          );
+                <header className="App-header">
+
+
+                    <table>
+                        <tr>
+                            <th>Member Name</th>
+                            <th># Commits</th>
+                            <th># Issues</th>
+                        </tr>
+                        <tr>
+                            <td>Kevin Liang</td>
+                            <td>{this.state.commitVals[0]}</td>
+                            <td>{this.state.issueVals[0]}</td>
+                        </tr>
+                        <tr>
+                            <td>Kevin Chen</td>
+                            <td>{this.state.commitVals[1]}</td>
+                            <td>{this.state.issueVals[1]}</td>
+                        </tr>
+                        <tr>
+                            <td>Diyuan Dai</td>
+                            <td>{this.state.commitVals[2]}</td>
+                            <td>{this.state.issueVals[2]}</td>
+                        </tr>
+                        <tr>
+                            <td>Vaishnav Bipin</td>
+                            <td>{this.state.commitVals[3]}</td>
+                            <td>{this.state.issueVals[3]}</td>
+                        </tr>
+                        <tr>
+                            <td>Anisha Kollareddy</td>
+                            <td>{this.state.commitVals[4]}</td>
+                            <td>{this.state.issueVals[4]}</td>
+                        </tr>
+                    </table>
+                    <Button style={{
+                        padding: 2 + 'vh',
+                        margin: 5 + 'vh',
+                        fontSize: 100 + '%'
+                    }} href="https://documenter.getpostman.com/view/14826278/Tz5jfLrU">Postman Documentation</Button>
+                </header>
+            </div >
+        );
     }
 }
 

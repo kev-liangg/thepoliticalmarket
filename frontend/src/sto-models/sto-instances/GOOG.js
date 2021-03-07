@@ -1,9 +1,12 @@
 import React from "react";
 import "./GOOG.css";
 import { toy_data } from "../stockTrends";
+<<<<<<< HEAD
 import aapl_5 from "./AAPL_5Year.PNG"
 
 
+=======
+>>>>>>> origin/master
 function GOOG() {
     return (
         <div>
