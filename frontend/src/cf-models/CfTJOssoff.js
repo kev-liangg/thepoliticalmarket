@@ -31,6 +31,10 @@ function CfTJOssoff() {
                         </p>
                     </div>
                 </div>
+                <p class="card-text">Georgia Contractors:</p>
+                    <li>
+                    <a href={"/Contractors"}>Boeing</a>
+                </li>
             </div>
         </div>
     )
