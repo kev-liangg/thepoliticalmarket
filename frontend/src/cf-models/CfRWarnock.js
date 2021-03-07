@@ -33,7 +33,7 @@ function CfRWarnock() {
                 </div>
                 <p class="card-text">Texas Contractors:</p>
                     <li>
-                    <a href={"/Contractors"}>Lockheed Martin</a>
+                    <a href={"/Government/Contractors"}>Lockheed Martin</a>
                 </li>
             </div>
         </div>

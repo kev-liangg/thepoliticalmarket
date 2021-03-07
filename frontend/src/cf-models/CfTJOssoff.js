@@ -33,7 +33,7 @@ function CfTJOssoff() {
                 </div>
                 <p class="card-text">Georgia Contractors:</p>
                     <li>
-                    <a href={"/Contractors"}>Boeing</a>
+                    <a href={"/Government/Contractors"}>Boeing</a>
                 </li>
             </div>
         </div>
