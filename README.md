@@ -21,7 +21,7 @@ Kevin Liang
 | Kevin Chen | ... | ... |
 | Kevin Liang | 15 | ... |
 | Diyuan Dai | ... | ... | 
-| Vaishnav Bipin | ... | ... |
+| Vaishnav Bipin | 15 | 16 |
 | Anisha Kollareddy | 15 | 15 |  
 
 ## Pipelines
