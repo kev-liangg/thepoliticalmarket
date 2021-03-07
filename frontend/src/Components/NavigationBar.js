@@ -41,11 +41,6 @@ const NavigationBar = () => (
               <Link to="/About">About</Link>
             </Nav.Link>
           </Nav.Item>
-          <Nav.Item>
-            <Nav.Link>
-              <Link to="/contact">Contact</Link>
-            </Nav.Link>
-          </Nav.Item>
         </Nav>
             </Navbar.Collapse>
         </Navbar>
