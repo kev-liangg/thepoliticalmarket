@@ -18,7 +18,7 @@ Kevin Liang
 ### Phase 1
 | Name | Estimated Hours | Actual Hours | 
 |----- | ----- | -----|
-| Kevin Chen | 15 | ... |
+| Kevin Chen | 15 | 20 |
 | Kevin Liang | 15 | ... |
 | Diyuan Dai | ... | ... | 
 | Vaishnav Bipin | 15 | 16 |
