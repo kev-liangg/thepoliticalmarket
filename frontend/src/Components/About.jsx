@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import '../App.css';
+import Button from 'react-bootstrap/Button'
 
 class About extends Component {
 
@@ -79,6 +80,9 @@ class About extends Component {
                 case "Anisha Kollareddy":
                     ++newVals[4];
                     break;    
+                case "Anisha":
+                    ++newVals[4];
+                    break;
                 default:
                     break;
             }
@@ -105,6 +109,9 @@ class About extends Component {
                 case "anishakollareddy":
                     ++newVals[4];
                     break;
+                case "anisha":
+                    ++newVals[4];
+                    break;
                 default:
                     break;
             }
@@ -116,6 +123,8 @@ class About extends Component {
         return (
             <div className="App">
               <header className="App-header">
+                <Button href="https://documenter.getpostman.com/view/14826278/Tz5jfLrU">Postman Documentation</Button>
+                
                 <table>
                     <tr>
                         <th>Member Name</th>
