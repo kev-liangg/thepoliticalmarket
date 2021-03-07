@@ -33,7 +33,7 @@ class App extends Component {
             <Route exact path = "/About" component = {About} />
             <Route exact path = "/DELL" component = {DELL} />
             <Route exact path = "/HPQ" component = {HPQ} />
-            <Route exact path = "/AAPL" component = {GOOG} />
+            <Route exact path = "/GOOG" component = {GOOG} />
             {/* <Route path = "/gov-models/Contracts" component = {Contracts} />
             <Route path = "/gov-models/State" component = {State} /> */}
             {/* <Route component = {NoMatch} /> */}

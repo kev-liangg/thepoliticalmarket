@@ -4,9 +4,6 @@ import { toy_data } from "../stockTrends";
 import aapl_5 from "./AAPL_5Year.PNG"
 
 
-import { BrowserRouter as Router,Route,Link,Switch} from 'react-router-dom';
-
-
 function GOOG() {
     return (
         <div>
