@@ -20,7 +20,7 @@ Kevin Liang
 |----- | ----- | -----|
 | Kevin Chen | 15 | 20 |
 | Kevin Liang | 15 | 21 |
-| Diyuan Dai | ... | ... | 
+| Diyuan Dai | 15 | 18 | 
 | Vaishnav Bipin | 15 | 16 |
 | Anisha Kollareddy | 15 | 15 |  
 
