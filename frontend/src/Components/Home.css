@@ -1,0 +1,22 @@
+.centered {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    font-size: calc(6vw);
+    transform: translate(-50%, -50%);
+    color: #BBBBBB;
+    white-space: nowrap;
+  }
+
+  .backing{  
+    padding: 20px;
+    height: calc(10vw);
+    background-color: #222222;
+    opacity: .9;
+    width: 100vw;
+    text-align:center;
+  }
+
+  .wrapper {
+      position: relative;
+  }
