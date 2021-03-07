@@ -1,9 +1,6 @@
 import React from "react";
 import "./GOOG.css";
 import { toy_data } from "../stockTrends";
-import { BrowserRouter as Router,Route,Link,Switch} from 'react-router-dom';
-
-
 function GOOG() {
     return (
         <div>
