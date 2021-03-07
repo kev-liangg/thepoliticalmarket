@@ -19,7 +19,7 @@ Kevin Liang
 | Name | Estimated Hours | Actual Hours | 
 |----- | ----- | -----|
 | Kevin Chen | 15 | 20 |
-| Kevin Liang | 15 | ... |
+| Kevin Liang | 15 | 21 |
 | Diyuan Dai | ... | ... | 
 | Vaishnav Bipin | 15 | 16 |
 | Anisha Kollareddy | 15 | 15 |  
