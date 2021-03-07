@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Government from "./gov-models/Government";
 import Contractors from "./gov-models/Contractors";
 import Contracts from "./gov-models/Contracts";
-import States from "./gov-models/State";
+import States from "./gov-models/States";
 import Members from "./cf-models/Members";
 import CfTJOssoff from "./cf-models/CfTJOssoff";
 import CfJHarrison from "./cf-models/CfJHarrison";

@@ -11,7 +11,7 @@ function Government(){
           <a href = "/Government/Contracts">Contracts</a>
         </li>
         <li>
-          <a href = "/Government/state">States </a>
+          <a href = "/Government/States">States </a>
         </li>
         </nav>
         </div>
