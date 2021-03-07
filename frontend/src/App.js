@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Contractors from "./gov-models/Contractors";
 import Government from "./gov-models/Government";
-
+import Contractors from "./gov-models/Contractors";
+import Contracts from "./gov-models/Contracts";
+import States from "./gov-models/State";
 import Members from "./cf-models/Members";
 import CfTJOssoff from "./cf-models/CfTJOssoff";
 import CfJHarrison from "./cf-models/CfJHarrison";
@@ -25,7 +26,9 @@ class App extends Component {
             <Route exact path = "/" component = {Home} />
             <Route exact path = "/Government" component = {Government} />
             <Route exact path = "/Stocks" component = {Stocks} />
-            <Route exact path = "/Contractors" component = {Contractors} />
+            <Route exact path = "/Government/Contractors" component = {Contractors} />
+            <Route exact path = "/Government/States" component = {States} />
+            <Route exact path = "/Government/Contracts" component = {Contracts} />
             <Route exact path = "/CampFin" component = {Members} />
             <Route exact path = "/CampFin/TJOssoff" component = {CfTJOssoff} />
             <Route exact path = "/CampFin/JHarrison" component = {CfJHarrison} />
