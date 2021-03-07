@@ -79,6 +79,9 @@ class About extends Component {
                 case "Anisha Kollareddy":
                     ++newVals[4];
                     break;    
+                case "Anisha":
+                    ++newVals[4];
+                    break;
                 default:
                     break;
             }
@@ -103,6 +106,9 @@ class About extends Component {
                     ++newVals[3];
                     break;
                 case "anishakollareddy":
+                    ++newVals[4];
+                    break;
+                case "anisha":
                     ++newVals[4];
                     break;
                 default:
