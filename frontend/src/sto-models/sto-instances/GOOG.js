@@ -1,11 +1,13 @@
 import React from "react";
-import "./AAPL.css";
+import "./GOOG.css";
 import { toy_data } from "../stockTrends";
 import aapl_5 from "./AAPL_5Year.PNG"
 
 
+import { BrowserRouter as Router,Route,Link,Switch} from 'react-router-dom';
 
-function AAPL() {
+
+function GOOG() {
     return (
         <div>
             <br></br>
@@ -14,7 +16,7 @@ function AAPL() {
             <div className="container">
                 <div className="row">
                     <div className='col-sm-4'>
-                        <h1>Apple Inc</h1>
+                        <h1>Google Inc</h1>
                         <br></br>
                         <p class="card-text">Updated period: {toy_data[0]['Time']}</p>
                         <p class="card-text">Symbols for the Company: {toy_data[0]['Symbols']}</p>
@@ -23,9 +25,12 @@ function AAPL() {
                         <p class="card-text">Number of recommendations that fall into the Sell category: {toy_data[0]['Sell']}</p>
                         <p class="card-text">Recommendations that fall into the Strong Buy category: {toy_data[0]['StrongBuy']}</p>
                         <p class="card-text">Recommendations that fall into the Strong Sell category: {toy_data[0]['StrongSell']}</p>
+                        <li>
+                        <a href={"/CampFin/TJOssoff"}>TJ Ossof</a>
+                        </li>
                     </div>
                     <div className='col-sm-8'>
-                        <h3>AAPL 5 Years</h3>
+                        <h3>GOOG 5 Years</h3>
                         <img src={aapl_5} alt="" width="576" height="384"></img>
                     </div>
                 </div>
@@ -35,4 +40,4 @@ function AAPL() {
         </div>
     )
 }
-export default AAPL;
+export default GOOG;
