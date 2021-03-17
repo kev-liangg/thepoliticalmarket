@@ -30,8 +30,20 @@ class About extends Component {
     }
 
     async getIssues() {
-        let response = await axios.get('https://gitlab.com/api/v4/projects/24709028/issues');
-        return response.data;
+        let url = 'https://gitlab.com/api/v4/projects/24709028/issues?per_page=40';
+        let issues = [];
+        let i = 1;
+        while (true) {
+            let response = await axios.get(url + "&page=" + i);
+            if (!response.data.length) {
+                break;
+            }
+            else {
+                issues = issues.concat(response.data);
+                ++i;
+            }
+        }
+        return issues;
     }
 
     // Updates the Component if any changes occur; that is to say, when the Promises from above fulfill.
@@ -51,7 +63,7 @@ class About extends Component {
     // Parsing functions operate on unwrapped data, and returns the proper value to update the state.
     parseCommits(commits) {
         let newVals = [0, 0, 0, 0, 0, 0];
-        console.log(commits);
+        // console.log(commits);
         for (const i in commits) {
             // todo: update this switch statement once all commit identities are known
             switch (commits[i]["author_name"]) {
@@ -104,35 +116,36 @@ class About extends Component {
     parseIssues(issues) {
         let newVals = [0, 0, 0, 0, 0, 0];
         for (const i in issues) {
-            switch (issues[i]["author"]["username"]) {
-                case "kev-liangg":
-                    ++newVals[0];
-                    ++newVals[5];
-                    break;
-                case "kevinchenftw":
-                    ++newVals[1];
-                    ++newVals[5];
-                    break;
-                case "beastblackga":
-                    ++newVals[2];
-                    ++newVals[5];
-                    break;
-                case "VaishnavBipin":
-                    ++newVals[3];
-                    ++newVals[5];
-                    break;
-                case "anishakollareddy":
-                    ++newVals[4];
-                    ++newVals[5];
-                    break;
-                case "anisha":
-                    ++newVals[4];
-                    ++newVals[5];
-                    break;
-                default:
-                    break;
-            }
-            
+            if (issues[i]["closed_by"] != null) {
+                switch (issues[i]["closed_by"]["username"]) {
+                    case "kev-liangg":
+                        ++newVals[0];
+                        ++newVals[5];
+                        break;
+                    case "kevinchenftw":
+                        ++newVals[1];
+                        ++newVals[5];
+                        break;
+                    case "beastblackga":
+                        ++newVals[2];
+                        ++newVals[5];
+                        break;
+                    case "VaishnavBipin":
+                        ++newVals[3];
+                        ++newVals[5];
+                        break;
+                    case "anishakollareddy":
+                        ++newVals[4];
+                        ++newVals[5];
+                        break;
+                    case "anisha":
+                        ++newVals[4];
+                        ++newVals[5];
+                        break;
+                    default:
+                        break;
+                }
+            }            
         }
         return newVals;
     }
@@ -173,10 +186,10 @@ class About extends Component {
                             <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
                             <img className="card-img-top" src={blank_profile} alt=""></img>
                                 <div className='card-body'>
-                                    <h4 className="card-title" style={{"font-size":"24px"}}>Name</h4>
+                                    <h4 className="card-title" style={{"font-size":"24px"}}>Kevin Liang</h4>
                                     <p className="card-text" style={{"font-size":"18px"}}>- Full Stack Developer</p>
                                     <p className="card-text" style={{"font-size":"18px"}}>
-                                        Bio 
+                                        I'm a 4th-year CS major from Phoenix, Arizona.  
                                     </p>
                                 </div>
                             </div>
