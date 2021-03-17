@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../App.css';
 import Button from 'react-bootstrap/Button'
+import blank_profile from "./blank-profile.png"
 
 class About extends Component {
 
     state = {
-        commitVals: [0, 0, 0, 0, 0],
-        issueVals: [0, 0, 0, 0, 0]
+        commitVals: [0, 0, 0, 0, 0, 0],
+        issueVals: [0, 0, 0, 0, 0, 0]
     }
 
     // API calls are asynchronous. use await for the GET, returns a Promise.
@@ -49,119 +50,268 @@ class About extends Component {
 
     // Parsing functions operate on unwrapped data, and returns the proper value to update the state.
     parseCommits(commits) {
-        let newVals = [0, 0, 0, 0, 0];
+        let newVals = [0, 0, 0, 0, 0, 0];
         console.log(commits);
         for (const i in commits) {
             // todo: update this switch statement once all commit identities are known
             switch (commits[i]["author_name"]) {
                 case "Kevin Liang":
                     ++newVals[0];
+                    ++newVals[5];
                     break;
                 case "Kevin Chen":
                     ++newVals[1];
+                    ++newVals[5];
                     break;
                 case "kevinchenftw":
                     ++newVals[1];
+                    ++newVals[5];
                     break;
                 case "RedWhite KIAMI Dai":
                     ++newVals[2];
+                    ++newVals[5];
                     break;
                 case "Diyuan Dai":
                     //I changed my profile name to my real name
                     ++newVals[2];
+                    ++newVals[5];
                     break;
                 case "root":
                     //I am using SSH to push, which will be shown as root. Sorry to add complexity.
                     ++newVals[2];
+                    ++newVals[5];
                     break;
                 case "Vaishnav Bipin":
                     ++newVals[3];
+                    ++newVals[5];
                     break;
                 case "Anisha Kollareddy":
                     ++newVals[4];
+                    ++newVals[5];
                     break;
                 case "Anisha":
                     ++newVals[4];
+                    ++newVals[5];
                     break;
                 default:
                     break;
             }
+
         }
         return newVals;
     }
 
     parseIssues(issues) {
-        let newVals = [0, 0, 0, 0, 0];
+        let newVals = [0, 0, 0, 0, 0, 0];
         for (const i in issues) {
             switch (issues[i]["author"]["username"]) {
                 case "kev-liangg":
                     ++newVals[0];
+                    ++newVals[5];
                     break;
                 case "kevinchenftw":
                     ++newVals[1];
+                    ++newVals[5];
                     break;
                 case "beastblackga":
                     ++newVals[2];
+                    ++newVals[5];
                     break;
                 case "VaishnavBipin":
                     ++newVals[3];
+                    ++newVals[5];
                     break;
                 case "anishakollareddy":
                     ++newVals[4];
+                    ++newVals[5];
                     break;
                 case "anisha":
                     ++newVals[4];
+                    ++newVals[5];
                     break;
                 default:
                     break;
             }
+            
         }
         return newVals;
     }
+
 
     render() {
         return (
             <div className="App">
                 <header className="App-header">
+                    <h1>About The Political Market</h1>
+                    
+                    <div className="container">
+                        <div className="row">
+                            <p>
+                                This website that allows its users, the general public, to view the stock positions of Congress members and compare
+                                them to aggregated market data, government contracts, and campaign financing history.
+                                <br></br>
+                                <br></br>
+                                [Interesting result of integrating disparate data...]
+                                <br></br>
+                                <br></br>
+                            </p>
+                        </div>
+                        <h1>Members</h1>
+                        <div className="row">
+                            
+                            <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
+                            <img className="card-img-top" src={blank_profile} alt=""></img>
+                                <div className='card-body'>
+                                    <h4 className="card-title" style={{"font-size":"24px"}}>Vaishnav Bipin</h4>
+                                    <p className="card-text" style={{"font-size":"18px"}}>- Full Stack Developer</p>
+                                    <p className="card-text" style={{"font-size":"18px"}}>
+                                        I am a sophomore CS major from Austin, TX. 
+                                    </p>
+                                </div>
+                            </div>
 
+                            <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
+                            <img className="card-img-top" src={blank_profile} alt=""></img>
+                                <div className='card-body'>
+                                    <h4 className="card-title" style={{"font-size":"24px"}}>Name</h4>
+                                    <p className="card-text" style={{"font-size":"18px"}}>- Full Stack Developer</p>
+                                    <p className="card-text" style={{"font-size":"18px"}}>
+                                        Bio 
+                                    </p>
+                                </div>
+                            </div>
 
+                            <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
+                            <img className="card-img-top" src={blank_profile} alt=""></img>
+                                <div className='card-body'>
+                                    <h4 className="card-title" style={{"font-size":"24px"}}>Name</h4>
+                                    <p className="card-text" style={{"font-size":"18px"}}>- Full Stack Developer</p>
+                                    <p className="card-text" style={{"font-size":"18px"}}>
+                                        Bio 
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
+                            <img className="card-img-top" src={blank_profile} alt=""></img>
+                                <div className='card-body'>
+                                    <h4 className="card-title" style={{"font-size":"24px"}}>Name</h4>
+                                    <p className="card-text" style={{"font-size":"18px"}}>- Full Stack Developer</p>
+                                    <p className="card-text" style={{"font-size":"18px"}}>
+                                        Bio 
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
+                            <img className="card-img-top" src={blank_profile} alt=""></img>
+                                <div className='card-body'>
+                                    <h4 className="card-title" style={{"font-size":"24px"}}>Name</h4>
+                                    <p className="card-text" style={{"font-size":"18px"}}>- Full Stack Developer</p>
+                                    <p className="card-text" style={{"font-size":"18px"}}>
+                                        Bio 
+                                    </p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
                     <table>
                         <tr>
                             <th>Member Name</th>
                             <th># Commits</th>
                             <th># Issues</th>
+                            <th># Unit Tests</th>
                         </tr>
                         <tr>
                             <td>Kevin Liang</td>
                             <td>{this.state.commitVals[0]}</td>
                             <td>{this.state.issueVals[0]}</td>
+                            <td>0</td>
                         </tr>
                         <tr>
                             <td>Kevin Chen</td>
                             <td>{this.state.commitVals[1]}</td>
                             <td>{this.state.issueVals[1]}</td>
+                            <td>0</td>
                         </tr>
                         <tr>
                             <td>Diyuan Dai</td>
                             <td>{this.state.commitVals[2]}</td>
                             <td>{this.state.issueVals[2]}</td>
+                            <td>0</td>
                         </tr>
                         <tr>
                             <td>Vaishnav Bipin</td>
                             <td>{this.state.commitVals[3]}</td>
                             <td>{this.state.issueVals[3]}</td>
+                            <td>0</td>
                         </tr>
                         <tr>
                             <td>Anisha Kollareddy</td>
                             <td>{this.state.commitVals[4]}</td>
                             <td>{this.state.issueVals[4]}</td>
+                            <td>0</td>
                         </tr>
+                        <tr style={{"font-weight":"bold"}}>
+                            <td>Total</td>
+                            <td>{this.state.commitVals[5]}</td>
+                            <td>{this.state.issueVals[5]}</td>
+                            <td>0</td>
+                        </tr>    
+
                     </table>
+                    <div className="container">
+                    <div className="row">
+                    <div className="col-sm-6">
                     <Button style={{
                         padding: 2 + 'vh',
                         margin: 5 + 'vh',
                         fontSize: 100 + '%'
                     }} href="https://documenter.getpostman.com/view/14826278/Tz5jfLrU">Postman Documentation</Button>
+                    </div>
+                    <div className="col-sm-6">
+                    <Button style={{
+                        padding: 2 + 'vh',
+                        margin: 5 + 'vh',
+                        fontSize: 100 + '%'
+                    }} href="https://gitlab.com/kevinchenftw/thepoliticalmarket">GitLab Repo</Button>
+                    </div>
+                    </div>
+                    </div>
+                    <div className="container">
+                    <div className="row">
+                    <div className="col-sm-12" style={{"text-align":"left"}}> 
+                        <h2>Data Sources (APIs)</h2>
+                            <a href="https://www.propublica.org/datastore/api/campaign-finance-api">Propublica API</a> - 
+                            documentation of how to scrape can be found <a href="https://propublica.github.io/campaign-finance-api-docs/">here</a>
+                            <br></br>
+                            <a href="https://discovery.gsa.gov/api/">Discovery API</a> - 
+                            [Description]
+                            <br></br>
+                            <a href="https://www.opensecrets.org/open-data/api">OpenSecrets API</a> - 
+                            [Description]
+                            <br></br>
+                            <a href="https://finnhub.io/">Finnhub API</a> - 
+                            [Description]
+                            <br></br>
+                        <br></br>
+                        <h2>Tools Used</h2>
+                        <h4>Development</h4>
+                        <li>Postman - creates and hosts ThePoliticalMarket RESTful API Documentation</li>
+                        <li>Gitlab - issue tracking, project management, version control, continuous integration</li>
+                        <h4>Backend</h4>
+                        <li>Docker - gives our specific environment for the backend for any user or provider</li>
+                        <li>wsgi - allows our web server to forward requests to a Python web framework</li>
+                        <li>Flask - the lightweight Python web framework communicating with through wsgi</li>
+                        <h4>Frontend</h4>
+                        <li>yarn - a package manager for our modules, allows us to locally compile and develop</li>
+                        <li>React - a library to develop and render our User Interface and visual components</li>
+                        <li>React-Bootstrap - a library to further construct and stylize our frontend interface</li>
+                        
+                    </div>
+                    </div>
+                    </div>
                 </header>
             </div >
         );
