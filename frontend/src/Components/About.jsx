@@ -3,6 +3,11 @@ import axios from 'axios';
 import '../App.css';
 import Button from 'react-bootstrap/Button'
 import blank_profile from "./blank-profile.png"
+import vaishnav from "./Vaishnav.png"
+import kevinl from "./kevin.png"
+import kevinc from "./kevinchen.jpeg"
+import anisha from "./anisha.png"
+import diyuan from "./diyuan.png"
 
 class About extends Component {
 
@@ -173,62 +178,73 @@ class About extends Component {
                         <div className="row">
                             
                             <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
-                            <img className="card-img-top" src={blank_profile} alt=""></img>
+                            <img className="card-img-top" src={vaishnav} alt=""></img>
                                 <div className='card-body'>
                                     <h4 className="card-title" style={{"font-size":"24px"}}>Vaishnav Bipin</h4>
                                     <p className="card-text" style={{"font-size":"18px"}}>- Full Stack Developer</p>
                                     <p className="card-text" style={{"font-size":"18px"}}>
-                                        I am a sophomore CS major from Austin, TX. 
+                                        Hi, I'm Vaishnav, and I am a sophomore CS major from Austin, TX. In my free time I like to play and listen to music. I'm responsible
+                                        for our major frontend decisions as well as the data model for Politicians.
                                     </p>
                                 </div>
                             </div>
 
                             <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
-                            <img className="card-img-top" src={blank_profile} alt=""></img>
+                            <img className="card-img-top" src={kevinl} alt=""></img>
                                 <div className='card-body'>
                                     <h4 className="card-title" style={{"font-size":"24px"}}>Kevin Liang</h4>
-                                    <p className="card-text" style={{"font-size":"18px"}}>- Full Stack Developer</p>
+                                    <p className="card-text" style={{"font-size":"18px"}}>- Team Leader/Full Stack Developer</p>
                                     <p className="card-text" style={{"font-size":"18px"}}>
-                                        I'm a 4th-year CS major from Phoenix, Arizona.  
+                                        Hello there, my name is Kevin Liang. I'm a 4th-year CS major at UT, attending all the way from the 100-plus degree summers
+                                        of Phoenix, Arizona. An interesting fact about myself is I used to play double bass in both orchesta and jazz. I'm responsible
+                                        for managing the team and integrating between the repository, hosting, database, backend, and frontend.
                                     </p>
                                 </div>
                             </div>
 
                             <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
-                            <img className="card-img-top" src={blank_profile} alt=""></img>
+                            <img className="card-img-top" src={kevinc} alt=""></img>
                                 <div className='card-body'>
-                                    <h4 className="card-title" style={{"font-size":"24px"}}>Name</h4>
+                                    <h4 className="card-title" style={{"font-size":"24px"}}>Kevin Chen</h4>
                                     <p className="card-text" style={{"font-size":"18px"}}>- Full Stack Developer</p>
                                     <p className="card-text" style={{"font-size":"18px"}}>
-                                        Bio 
+                                        I am a Sophomore Computer Science Major at the University of Texas at Austin, and my fun fact is I am trilingual. 
+                                        I am responsible for implementing our government contract model, with data from aggregate government spending. 
                                     </p>
                                 </div>
                             </div>
 
                             <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
-                            <img className="card-img-top" src={blank_profile} alt=""></img>
+                            <img className="card-img-top" src={anisha} alt=""></img>
                                 <div className='card-body'>
-                                    <h4 className="card-title" style={{"font-size":"24px"}}>Name</h4>
+                                    <h4 className="card-title" style={{"font-size":"24px"}}>Anisha Kollareddy</h4>
                                     <p className="card-text" style={{"font-size":"18px"}}>- Full Stack Developer</p>
                                     <p className="card-text" style={{"font-size":"18px"}}>
-                                        Bio 
+                                        Hello! I'm Anisha, a Junior Computer Science major at UT. I'm originally from the Bay Area, California, but 
+                                        love exploring all Austin has to offer in my free time. I'm responsible for our maintaining and implementing our API
+                                        as per our frontend and customer requirements.
                                     </p>
                                 </div>
                             </div>
 
                             <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
-                            <img className="card-img-top" src={blank_profile} alt=""></img>
+                            <img className="card-img-top" src={diyuan} alt=""></img>
                                 <div className='card-body'>
-                                    <h4 className="card-title" style={{"font-size":"24px"}}>Name</h4>
+                                    <h4 className="card-title" style={{"font-size":"24px"}}>Diyuan Dai</h4>
                                     <p className="card-text" style={{"font-size":"18px"}}>- Full Stack Developer</p>
                                     <p className="card-text" style={{"font-size":"18px"}}>
-                                        Bio 
+                                        Hi, I am Diyuan. I am a Junior Computer Science major at UT Austin. I play lots of video games in my spare time. 
+                                        I am also a drum player in a school band. I am responsible for our company and stock market model, and aggregating
+                                        historic performance data to best represent patterns and connections.
                                     </p>
                                 </div>
                             </div>
                             
                         </div>
                     </div>
+                    <br></br>
+                    <br></br>
+                    <h1>Contribution Statistics</h1>
                     <table>
                         <tr>
                             <th>Member Name</th>
