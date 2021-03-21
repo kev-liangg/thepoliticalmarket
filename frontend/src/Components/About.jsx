@@ -9,6 +9,12 @@ import kevinc from "./kevinchen.jpeg"
 import anisha from "./anisha.png"
 import diyuan from "./diyuan.png"
 
+const cardStyle = {
+    'backgroundColor': '#82b3c9', 
+    'width': '13.5rem', 
+    'margin':'0.25rem'
+}
+
 class About extends Component {
 
     state = {
@@ -160,6 +166,7 @@ class About extends Component {
         return (
             <div className="App">
                 <header className="App-header">
+                    <br></br>
                     <h1>About The Political Market</h1>
                     
                     <div className="container">
@@ -177,7 +184,7 @@ class About extends Component {
                         <h1>Members</h1>
                         <div className="row">
                             
-                            <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
+                            <div className='card' style={cardStyle}>
                             <img className="card-img-top" src={vaishnav} alt=""></img>
                                 <div className='card-body'>
                                     <h4 className="card-title" style={{"font-size":"24px"}}>Vaishnav Bipin</h4>
@@ -189,7 +196,7 @@ class About extends Component {
                                 </div>
                             </div>
 
-                            <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
+                            <div className='card' style={cardStyle}>
                             <img className="card-img-top" src={kevinl} alt=""></img>
                                 <div className='card-body'>
                                     <h4 className="card-title" style={{"font-size":"24px"}}>Kevin Liang</h4>
@@ -202,7 +209,7 @@ class About extends Component {
                                 </div>
                             </div>
 
-                            <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
+                            <div className='card' style={cardStyle}>
                             <img className="card-img-top" src={kevinc} alt=""></img>
                                 <div className='card-body'>
                                     <h4 className="card-title" style={{"font-size":"24px"}}>Kevin Chen</h4>
@@ -214,7 +221,7 @@ class About extends Component {
                                 </div>
                             </div>
 
-                            <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
+                            <div className='card' style={cardStyle}>
                             <img className="card-img-top" src={anisha} alt=""></img>
                                 <div className='card-body'>
                                     <h4 className="card-title" style={{"font-size":"24px"}}>Anisha Kollareddy</h4>
@@ -227,7 +234,7 @@ class About extends Component {
                                 </div>
                             </div>
 
-                            <div className='card' style={{'backgroundColor': 'black', 'width': '13.5rem', 'margin':'0.25rem'}}>
+                            <div className='card' style={cardStyle}>
                             <img className="card-img-top" src={diyuan} alt=""></img>
                                 <div className='card-body'>
                                     <h4 className="card-title" style={{"font-size":"24px"}}>Diyuan Dai</h4>
