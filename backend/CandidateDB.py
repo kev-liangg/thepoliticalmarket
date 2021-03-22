@@ -6,6 +6,7 @@ import pandas as pd
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_restless import APIManager 
+from flask_cors import CORS
 import os
 
 
@@ -28,6 +29,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://tpm:tpmpassword@aaj6jr738ea46y.
 # prevents a random warning
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+CORS(app)
 db = SQLAlchemy(app)
 
 class Candidate(db.Model):
