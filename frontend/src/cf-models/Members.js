@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import jon_ossoff from "./Jon_Ossoff.jpg";
 import jaime_harrison from "./Jaime_Harrison.jpg";
 import raphael_warnock from "./Raphael_Warnock.jpg";
 
-
+const cardStyle = {
+  'backgroundColor': '#82b3c9', 
+}
 
 class Members extends React.Component {
     render() {
@@ -12,7 +14,7 @@ class Members extends React.Component {
           <h1 style={{'text-align':'center'}}>Campaign Finance</h1>
           <div className='row'>
             <div className='col-sm-4'>
-              <div className='card' style={{'backgroundColor': 'black'}}>
+              <div className='card' style={cardStyle}>
               <img className="card-img-top" src={jon_ossoff} alt=""></img>
                 <div className='card-body'>
                   <h4 className="card-title">T. J. Ossoff</h4>
@@ -22,7 +24,7 @@ class Members extends React.Component {
               </div>
             </div>
             <div className='col-sm-4'>
-              <div className='card' style={{'backgroundColor': 'black'}}>
+              <div className='card' style={cardStyle}>
               <img className="card-img-top" src={jaime_harrison} alt=""></img>
                 <div className='card-body'>
                   <h4 className="card-title">J. Harrison</h4>
@@ -32,7 +34,7 @@ class Members extends React.Component {
               </div>
             </div>
             <div className='col-sm-4'>
-              <div className='card' style={{'backgroundColor': 'black'}}>
+              <div className='card' style={cardStyle}>
               <img className="card-img-top" src={raphael_warnock} alt=""></img>
                 <div className='card-body'>
                   <h4 className="card-title">R. Warnock</h4>
@@ -47,4 +49,3 @@ class Members extends React.Component {
     }
   }
   export default Members;
-  
