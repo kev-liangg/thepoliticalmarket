@@ -1,6 +1,5 @@
 # SQLAlchemy database design class
 import json
-import pandas as pd
 
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
