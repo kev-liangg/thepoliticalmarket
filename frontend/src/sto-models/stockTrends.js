@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, {  } from 'react';
 import "./stockTrends.css";
 import StoTable from '../StoTable.js';
 
 export const toy_data = [
   {
-    'Company': 'Apple Inc',
+    'Company': 'Alphabet Inc',
     'Time': '2021-03-01',
-    'Symbols': 'AAPL',
+    'Symbols': 'GOOG',
     'Buy': 23,
     'Hold': 8,
     'Sell': 1,
@@ -47,7 +47,7 @@ class StockTrends extends React.Component {
         <br />
         <StoTable characterData={toy_data} />
         <br />
-        <div class="ml-4"><div class="pt-2"><div></div><p>The indeces mean the number of Recommendationstaht fall into that category</p></div><div class="horizontal-line"></div><div class="horizontal-line"></div></div>
+        <div class="ml-4"><div class="pt-2"><div></div><p>The indeces mean the number of Recommendations that fall into that category</p></div><div class="horizontal-line"></div><div class="horizontal-line"></div></div>
       </div>
 
     )
