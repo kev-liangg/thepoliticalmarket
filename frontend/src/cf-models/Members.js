@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import jon_ossoff from "./Jon_Ossoff.jpg";
 import jaime_harrison from "./Jaime_Harrison.jpg";
 import raphael_warnock from "./Raphael_Warnock.jpg";
@@ -49,4 +49,3 @@ class Members extends React.Component {
     }
   }
   export default Members;
-  
