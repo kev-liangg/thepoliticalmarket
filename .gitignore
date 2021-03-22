@@ -1,5 +1,7 @@
 .vscode/
 
-./frontend/src/cf-models/PropublicaDataGen.py
-./frontend/src/cf-models/candidate_summary_2020.csv
-./frontend/src/cf-models/candidate_summary_2022.csv
+frontend/src/cf-models/PropublicaDataGen.py
+frontend/src/cf-models/candidate_summary_2020.csv
+frontend/src/cf-models/candidate_summary_2022.csv
+
+backend/localvenv
