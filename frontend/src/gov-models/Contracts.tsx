@@ -1,8 +1,14 @@
 import React from "react";
-import { DataGrid, GridRowsProp, GridColDef } from '@material-ui/data-grid';
+import { Link } from 'react-router-dom';
+import { DataGrid, GridRowsProp, GridColDef, GridCellParams } from '@material-ui/data-grid';
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'Award ID', width: 200 },
-    { field: 'contractor', headerName: 'Contractor', width: 200 },
+    { field: 'contractor', headerName: 'Contractor', width: 200, 
+    renderCell: (params: GridCellParams) => (
+      <strong>
+        {<Link to="/react">{params.value}</Link>}
+      </strong>
+    ), },
     {
       field: 'amountAwarded', headerName: 'Amount Awarded',
       type: 'number',
