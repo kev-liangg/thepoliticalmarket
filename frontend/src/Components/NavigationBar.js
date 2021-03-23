@@ -23,7 +23,7 @@ const NavigationBar = () => (
             <Nav className="ml-auto"> 
           <Nav.Item>
             <Nav.Link>
-              <Link to="/Government">Gov-Models</Link>
+              <Link to="/Contracts">Contracts</Link>
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
