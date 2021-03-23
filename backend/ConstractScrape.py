@@ -59,6 +59,7 @@ statesdict = {
 df = df.dropna(subset=['recipient_state_code'])
 db.create_all()
 for i in range(len(df)):
+    # contract_award_unique = df.iloc[i]["contract_award_unique_key"]
     contract_award_id = df.iloc[i]["award_id_piid"]
     contract_parentagency = df.iloc[i]["awarding_agency_name"]
     contract_currentval = df.iloc[i]["current_total_value_of_award"]
@@ -67,12 +68,15 @@ for i in range(len(df)):
     contract_sop = df.iloc[i]["recipient_state_code"]
     date = df.iloc[i]["period_of_performance_start_date"]
     contract_recipient_district = df.iloc[i]["recipient_congressional_district"]
+    contract_naics_description = df.iloc[i]["naics_description"]
+    contract_award_description = df.iloc[i]["award_description"]
     contract_date = date[0:10]
     contract_recipient_address = df.iloc[i]["recipient_address_line_1"]
     contract_stateflag = f"https://en.wikipedia.org/wiki/Flags_of_the_U.S._states_and_territories#/media/File:Flag_of_{statesdict[contract_sop]}.svg"
     contract_agencylogo = "https://upload.wikimedia.org/wikipedia/commons/3/37/USDA_logo.png"
     contract = Contract(contract_award_id = contract_award_id, contract_parentagency = contract_parentagency, contract_currentval = contract_currentval,
     contract_recipient = contract_recipient, contract_naics = contract_naics, contract_sop = contract_sop, contract_recipient_district =contract_recipient_district,
-    contract_date = contract_date, contract_recipient_address = contract_recipient_address, contract_stateflag = contract_stateflag, contract_agencylogo =contract_agencylogo)
+    contract_date = contract_date, contract_recipient_address = contract_recipient_address, contract_stateflag = contract_stateflag, contract_agencylogo =contract_agencylogo,
+    contract_naics_description = contract_naics_description,contract_award_description = contract_award_description )
     db.session.add(contract)
     db.session.commit()

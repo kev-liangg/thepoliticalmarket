@@ -9,7 +9,7 @@ import Members from "./cf-models/Members";
 import CfTJOssoff from "./cf-models/CfTJOssoff";
 import CfJHarrison from "./cf-models/CfJHarrison";
 import CfRWarnock from "./cf-models/CfRWarnock";
-
+import ContractPage from "./gov-models/ContractPage";
 import Stocks from "./sto-models/stockTrends"
 import DELL from "./sto-models/sto-instances/DELL"
 import HPQ from "./sto-models/sto-instances/HPQ"
@@ -37,6 +37,7 @@ class App extends Component {
             <Route exact path = "/DELL" component = {DELL} />
             <Route exact path = "/HPQ" component = {HPQ} />
             <Route exact path = "/GOOG" component = {GOOG} />
+            <Route path = "/Contracts/:awardId" component = {ContractPage} />
             {/* <Route path = "/gov-models/Contracts" component = {Contracts} />
             <Route path = "/gov-models/State" component = {State} /> */}
             {/* <Route component = {NoMatch} /> */}
