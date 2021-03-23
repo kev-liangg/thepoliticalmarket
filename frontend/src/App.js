@@ -9,6 +9,7 @@ import Members from "./cf-models/Members";
 import CfTJOssoff from "./cf-models/CfTJOssoff";
 import CfJHarrison from "./cf-models/CfJHarrison";
 import CfRWarnock from "./cf-models/CfRWarnock";
+import MemberPage from "./cf-models/MemberPage";
 
 import Stocks from "./sto-models/stockTrends"
 import DELL from "./sto-models/sto-instances/DELL"
@@ -30,6 +31,7 @@ class App extends Component {
             <Route exact path = "/Government/States" component = {States} />
             <Route exact path = "/Government/Contracts" component = {Contracts} />
             <Route exact path = "/CampFin" component = {Members} />
+            <Route path = "/CampFin/:candId" component = {MemberPage} />
             <Route exact path = "/CampFin/TJOssoff" component = {CfTJOssoff} />
             <Route exact path = "/CampFin/JHarrison" component = {CfJHarrison} />
             <Route exact path = "/CampFin/RWarnock" component = {CfRWarnock} />

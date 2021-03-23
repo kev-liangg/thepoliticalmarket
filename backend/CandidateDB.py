@@ -65,7 +65,7 @@ class Contribution(db.Model):
 
 # flask_restless automatically creates endpoints for the db.Model classes at /api/[class_name]:
 manager = APIManager(app, flask_sqlalchemy_db=db)
-manager.create_api(Candidate)
+manager.create_api(Candidate, results_per_page=16)
 manager.create_api(Contribution)
 
 
