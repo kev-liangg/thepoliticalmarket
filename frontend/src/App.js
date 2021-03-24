@@ -10,7 +10,8 @@ import CfTJOssoff from "./cf-models/CfTJOssoff";
 import CfJHarrison from "./cf-models/CfJHarrison";
 import CfRWarnock from "./cf-models/CfRWarnock";
 import ContractPage from "./gov-models/ContractPage";
-import Stocks from "./sto-models/stockTrends"
+import StockPage from "./sto-models/sto-instances/StockPage";
+import Stocks from "./sto-models/sto-instances/Stocks"
 import DELL from "./sto-models/sto-instances/DELL"
 import HPQ from "./sto-models/sto-instances/HPQ"
 import GOOG from "./sto-models/sto-instances/GOOG"
@@ -38,6 +39,7 @@ class App extends Component {
             <Route exact path = "/HPQ" component = {HPQ} />
             <Route exact path = "/GOOG" component = {GOOG} />
             <Route path = "/Contracts/:awardId" component = {ContractPage} />
+            <Route path = "/Stocks/:Symbol" component = {StockPage} />
             {/* <Route path = "/gov-models/Contracts" component = {Contracts} />
             <Route path = "/gov-models/State" component = {State} /> */}
             {/* <Route component = {NoMatch} /> */}
