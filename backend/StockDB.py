@@ -28,7 +28,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app)
 db = SQLAlchemy(app)
 
-class Stock(db.Model):
+class Matchedstock(db.Model):
     Symbol = db.Column(db.String(10), nullable=False,primary_key=True)
     Full_Name = db.Column(db.String(100), nullable=False)
     Last_Sale = db.Column(db.Float, nullable=False)
@@ -37,7 +37,7 @@ class Stock(db.Model):
     Market_Cap = db.Column(db.Integer, nullable=False)
     Country = db.Column(db.String(30), nullable=False)
     IPO_Year = db.Column(db.Integer, nullable=False)
-    Volume = db.Column(db.Integer, nullable=False, default='blank-profile3x2.png')
+    Volume = db.Column(db.Integer, nullable=False)
     Sector = db.Column(db.String(10), nullable=False)
     Industry = db.Column(db.String(30), nullable=False)
     Orgname = db.Column(db.String(100), nullable=False)
@@ -45,7 +45,7 @@ class Stock(db.Model):
 
 # flask_restless automatically creates endpoints for the db.Model classes at /api/[class_name]:
 manager = APIManager(app, flask_sqlalchemy_db=db)
-manager.create_api(Stock,results_per_page = 20)
+manager.create_api(Matchedstock,results_per_page = 20)
 
 
 if __name__ == '__main__':
