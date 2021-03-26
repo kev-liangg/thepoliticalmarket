@@ -29,11 +29,7 @@ CORS(app)
 db = SQLAlchemy(app)
 
 class Matchedstock(db.Model):
-<<<<<<< HEAD
-    Symbol = db.Column(db.String(10), nullable=False, primary_key=True)
-=======
     Symbol = db.Column(db.String(10), nullable=False,primary_key=True)
->>>>>>> 6eec5a889d1d6a3956fff8697b6d15b78c59b96f
     Full_Name = db.Column(db.String(100), nullable=False)
     Last_Sale = db.Column(db.Float, nullable=False)
     Net_Change = db.Column(db.Float, nullable=False)
@@ -49,7 +45,7 @@ class Matchedstock(db.Model):
 
 # flask_restless automatically creates endpoints for the db.Model classes at /api/[class_name]:
 manager = APIManager(app, flask_sqlalchemy_db=db)
-manager.create_api(Matchedstock,results_per_page = 20)
+manager.create_api(Matchedstock,results_per_page = 50)
 
 
 if __name__ == '__main__':

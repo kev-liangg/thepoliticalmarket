@@ -10,7 +10,7 @@ const StockPage = ({match}) => {
     const [data, setData] = useState();
   
     useEffect(() => {
-      fetch(`http://127.0.0.1:8081/api/stock/${symbol}`, {})
+      fetch(`http://127.0.0.1:8081/api/matchedstock/${symbol}`, {})
         .then((res) => res.json())
         .then((response) => {
           console.log(response)
