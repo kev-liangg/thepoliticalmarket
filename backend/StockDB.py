@@ -29,7 +29,11 @@ CORS(app)
 db = SQLAlchemy(app)
 
 class Matchedstock(db.Model):
+<<<<<<< HEAD
     Symbol = db.Column(db.String(10), nullable=False, primary_key=True)
+=======
+    Symbol = db.Column(db.String(10), nullable=False,primary_key=True)
+>>>>>>> 6eec5a889d1d6a3956fff8697b6d15b78c59b96f
     Full_Name = db.Column(db.String(100), nullable=False)
     Last_Sale = db.Column(db.Float, nullable=False)
     Net_Change = db.Column(db.Float, nullable=False)
