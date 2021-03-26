@@ -16,7 +16,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'mydb.sqlite')
 
 # switch to our mysql database when ready: (uncomment following line, comment out previous)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://tpm:tpmpassword@aaj6jr738ea46y.cjnldv06yt97.us-east-2.rds.amazonaws.com:3306/ebdb'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://tpm:tpmpassword@aaj6jr738ea46y.cjnldv06yt97.us-east-2.rds.amazonaws.com:3306/ebdb'
 
 # don't set configs like this, do it like above
 # app.config['MYSQL_USER'] = 'tpm'
