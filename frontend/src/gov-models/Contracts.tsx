@@ -36,7 +36,7 @@ const columns: GridColDef[] = [
     },
     {
       field: 'contract_naics', headerName: 'NAICS',
-      type: 'number',
+      type: 'string',
       width: 150,
     },
     {
@@ -44,6 +44,16 @@ const columns: GridColDef[] = [
       headerName: 'State',
       width: 160,
     },
+    {
+      field: 'contract_recipient_district',
+      headerName: 'Congressional District',
+      width: 140
+    },
+    {
+      field: 'listed',
+      headerName: 'Is Listed on Stock Market?',
+      width: 230,
+    }
   ];
 function Contracts(){
   
@@ -59,7 +69,7 @@ function Contracts(){
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  });
+  }, []);
 
   
   return (

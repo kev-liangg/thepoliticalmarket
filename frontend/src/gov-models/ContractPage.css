@@ -1,0 +1,14 @@
+.primary{
+    text-align: center;
+    font-size: 300%;
+}
+h2{
+    text-align: left;
+    font-size: 200%;
+}
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}

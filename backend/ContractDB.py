@@ -36,11 +36,11 @@ class Contract(db.Model):
     contract_award_description = db.Column(db.String(200))
     contract_parentagency = db.Column(db.String(50), nullable=False)
     contract_currentval = db.Column(db.Float, nullable=False)
-    contract_recipient = db.Column(db.String(30), nullable=False)
+    contract_recipient = db.Column(db.String(50), nullable=False)
     contract_naics = db.Column(db.Integer, nullable=False)
     contract_sop = db.Column(db.String(14), nullable=False)
     contract_date = db.Column(db.String(11), nullable=False)
-    contract_stateflag = db.Column(db.String(200), nullable = False)
+    contract_stateflag = db.Column(db.String(200), nullable = True)
     contract_agencylogo = db.Column(db.String(200), nullable = False)
     contract_recipient_address = db.Column(db.String(50), nullable = False)
     contract_recipient_district = db.Column(db.Integer, nullable=False)
@@ -50,7 +50,7 @@ class Contract(db.Model):
 
 # flask_restless automatically creates endpoints for the db.Model classes at /api/[class_name]:
 manager = APIManager(app, flask_sqlalchemy_db=db)
-manager.create_api(Contract,results_per_page = 20)
+manager.create_api(Contract,results_per_page = 200)
 
 
 
