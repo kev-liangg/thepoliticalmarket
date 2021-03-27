@@ -2,7 +2,25 @@ import React, { useState, useEffect } from "react";
 import MemberCard from "./MemberCard";
 import {Pagination} from "@material-ui/lab";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import {Box} from "@material-ui/core"
 
+// const useStyles = makeStyles((theme) => {
+//   createStyles({
+//     button: {
+//       alignItems: "center",
+//       justifyContent: "center",
+//       display: "flex",
+//       "& > *": {
+//         margin: theme.spacing(1)
+//       }
+//     },
+//     formControl: {
+//       margin: theme.spacing(1),
+//       minWidth: 200,
+//       maxWidth: 300
+//     }
+//   })
+// });
 
 function Members() {
 
@@ -41,16 +59,24 @@ function Members() {
         </div>
         
       </div>
-        <div>
-          <Pagination 
-            count = {numPages}
-            onChange = {(event, page) => setPage(page)}
-            showFirstButton
-            showLastButton
-            shape="rounded"
-            color="primary"
-          />
-        </div>
+      <br></br>
+
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Pagination 
+          count = {numPages}
+          onChange = {(event, page) => setPage(page)}
+          showFirstButton
+          showLastButton
+          variant = "outlined"
+          color="black"
+          size="large"
+        />
+      </Box>
+      <br></br>
     </div>
   )
 }
