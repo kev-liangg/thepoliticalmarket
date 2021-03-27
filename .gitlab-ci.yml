@@ -4,6 +4,7 @@ before_script:
     - printenv | sort
 
 env:
+    script:
     ls -al
     cd frontend
     ls -al
