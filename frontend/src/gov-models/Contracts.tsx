@@ -1,31 +1,85 @@
-import React from "react";
-import { DataGrid, GridRowsProp, GridColDef } from '@material-ui/data-grid';
+import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import { DataGrid, GridRowsProp, GridColDef, GridCellParams } from '@material-ui/data-grid';
+
 const columns: GridColDef[] = [
-    { field: 'id', headerName: 'Award ID', width: 200 },
-    { field: 'contractor', headerName: 'Contractor', width: 200 },
+    { field: 'id', headerName: 'Contract Page', width: 150,
+    renderCell: (params: GridCellParams) => (
+      <strong>
+        <Button
+          component={Link} to={`/Contracts/${params.value}`}
+          variant="contained"
+          color="primary"
+          size="small"
+          style={{ marginLeft: 16 }}>
+          Open
+        </Button>
+      </strong>
+    ),},
+    { field: 'contract_award_id', headerName: 'Award ID', width: 200 },
+    { field: 'contract_recipient', headerName: 'Recipient', width: 200, 
+    renderCell: (params: GridCellParams) => (
+      <strong>
+        {<Link to="/react">{params.value}</Link>}
+      </strong>
+    ), },
     {
-      field: 'amountAwarded', headerName: 'Amount Awarded',
+      field: 'contract_currentval', headerName: 'Contract Value',
       type: 'number',
       width: 200,
     },
     {
-      field: 'awardDate',
+      field: 'contract_date',
       headerName: 'Award Date',
       width: 160,
     },
+    {
+      field: 'contract_naics', headerName: 'NAICS',
+      type: 'string',
+      width: 150,
+    },
+    {
+      field: 'contract_sop',
+      headerName: 'State',
+      width: 160,
+    },
+    {
+      field: 'contract_recipient_district',
+      headerName: 'Congressional District',
+      width: 140
+    },
+    {
+      field: 'listed',
+      headerName: 'Is Listed on Stock Market?',
+      width: 230,
+    }
   ];
-  const rows: GridRowsProp = [
-    { id: 'N0001917C0001', contractor: 'LOCKHEED MARTIN CORPORATION',amountAwarded: 16597954142, awardDate: '11/26/2019'},
-    { id: 'N0001918C1021', contractor: 'RAYTHEON TECHNOLOGIES CORPOR',amountAwarded: 3179973445, awardDate: '9/30/2019'},
-    { id: 'FA863412C2651', contractor: 'BOEING COMPANY THE', amountAwarded: 3373880000, awardDate: '3/8/2012'},
-  ];
-  
-
 function Contracts(){
-    return (
-        <div style={{ height: 400, width: '100%' }}>
-      <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
-    </div>
-    );
+  
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState<GridRowsProp>([] as GridRowsProp);
+
+  useEffect(() => {
+    fetch(`http://127.0.0.1:8081/api/contract`, {})
+      .then((res) => res.json())
+      .then((response) => {
+        setData(response.objects);
+        console.log(data)
+        setIsLoading(false);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  
+  return (
+    <> {
+      !isLoading && (
+      <div style={{ height: 800, width: '100%' }}>
+        <DataGrid rows={data} columns={columns} pageSize={10} checkboxSelection />
+      </div>
+      
+      )} </>
+  );
 }
 export default Contracts
