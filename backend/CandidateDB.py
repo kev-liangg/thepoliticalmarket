@@ -1,12 +1,9 @@
 # SQLAlchemy database design class
-import requests
 import json
-import pandas as pd
-
+from flask_cors import CORS
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_restless import APIManager 
-from flask_cors import CORS
 import os
 
 
