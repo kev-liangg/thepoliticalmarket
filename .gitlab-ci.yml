@@ -5,10 +5,10 @@ before_script:
 
 env:
     script:
-    ls -al
-    cd frontend
-    ls -al
-    cd ..
-    cd backend
-    ls -al
-    cd ..
+    - ls -al
+    - cd frontend
+    - ls -al
+    - cd ..
+    - cd backend
+    - ls -al
+    - cd ..
