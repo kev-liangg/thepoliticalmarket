@@ -1,8 +1,6 @@
 # SQLAlchemy database design class
-import requests
 import json
-import pandas as pd
-
+from flask_cors import CORS
 from flask import Flask, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_restless import APIManager 
@@ -28,6 +26,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://tpm:tpmpassword@aaj6jr7
 # prevents a random warning
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+CORS(app)
 db = SQLAlchemy(app)
 
 class Candidate(db.Model):
@@ -63,7 +62,7 @@ class Contribution(db.Model):
 
 # flask_restless automatically creates endpoints for the db.Model classes at /api/[class_name]:
 manager = APIManager(app, flask_sqlalchemy_db=db)
-manager.create_api(Candidate)
+manager.create_api(Candidate, results_per_page=16)
 manager.create_api(Contribution)
 
 
