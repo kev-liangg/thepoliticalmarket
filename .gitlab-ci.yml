@@ -3,7 +3,10 @@ before_script:
 
 cache:
     untracked: true
-    key: tpm-key
+    key:
+        files:
+            - frontend/yarn.lock
+            - frontend/package.json
     paths:
     - frontend/node_modules/
     - frontend/.yarn/
@@ -13,6 +16,6 @@ frontend:
     script:
     - ls -al
     - cd frontend
-    - yarn install --cache-folder .yarn
+    - yarn install --cache-folder .yarn --frozen-lockfile
     - yarn build
     - yarn test
