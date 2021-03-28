@@ -5,8 +5,8 @@ cache:
     untracked: true
     key: tpm-key
     paths:
-    - node_modules/
-    - .yarn/
+    - frontend/node_modules/
+    - frontend/.yarn/
 
 frontend:
     image: node:14.16.0
