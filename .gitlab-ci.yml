@@ -5,12 +5,13 @@ cache:
     untracked: true
     key:
         files:
-            - frontend/yarn.lock
+            - backend/requirements.txt
             - frontend/package.json
     when: on_failure
     paths:
     - frontend/node_modules/
     - frontend/.yarn/
+    - backend/localvenv/
 
 frontend:
     image: node:14.16.0
@@ -25,3 +26,17 @@ frontend:
     - yarn install --cache-folder .yarn --frozen-lockfile
     - yarn lint
     - yarn test
+
+backend:
+    image: python:3.7
+    - ls -al
+    - cd backend
+    - if [[ ! -d "localvenv" ]]; then
+        python3 -m venv localvenv;
+        source localvenv/bin/activate;
+        pip install -r requirements.txt
+        echo "Pipeline dependencies have been reinstalled, please retry"; 
+        exit 1; 
+      fi
+    - source localvenv/bin/activate
+    - pip freeze
