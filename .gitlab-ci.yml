@@ -16,8 +16,8 @@ cache:
 frontend:
     image: node:14.16.0
     script:
-    - ls -al
     - cd frontend
+    - ls -al
     - if [[ ! -d "node_modules" ]]; then 
         yarn install --cache-folder .yarn;
         echo "Pipeline dependencies have been reinstalled, please retry"; 
@@ -25,13 +25,13 @@ frontend:
       fi
     - yarn install --cache-folder .yarn --frozen-lockfile
     - yarn lint
-    - yarn test
+    - yarn test --verbose
 
 backend:
     image: python:3.7
     script:
-    - ls -al
     - cd backend
+    - ls -al
     - if [[ ! -d "localvenv" ]]; then
         python3 -m venv localvenv;
         source localvenv/bin/activate;
@@ -40,4 +40,4 @@ backend:
         exit 1; 
       fi
     - source localvenv/bin/activate
-    - pytest
+    - pytest -v
