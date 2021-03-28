@@ -40,4 +40,4 @@ backend:
         exit 1; 
       fi
     - source localvenv/bin/activate
-    - pip freeze
+    - pytest
