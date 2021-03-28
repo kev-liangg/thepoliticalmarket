@@ -1,14 +1,12 @@
 before_script:
     - date
-    - uname -a
-    - printenv | sort
 
 env:
     script:
     - ls -al
-    - cd frontend
-    - ls -al
-    - cd ..
-    - cd backend
-    - ls -al
-    - cd ..
+
+frontend:
+    image: node:14.16.0
+    script:
+    - yarn build
+    - yarn test
