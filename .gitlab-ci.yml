@@ -29,12 +29,13 @@ frontend:
 
 backend:
     image: python:3.7
+    script:
     - ls -al
     - cd backend
     - if [[ ! -d "localvenv" ]]; then
         python3 -m venv localvenv;
         source localvenv/bin/activate;
-        pip install -r requirements.txt
+        pip install -r requirements.txt;
         echo "Pipeline dependencies have been reinstalled, please retry"; 
         exit 1; 
       fi
