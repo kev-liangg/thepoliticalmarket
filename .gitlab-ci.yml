@@ -8,5 +8,6 @@ env:
 frontend:
     image: node:14.16.0
     script:
+    - cd frontend
     - yarn build
     - yarn test
