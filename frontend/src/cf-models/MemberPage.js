@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import StateMap from "../Components/StateMap";
 
 const MemberPage = ({match}) => {
     const {
@@ -34,7 +35,7 @@ const MemberPage = ({match}) => {
         let total = <div className='col-sm-3'>{element.total}</div>;
                       
                        
-        if (count%2==0) {
+        if (count%2===0) {
           count = count + 1;
           return <div className="row" style={{'backgroundColor':'lightgray', 'color':'gray', 'textAlign':'center'}}>{org_name}{pacs}{indivs}{total}</div>;
         } else {
@@ -110,6 +111,9 @@ const MemberPage = ({match}) => {
 
             </div>
           </div>
+          <br></br>
+          <StateMap state={data.cand_state} />
+          {/* <iframe title="test map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7245788.933753486!2d-88.30160078103759!3d27.531991061531965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c1766591562abf%3A0xf72e13d35bc74ed0!2sFlorida!5e0!3m2!1sen!2sus!4v1616887562929!5m2!1sen!2sus" width="600" height="450" style={{'border':'0'}} allowfullscreen="" loading="lazy"></iframe> */}
         </div>
         {/* <h1>first name: {data.cand_firstname}</h1>
         <h2>image: {data.cand_image}</h2>
