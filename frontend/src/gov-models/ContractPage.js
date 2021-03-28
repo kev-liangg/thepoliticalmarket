@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom"
 import './ContractPage.css'
+import StateMap from "../Components/StateMap";
 const ContractPage = ({match}) => {
     const {
         params: { awardId },
@@ -38,8 +39,9 @@ const ContractPage = ({match}) => {
           <h2>Agency Logo: {data.contract_agencylogo}</h2>
           <h2>Contract Recipient's Congressional District: {data.contract_recipient_district}</h2>
           <h2>Contract Recipient's Address: {data.contract_recipient_address}</h2>
-          <h2>Contract State Flag: {data.contract_stateflag}</h2>
           <img alt="" src = {data.contract_stateflag} ></img>
+          <StateMap state = {data.contract_sop}>
+          </StateMap>
           <Link to="/">Back to homepage</Link>
         </>
       )}
