@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from "react-router-dom" 
-import blank_image from "./cropped_image.png"
+// import blank_image from "./cropped_image.png"
 
 function MemberCard({member}) {
     return (

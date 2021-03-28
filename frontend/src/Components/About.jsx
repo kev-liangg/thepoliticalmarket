@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../App.css';
 import Button from 'react-bootstrap/Button'
-import blank_profile from "./blank-profile.png"
+// import blank_profile from "./blank-profile.png"
 import vaishnav from "./Vaishnav.png"
 import kevinl from "./kevin.png"
 import kevinc from "./kevinchen.jpeg"

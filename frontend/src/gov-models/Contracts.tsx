@@ -69,7 +69,7 @@ function Contracts(){
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
+// import {Link} from "react-router-dom";
 import StateMap from "../Components/StateMap";
 
 const MemberPage = ({match}) => {

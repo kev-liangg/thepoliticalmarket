@@ -1,4 +1,4 @@
-import { gridCheckboxSelectionColDef } from "@material-ui/data-grid";
+// import { gridCheckboxSelectionColDef } from "@material-ui/data-grid";
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom"
 import './ContractPage.css'
@@ -27,7 +27,7 @@ const ContractPage = ({match}) => {
         <>
           <h1 className = "primary"> Award ID: {data.contract_award_id}</h1>
           <h2>Awarding Agency: {data.contract_parentagency}</h2>
-          <img src = {data.contract_agencylogo}></img>
+          <img alt="" src = {data.contract_agencylogo}></img>
           <h2>Current value: ${data.contract_currentval}</h2>
           <h2>Award Description: {data.contract_award_description}</h2>
           <h2>Recipient Name: {data.contract_recipient}</h2>
@@ -39,7 +39,7 @@ const ContractPage = ({match}) => {
           <h2>Contract Recipient's Congressional District: {data.contract_recipient_district}</h2>
           <h2>Contract Recipient's Address: {data.contract_recipient_address}</h2>
           <h2>Contract State Flag: {data.contract_stateflag}</h2>
-          <img src = {data.contract_stateflag} ></img>
+          <img alt="" src = {data.contract_stateflag} ></img>
           <Link to="/">Back to homepage</Link>
         </>
       )}

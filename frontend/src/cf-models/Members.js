@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MemberCard from "./MemberCard";
 import {Pagination} from "@material-ui/lab";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+// import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import {Box} from "@material-ui/core"
 
 // const useStyles = makeStyles((theme) => {
@@ -24,7 +24,7 @@ import {Box} from "@material-ui/core"
 
 function Members() {
 
-  let numPerPage = 0;
+  //let numPerPage = 0;
   //const classes = useStyles();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
