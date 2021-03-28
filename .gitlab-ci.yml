@@ -7,6 +7,7 @@ cache:
         files:
             - frontend/yarn.lock
             - frontend/package.json
+    when: on_failure
     paths:
     - frontend/node_modules/
     - frontend/.yarn/
@@ -16,6 +17,11 @@ frontend:
     script:
     - ls -al
     - cd frontend
+    - if [[ ! -d "node_modules" ]]; then 
+        yarn install --cache-folder .yarn
+        echo "Pipeline dependencies have been reinstalled, please retry"; 
+        exit 1; 
+      fi
     - yarn install --cache-folder .yarn --frozen-lockfile
-    - yarn build
+    - yarn lint
     - yarn test
