@@ -1,0 +1,15 @@
+before_script:
+    - date
+
+frontend:
+    image: node:14.16.0
+    cache:
+        paths:
+        - node_modules/
+        - .yarn
+    script:
+    - ls -al
+    - cd frontend
+    - yarn install
+    - yarn build
+    - yarn test
