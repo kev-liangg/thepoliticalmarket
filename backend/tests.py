@@ -1,17 +1,19 @@
 # all tests must begin with "test"
 from unittest import main, TestCase
-from app1 import Candidate1, Contribution1, Contract1, Matchedstock1
-from app1 import db
+from CandidateDB import Candidate, Contribution
+from ContractDB import Contract
+from StockDB import Matchedstock
 
+from init import db
 db.create_all()
 
 class TestBackend(TestCase):
 
     def test_1(self):
-        stock1 = Matchedstock1(Symbol='AAPL', Full_Name='Apple', Last_Sale=0, Net_Change=0, Percentage_Change=0, Market_Cap=0, 
+        stock1 = Matchedstock(Symbol='AAPL', Full_Name='Apple', Last_Sale=0, Net_Change=0, Percentage_Change=0, Market_Cap=0, 
                         Country='US', IPO_Year=0, Volume=0, Sector='sector', Industry=df['Industry'], Orgname=df['Orgname'], State='CA')
-        db.session.add(matchedstock1)
-        stock2 = Matchedstock1(Symbol='ABBV', Full_Name='Apple', Last_Sale=0, Net_Change=0, Percentage_Change=0, Market_Cap=0, 
+        db.session.add(stock1)
+        stock2 = Matchedstock(Symbol='ABBV', Full_Name='Apple', Last_Sale=0, Net_Change=0, Percentage_Change=0, Market_Cap=0, 
                         Country='US', IPO_Year=0, Volume=0, Sector='sector', Industry=df['Industry'], Orgname=df['Orgname'], State='CA')
         db.session.add(stock2)
         
