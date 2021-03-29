@@ -32,6 +32,10 @@ manager = APIManager(app, flask_sqlalchemy_db=db)
 
 
 ######## CANDIDATE MODEL ########
+cand_stock = db.Table('cand_stock',
+    db.Column('cand_crp_id', db.String(9), db.ForeignKey('candidate.cand_crp_id')),
+    db.Column('Symbol', db.String(10), db.ForeignKey('matchedstock.Symbol'))
+)
 
 class Candidate(db.Model):
     cand_crp_id = db.Column(db.String(9), primary_key=True)
@@ -43,6 +47,8 @@ class Candidate(db.Model):
     cycle = db.Column(db.Integer, nullable=False)
     cand_image = db.Column(db.String(100), nullable=False, default='blank-profile3x2.png')
     contributions = db.relationship('Contribution', backref='recipient', lazy=True)
+
+    stocks_in_state = db.relationship('Matchedstock', secondary=cand_stock, backref=db.backref('cands_in_state', lazy='dynamic'))
 
     def __repr__(self):
         return f"Candidate('{self.cand_crp_id}', '{self.cand_firstname}', '{self.cand_lastname}')"
@@ -59,11 +65,15 @@ class Contribution(db.Model):
         return f"Contribution('{self.org_name}', '{self.candidate_cand_crp_id}', {self.total})"
 
 manager.create_api(Candidate, results_per_page=16)
-
+manager.create_api(Contribution)
 
 
 
 ######## CONTRACT MODEL ########
+contract_cand = db.Table('contract_cand',
+    db.Column('id', db.Integer, db.ForeignKey('contract.id')),
+    db.Column('cand_crp_id', db.String(9), db.ForeignKey('candidate.cand_crp_id'))
+)
 
 class Contract(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
@@ -82,12 +92,18 @@ class Contract(db.Model):
     contract_recipient_address = db.Column(db.String(50), nullable = False)
     contract_recipient_district = db.Column(db.Integer, nullable=False)
 
+    cands_in_state = db.relationship('Candidate', secondary=contract_cand, backref=db.backref('contracts_in_state', lazy='dynamic'))
+
 manager.create_api(Contract,results_per_page = 200)
 
 
 
 
 ######## STOCK MODEL ########
+stock_contract = db.Table('stock_contract',
+    db.Column('Symbol', db.String(10), db.ForeignKey('matchedstock.Symbol')),
+    db.Column('id', db.Integer, db.ForeignKey('contract.id'))
+)
 
 class Matchedstock(db.Model):
     Symbol = db.Column(db.String(10), nullable=False,primary_key=True)
@@ -103,6 +119,8 @@ class Matchedstock(db.Model):
     Industry = db.Column(db.String(30), nullable=False)
     Orgname = db.Column(db.String(100), nullable=False)
     State = db.Column(db.String(30), nullable=False)
+
+    contracts_in_state = db.relationship('Contract', secondary=stock_contract, backref=db.backref('stocks_in_state', lazy='dynamic'))
 
 manager.create_api(Matchedstock,results_per_page = 50)
 
