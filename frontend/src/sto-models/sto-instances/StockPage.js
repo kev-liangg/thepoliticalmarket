@@ -71,8 +71,42 @@ const StockPage = ({match}) => {
               </div>
           
          </div>
+
         </div>
-          <Link to="/">Back to homepage</Link>
+
+        <br></br>
+        <div className="row">
+            <div className="col-sm-4">
+              <h4 style={{'textAlign':'center'}}>Contracts Performed in {data.State}</h4>
+                <ul style={{'textAlign':'left', 'listStylePosition':'inside'}}>
+                {
+                  data.contracts_in_state.slice(0,5).map((contract)=>{
+                    return <li>
+                            <Link to={`/Contracts/${contract.id}`}>Contract ID = {contract.id}</Link> 
+                           </li>;
+                  })
+                }
+                </ul>
+            </div>
+            <div className="col-sm-4">
+              <h4 style={{'textAlign':'center'}}>Congress Politicians in {data.State}</h4>
+                <ul style={{'textAlign':'left', 'listStylePosition':'inside'}}>
+                {
+                  data.cands_in_state.slice(0,5).map((candidate)=>{
+                    return <li>
+                            <Link to={`/CampFin/${candidate.cand_crp_id}`}>{candidate.cand_firstname} {candidate.cand_lastname} </Link>
+                          </li>;
+                  })
+                }
+                </ul>
+            </div>
+          </div>
+          <div className="col-sm-6" style={{'textAlign':'left','backgroundColor':getRandomColor()}}>
+          <Link to=".">  <h2>Back to StockModel</h2></Link>
+          </div>
+          <div className="col-sm-9" style={{'textAlign':'center','backgroundColor':getRandomColor()}}>
+          <Link to="/">  <h2>Back to homepage</h2></Link>
+          </div>
         </>
       )}
     </>
