@@ -27,7 +27,7 @@ const columns: GridColDef[] = [
     {
       field: 'contract_currentval', headerName: 'Contract Value',
       type: 'number',
-      width: 200,
+      width: 160,
     },
     {
       field: 'contract_date',
