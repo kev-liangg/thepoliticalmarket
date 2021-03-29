@@ -105,7 +105,7 @@ function Stocks(){
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, [page]);
+  }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (isLoading) {
     return <h2>Loading...</h2>
