@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import {Pagination} from "@material-ui/lab";
 import { DataGrid, GridRowsProp, GridColDef, GridCellParams } from '@material-ui/data-grid';
 
 const columns: GridColDef[] = [
@@ -91,27 +92,47 @@ function Stocks(){
   
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<GridRowsProp>([] as GridRowsProp);
+  const [page, setPage] = useState(1);
+  const [numPages, setNumPages] = useState(0)
 
   useEffect(() => {
-    fetch(`https://api.thepoliticalmarket.tech/v1/matchedstock`, {})
+    fetch(`https://api.thepoliticalmarket.tech/v1/matchedstock?page=${page}`, {})
       .then((res) => res.json())
       .then((response) => {
-        setData(response.objects);
+        setData(response["objects"]);
+        setNumPages(response["total_pages"]);
         console.log(data)
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  });
+  }, [page]);
 
-  
+  if (isLoading) {
+    return <h2>Loading...</h2>
+  } 
   return (
     <> {
-      !isLoading && (
+      <div>
       <div style={{ height: 500, width: '100%' }}>
-        <DataGrid getRowId={(row)=>row.Symbol} rows={data} columns={columns} pageSize={5} checkboxSelection />
+        <DataGrid 
+          getRowId={(row)=>row.Symbol} 
+          rows={data} columns={columns} 
+          pageSize={5} 
+          hideFooterPagination={true}
+          checkboxSelection
+        />
       </div>
-      
-      )} </>
+      <Pagination 
+          count = {numPages}
+          onChange = {(event, page) => setPage(page)}
+          showFirstButton
+          showLastButton
+          variant = "outlined"
+          color="primary"
+          size="large"
+      />
+      </div>
+      }</>
   );
 }
 export default Stocks

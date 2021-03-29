@@ -36,7 +36,7 @@ function Members() {
       .then((response) => response.json())
       .then((res) => {
         setData(res["objects"]);
-        setNumPages(res["total_pages"])
+        setNumPages(res["total_pages"]);
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
