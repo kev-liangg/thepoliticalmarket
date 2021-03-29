@@ -12,7 +12,7 @@ const ContractPage = ({match}) => {
     const [data, setData] = useState();
   
     useEffect(() => {
-      fetch(`http://127.0.0.1:8081/api/contract/${awardId}`, {})
+      fetch(`https://api.thepoliticalmarket.tech/v1/contract/${awardId}`, {})
         .then((res) => res.json())
         .then((response) => {
           console.log(response)
@@ -67,6 +67,32 @@ const ContractPage = ({match}) => {
           <StateMap state = {data.contract_sop}>
            </StateMap>
            <Link to="/">Back to homepage</Link>
+           <div className = "row">
+           <div className="col-sm-6">
+              <h2 style={{'textAlign':'center'}}> Federal Politicians in {data.contract_sop}</h2>
+                <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
+                {
+                  data.cands_in_state.slice(0,5).map((candidate)=>{
+                    return <li>
+                            <Link to={`/CampFin/${candidate.cand_crp_id}`}>{candidate.cand_firstname} {candidate.cand_lastname} </Link>
+                          </li>;
+                  })
+                }
+                </ul>
+            </div>
+            <div className="col-sm-6">
+              <h2 style={{'textAlign':'center'}}> Companies Headquartered in {data.contract_sop}</h2>
+                <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
+                {
+                  data.stocks_in_state.slice(0,5).map((stock)=>{
+                    return <li>
+                            <Link to={`/CampFin/${stock.Symbol}`}> {stock.Full_Name} </Link>
+                          </li>;
+                  })
+                }
+                </ul>
+            </div>
+           </div>
         </div>
         // <>
         //   <h1 className = "primary"> Award ID: {data.contract_award_id}</h1>

@@ -18,12 +18,7 @@ const columns: GridColDef[] = [
       </strong>
     ),},
     { field: 'contract_award_id', headerName: 'Award ID', width: 200 },
-    { field: 'contract_recipient', headerName: 'Recipient', width: 200, 
-    renderCell: (params: GridCellParams) => (
-      <strong>
-        {<Link to="/react">{params.value}</Link>}
-      </strong>
-    ), },
+    { field: 'contract_recipient', headerName: 'Recipient', width: 200},
     {
       field: 'contract_currentval', headerName: 'Contract Value',
       type: 'number',
@@ -48,11 +43,6 @@ const columns: GridColDef[] = [
       field: 'contract_recipient_district',
       headerName: 'Congressional District',
       width: 140
-    },
-    {
-      field: 'listed',
-      headerName: 'Is Listed on Stock Market?',
-      width: 230,
     }
   ];
 function Contracts(){
@@ -62,7 +52,7 @@ function Contracts(){
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8081/api/contract?page=${page}`, {})
+    fetch(`https://api.thepoliticalmarket.tech/v1/contract?page=${page}`, {})
       .then((res) => res.json())
       .then((response) => {
         setData(response.objects);

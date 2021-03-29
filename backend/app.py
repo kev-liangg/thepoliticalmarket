@@ -4,15 +4,17 @@ from CandidateDB import Candidate, Contribution
 from ContractDB import Contract
 from StockDB import Matchedstock
 
+V = '/v1'
+
 ######## CANDIDATE MODEL ########
-manager.create_api(Candidate, results_per_page=16)
-manager.create_api(Contribution)
+manager.create_api(Candidate, results_per_page=16, url_prefix=V)
+manager.create_api(Contribution, url_prefix=V)
 
 ######## CONTRACT MODEL ########
-manager.create_api(Contract, results_per_page = 10)
+manager.create_api(Contract, results_per_page = 10, url_prefix=V)
 
 ######## STOCK MODEL ########
-manager.create_api(Matchedstock, results_per_page = 50)
+manager.create_api(Matchedstock, results_per_page=50, url_prefix=V)
 
 if __name__ == '__main__':
     app.run(port=8081, debug=True)

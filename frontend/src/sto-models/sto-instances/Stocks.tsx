@@ -93,7 +93,7 @@ function Stocks(){
   const [data, setData] = useState<GridRowsProp>([] as GridRowsProp);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8081/api/matchedstock`, {})
+    fetch(`https://api.thepoliticalmarket.tech/v1/matchedstock`, {})
       .then((res) => res.json())
       .then((response) => {
         setData(response.objects);
