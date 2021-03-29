@@ -11,7 +11,7 @@ const MemberPage = ({match}) => {
     const [data, setData] = useState();
   
     useEffect(() => {
-      fetch(`http://127.0.0.1:8081/api/candidate/${candId}`, {})
+      fetch(`https://api.thepoliticalmarket.tech/v1/candidate/${candId}`, {})
         .then((res) => res.json())
         .then((response) => {
           setData(response);

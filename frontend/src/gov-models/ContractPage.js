@@ -12,7 +12,7 @@ const ContractPage = ({match}) => {
     const [data, setData] = useState();
   
     useEffect(() => {
-      fetch(`http://api.thepoliticalmarket.tech/v1/contract/${awardId}`, {})
+      fetch(`https://api.thepoliticalmarket.tech/v1/contract/${awardId}`, {})
         .then((res) => res.json())
         .then((response) => {
           console.log(response)

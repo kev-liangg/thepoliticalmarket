@@ -32,11 +32,11 @@ function Members() {
   const [numPages, setNumPages] = useState(0)
 
    useEffect(() => {
-    fetch(`http://127.0.0.1:8081/api/candidate?page=${page}`, {})
+    fetch(`https://api.thepoliticalmarket.tech/v1/candidate?page=${page}`, {})
       .then((response) => response.json())
       .then((res) => {
         setData(res["objects"]);
-        setNumPages(res["total_pages"])
+        setNumPages(res["total_pages"]);
         setIsLoading(false);
       })
       .catch((error) => console.log(error));

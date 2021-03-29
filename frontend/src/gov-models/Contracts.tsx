@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
+import {Pagination} from "@material-ui/lab";
 import { DataGrid, GridRowsProp, GridColDef, GridCellParams } from '@material-ui/data-grid';
 
 const columns: GridColDef[] = [
@@ -49,27 +50,46 @@ function Contracts(){
   
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<GridRowsProp>([] as GridRowsProp);
+  const [page, setPage] = useState(1);
+  const [numPages, setNumPages] = useState(0)
 
   useEffect(() => {
-    fetch(`http://api.thepoliticalmarket.tech/v1/contract`, {})
+    fetch(`https://api.thepoliticalmarket.tech/v1/contract?page=${page}`, {})
       .then((res) => res.json())
       .then((response) => {
-        setData(response.objects);
-        console.log(data)
+        setData(response["objects"]);
+        setNumPages(response["total_pages"]);
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  
+  if (isLoading) {
+    return <h2>Loading...</h2>
+  }  
   return (
     <> {
-      !isLoading && (
+      <div>
       <div style={{ height: 800, width: '100%' }}>
-        <DataGrid rows={data} columns={columns} pageSize={10} checkboxSelection />
+        <DataGrid 
+          rows={data} 
+          columns={columns} 
+          pageSize={10}
+          hideFooterPagination={true}
+          checkboxSelection 
+        />
       </div>
-      
-      )} </>
+      <Pagination 
+          count = {numPages}
+          onChange = {(event, page) => setPage(page)}
+          showFirstButton
+          showLastButton
+          variant = "outlined"
+          color="primary"
+          size="large"
+      />
+      </div>
+      } </>
   );
 }
 export default Contracts
