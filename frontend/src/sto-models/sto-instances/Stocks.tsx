@@ -101,7 +101,7 @@ function Stocks(){
       .then((response) => {
         setData(response["objects"]);
         setNumPages(response["total_pages"]);
-        console.log(data)
+        // console.log(response["objects"]);
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
