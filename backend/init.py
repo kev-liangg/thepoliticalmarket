@@ -1,8 +1,9 @@
-from flask_cors import CORS
-from flask import Flask, request
-from flask_sqlalchemy import SQLAlchemy
-from flask_restless import APIManager 
 import os
+
+from flask_cors import CORS
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_restless import APIManager
 
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
