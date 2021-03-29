@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import {Link} from "react-router-dom";
+import {Link} from "react-router-dom";
 import StateMap from "../Components/StateMap";
 
 const MemberPage = ({match}) => {
@@ -113,7 +113,33 @@ const MemberPage = ({match}) => {
           </div>
           <br></br>
           <StateMap state={data.cand_state} />
-          {/* <iframe title="test map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7245788.933753486!2d-88.30160078103759!3d27.531991061531965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88c1766591562abf%3A0xf72e13d35bc74ed0!2sFlorida!5e0!3m2!1sen!2sus!4v1616887562929!5m2!1sen!2sus" width="600" height="450" style={{'border':'0'}} allowfullscreen="" loading="lazy"></iframe> */}
+          <br></br>
+          <div className="row">
+            <div className="col-sm-6">
+              <h2 style={{'textAlign':'center'}}>Stocks Headquartered in {data.cand_state}</h2>
+                <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
+                {
+                  data.stocks_in_state.slice(0,5).map((stock)=>{
+                    return <li>
+                            <Link to={`/Stocks/${stock.Symbol}`}>{stock.Symbol}</Link>
+                          </li>;
+                  })
+                }
+                </ul>
+            </div>
+            <div className="col-sm-6">
+              <h2 style={{'textAlign':'center'}}>Contracts Performed in {data.cand_state}</h2>
+                <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
+                {
+                  data.contracts_in_state.slice(0,5).map((contract)=>{
+                    return <li>
+                             <Link to={`/Contracts/${contract.id}`}>{contract.id}</Link> 
+                           </li>;
+                  })
+                }
+                </ul>
+            </div>
+          </div>
         </div>
         {/* <h1>first name: {data.cand_firstname}</h1>
         <h2>image: {data.cand_image}</h2>
