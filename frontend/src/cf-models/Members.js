@@ -1,51 +1,84 @@
 import React, { useState, useEffect } from "react";
-import jon_ossoff from "./Jon_Ossoff.jpg";
-import jaime_harrison from "./Jaime_Harrison.jpg";
-import raphael_warnock from "./Raphael_Warnock.jpg";
+import MemberCard from "./MemberCard";
+import {Pagination} from "@material-ui/lab";
+// import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import {Box} from "@material-ui/core"
 
-const cardStyle = {
-  'backgroundColor': '#82b3c9', 
+// const useStyles = makeStyles((theme) => {
+//   createStyles({
+//     button: {
+//       alignItems: "center",
+//       justifyContent: "center",
+//       display: "flex",
+//       "& > *": {
+//         margin: theme.spacing(1)
+//       }
+//     },
+//     formControl: {
+//       margin: theme.spacing(1),
+//       minWidth: 200,
+//       maxWidth: 300
+//     }
+//   })
+// });
+
+function Members() {
+
+  //let numPerPage = 0;
+  //const classes = useStyles();
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
+  const [numPages, setNumPages] = useState(0)
+
+   useEffect(() => {
+    fetch(`http://127.0.0.1:8081/api/candidate?page=${page}`, {})
+      .then((response) => response.json())
+      .then((res) => {
+        setData(res["objects"]);
+        setNumPages(res["total_pages"])
+        setIsLoading(false);
+      })
+      .catch((error) => console.log(error));
+  }, [page]);
+
+  if (isLoading) {
+    return <h2>Loading...</h2>
+  }
+  return (
+    <div>
+      <div className="container">
+        <h1 style={{'text-align':'center'}}>Campaign Finance</h1>
+        <div className="row">
+        {
+          data.map((memb) => {
+            return <MemberCard member={memb} />;
+          })
+        }  
+          
+        </div>
+        
+      </div>
+      <br></br>
+
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Pagination 
+          count = {numPages}
+          onChange = {(event, page) => setPage(page)}
+          showFirstButton
+          showLastButton
+          variant = "outlined"
+          color="black"
+          size="large"
+        />
+      </Box>
+      <br></br>
+    </div>
+  )
 }
 
-class Members extends React.Component {
-    render() {
-      return (
-        <div className="container">
-          <h1 style={{'text-align':'center'}}>Campaign Finance</h1>
-          <div className='row'>
-            <div className='col-sm-4'>
-              <div className='card' style={cardStyle}>
-              <img className="card-img-top" src={jon_ossoff} alt=""></img>
-                <div className='card-body'>
-                  <h4 className="card-title">T. J. Ossoff</h4>
-                  <p className="card-text">Total Received: $146,082,030.53 </p>
-                  <a href="/CampFin/TJOssoff" class="btn-link">Learn more</a>
-                </div>
-              </div>
-            </div>
-            <div className='col-sm-4'>
-              <div className='card' style={cardStyle}>
-              <img className="card-img-top" src={jaime_harrison} alt=""></img>
-                <div className='card-body'>
-                  <h4 className="card-title">J. Harrison</h4>
-                  <p className="card-text">Total Received: $131,888,674.32 </p>
-                  <a href="/CampFin/JHarrison" class="btn-link">Learn more</a>
-                </div>
-              </div>
-            </div>
-            <div className='col-sm-4'>
-              <div className='card' style={cardStyle}>
-              <img className="card-img-top" src={raphael_warnock} alt=""></img>
-                <div className='card-body'>
-                  <h4 className="card-title">R. Warnock</h4>
-                  <p className="card-text">Total Received: $118,397,930.66</p>
-                  <a href="/CampFin/RWarnock" class="btn-link">Learn more</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )
-    }
-  }
-  export default Members;
+export default Members
