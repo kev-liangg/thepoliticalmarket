@@ -11,7 +11,7 @@ manager.create_api(Candidate, results_per_page=16, url_prefix=V)
 manager.create_api(Contribution, url_prefix=V)
 
 ######## CONTRACT MODEL ########
-manager.create_api(Contract, results_per_page=200, url_prefix=V)
+manager.create_api(Contract, results_per_page=500, url_prefix=V, max_results_per_page = -1)
 
 ######## STOCK MODEL ########
 manager.create_api(Matchedstock, results_per_page=50, url_prefix=V)
