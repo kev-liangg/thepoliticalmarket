@@ -38,8 +38,6 @@ function DELL() {
           <div className="col-sm-12" style={{'textAlign':'center','backgroundColor':'pink', 'color':'white'}}>
           </div>
         </div>
-          <StateMap state={data.State} />
-          <Link to="/">Back to homepage</Link>
       </div>
 
       
