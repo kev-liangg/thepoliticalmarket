@@ -69,7 +69,7 @@ const ContractPage = ({match}) => {
            <Link to="/">Back to homepage</Link>
            <div className = "row">
            <div className="col-sm-6">
-              <h2 style={{'textAlign':'center'}}> Federal Politicians in {data.contract_sop}</h2>
+              <h2 style={{'textAlign':'center'}}> Congress Politicians in {data.contract_sop}</h2>
                 <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
                 {
                   data.cands_in_state.slice(0,5).map((candidate)=>{
