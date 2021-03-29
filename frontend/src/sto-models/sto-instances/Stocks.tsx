@@ -117,7 +117,7 @@ function Stocks(){
         <DataGrid 
           getRowId={(row)=>row.Symbol} 
           rows={data} columns={columns} 
-          pageSize={5} 
+          pageSize={10} 
           hideFooterPagination={true}
           checkboxSelection
         />

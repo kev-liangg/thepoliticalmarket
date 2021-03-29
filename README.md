@@ -27,7 +27,7 @@ Website: https://www.thepoliticalmarket.tech/
 |----- | ----- | -----|
 | Kevin Chen | 25 | .. |
 | Kevin Liang | 25 | .. |
-| Diyuan Dai | 25 | .. | 
+| Diyuan Dai | 25 | 32 | 
 | **Vaishnav Bipin** | 25 | .. |
 | Anisha Kollareddy | 25 | .. |  
 
