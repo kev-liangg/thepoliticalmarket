@@ -25,7 +25,7 @@ Website: https://www.thepoliticalmarket.tech/
 ### Phase 2
 | Name | Estimated Hours | Actual Hours | 
 |----- | ----- | -----|
-| Kevin Chen | 25 | .. |
+| Kevin Chen | 25 | 30 |
 | Kevin Liang | 25 | .. |
 | Diyuan Dai | 25 | 32 | 
 | **Vaishnav Bipin** | 25 | .. |
