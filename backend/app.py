@@ -9,7 +9,7 @@ manager.create_api(Candidate, results_per_page=16)
 manager.create_api(Contribution)
 
 ######## CONTRACT MODEL ########
-manager.create_api(Contract, results_per_page = 200)
+manager.create_api(Contract, results_per_page = 10)
 
 ######## STOCK MODEL ########
 manager.create_api(Matchedstock, results_per_page = 50)

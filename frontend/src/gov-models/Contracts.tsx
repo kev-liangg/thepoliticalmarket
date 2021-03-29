@@ -59,24 +59,28 @@ function Contracts(){
   
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<GridRowsProp>([] as GridRowsProp);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8081/api/contract`, {})
+    fetch(`http://127.0.0.1:8081/api/contract?page=${page}`, {})
       .then((res) => res.json())
       .then((response) => {
         setData(response.objects);
-        console.log(data)
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
 
   
   return (
     <> {
       !isLoading && (
       <div style={{ height: 800, width: '100%' }}>
-        <DataGrid rows={data} columns={columns} pageSize={10} checkboxSelection />
+        <DataGrid 
+          rows={data} 
+          columns={columns} 
+          pageSize={10} 
+          checkboxSelection />
       </div>
       
       )} </>
