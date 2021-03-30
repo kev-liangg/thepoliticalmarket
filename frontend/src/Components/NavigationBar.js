@@ -3,13 +3,13 @@ import { Nav, Navbar} from 'react-bootstrap';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 const Styles = styled.div`
-    .navbar{
+    .navbar {
         background-color: #2f566a
     }
-    .navbar-brand, navbar-nav nav-link{
-        color: #bbb;
+    .navbar-brand, .navbar-nav, .nav-link {
+        color: #bbb !important;
         &:hover{
-            color: white;
+            color: white !important;
         }
     }
 `;
@@ -22,23 +22,23 @@ const NavigationBar = () => (
             <Navbar.Collapse id ="basic-navbar-nav">
             <Nav className="ml-auto"> 
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/Contracts">Contracts</Link>
+            <Nav.Link as={Link} to="/Contracts">
+              Contracts
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/Stocks">Stocks</Link>
+            <Nav.Link as={Link} to="/Stocks">
+              Stocks
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/CampFin">Campaign Finance</Link>
+            <Nav.Link as={Link} to="/CampFin">
+              Campaign Finance
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link>
-              <Link to="/About">About</Link>
+            <Nav.Link as={Link} to="/About">
+              About
             </Nav.Link>
           </Nav.Item>
         </Nav>

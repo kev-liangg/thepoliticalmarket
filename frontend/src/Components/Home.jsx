@@ -7,7 +7,7 @@ class Home extends Component {
     render() {
         return (
             <div className="wrapper"> 
-                <img src={bg} class="img-fluid w-100" alt="bg" />
+                <img src={bg} className="img-fluid w-100" alt="bg" />
                 <div className="centered">
                     <div className="backing"></div>
                 </div>
