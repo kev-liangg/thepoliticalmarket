@@ -14,6 +14,9 @@ class Home extends Component {
                 <div className="centered">
                     The Political Market
                 </div>
+                <div className="centered-small">
+                    Exploring the links between government contracts, stock performance, and campaign finance. See "About" for more details.
+                </div>
             </div>
         )
     }
