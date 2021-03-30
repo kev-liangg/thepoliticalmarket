@@ -86,7 +86,7 @@ const ContractPage = ({match}) => {
                 {
                   data.stocks_in_state.slice(0,5).map((stock)=>{
                     return <li>
-                            <Link to={`/CampFin/${stock.Symbol}`}> {stock.Full_Name} </Link>
+                            <Link to={`/Stocks/${stock.Symbol}`}> {stock.Full_Name} </Link>
                           </li>;
                   })
                 }

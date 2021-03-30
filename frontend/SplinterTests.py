@@ -27,16 +27,22 @@ class GUIHarness(unittest.TestCase):
         self.assertEqual(text, 'Contract Page') 
     def test_politiciansTest(self):
         browser = Browser('chrome')
-        browser.visit('https://www.thepoliticalmarket.tech/Campfin')
+        browser.visit('https://www.thepoliticalmarket.tech/CampFin')
         text = browser.find_by_text('OpenSecrets ID')
         browser.quit()
         self.assertEqual(text, 'OpenSecrets ID')
-    def test_politiciansTest(self):
+    def test_stocksTest(self):
         browser = Browser('chrome')
         browser.visit('https://www.thepoliticalmarket.tech/Stocks')
         text = browser.find_by_text('Symbol')
         browser.quit()
         self.assertEqual(text, 'Symbol')    
+    def test_aboutPage(self):
+        browser = Browser('chrome')
+        browser.visit('https://www.thepoliticalmarket.tech/about')
+        text = browser.find_by_text('Members')
+        browser.quit()
+        self.assertEqual(text, 'Members')
 
 
 
