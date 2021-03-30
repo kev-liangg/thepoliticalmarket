@@ -26,10 +26,10 @@ Website: https://www.thepoliticalmarket.tech/
 | Name | Estimated Hours | Actual Hours | 
 |----- | ----- | -----|
 | Kevin Chen | 25 | 30 |
-| Kevin Liang | 25 | .. |
+| Kevin Liang | 25 | 36 |
 | Diyuan Dai | 25 | 32 | 
-| **Vaishnav Bipin** | 25 | .. |
-| Anisha Kollareddy | 25 | .. |  
+| **Vaishnav Bipin** | 25 | 40 |
+| Anisha Kollareddy | 25 | 5 |  
 
 ## Pipelines
 
@@ -40,5 +40,7 @@ https://gitlab.com/kevinchenftw/thepoliticalmarket/-/pipelines
 https://documenter.getpostman.com/view/14826278/Tz5jfLrU
 
 ## Git SHA
+
+1dacd11d19b6891dc36fb3a574357ded7ade2bb5
 
 ## Comments

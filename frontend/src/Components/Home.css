@@ -8,6 +8,13 @@
     white-space: nowrap;
   }
 
+  .centered-small {
+    text-align: center;
+    font-size: calc(1.5vw);
+    color: #2f566a;
+    white-space: nowrap;
+  }
+
   .backing{  
     padding: 20px;
     height: calc(10vw);
