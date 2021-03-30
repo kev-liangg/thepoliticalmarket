@@ -79,6 +79,8 @@ function Contracts(){
           checkboxSelection 
         />
       </div>
+      <h5>
+      </h5>
       <Pagination 
           count = {numPages}
           onChange = {(event, page) => setPage(page)}
