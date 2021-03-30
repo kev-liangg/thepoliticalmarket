@@ -19,7 +19,8 @@ class About extends Component {
 
     state = {
         commitVals: [0, 0, 0, 0, 0, 0],
-        issueVals: [0, 0, 0, 0, 0, 0]
+        issueVals: [0, 0, 0, 0, 0, 0],
+        unitTests : [0, 7, 0, 0, 0, 0]
     }
 
     // API calls are asynchronous. use await for the GET, returns a Promise.
@@ -263,31 +264,31 @@ class About extends Component {
                             <td>Kevin Liang</td>
                             <td>{this.state.commitVals[0]}</td>
                             <td>{this.state.issueVals[0]}</td>
-                            <td>0</td>
+                            <td>{this.state.unitTests[0]}</td>
                         </tr>
                         <tr>
                             <td>Kevin Chen</td>
                             <td>{this.state.commitVals[1]}</td>
                             <td>{this.state.issueVals[1]}</td>
-                            <td>0</td>
+                            <td>{this.state.unitTests[1]}</td>
                         </tr>
                         <tr>
                             <td>Diyuan Dai</td>
                             <td>{this.state.commitVals[2]}</td>
                             <td>{this.state.issueVals[2]}</td>
-                            <td>0</td>
+                            <td>{this.state.unitTests[2]}</td>
                         </tr>
                         <tr>
                             <td>Vaishnav Bipin</td>
                             <td>{this.state.commitVals[3]}</td>
                             <td>{this.state.issueVals[3]}</td>
-                            <td>0</td>
+                            <td>{this.state.unitTests[3]}</td>
                         </tr>
                         <tr>
                             <td>Anisha Kollareddy</td>
                             <td>{this.state.commitVals[4]}</td>
                             <td>{this.state.issueVals[4]}</td>
-                            <td>0</td>
+                            <td>{this.state.unitTests[4]}</td>
                         </tr>
                         <tr style={{"font-weight":"bold"}}>
                             <td>Total</td>
@@ -322,7 +323,7 @@ class About extends Component {
                             <a href="https://www.propublica.org/datastore/api/campaign-finance-api">Propublica API</a> - 
                             documentation of how to scrape can be found <a href="https://propublica.github.io/campaign-finance-api-docs/">here</a>
                             <br></br>
-                            <a href="https://discovery.gsa.gov/api/">Discovery API</a> - 
+                            <a href="https://api.usaspending.gov/">USA Spending API</a> - 
                             [Description]
                             <br></br>
                             <a href="https://www.opensecrets.org/open-data/api">OpenSecrets API</a> - 
