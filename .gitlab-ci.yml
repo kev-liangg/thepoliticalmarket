@@ -27,6 +27,13 @@ frontend:
     - yarn lint
     - yarn test --verbose
 
+postman:
+    image: postman/newman
+    script:
+    - npm install -g newman
+    - newman --version
+    - newman run Postman.json
+
 backend:
     image: python:3.7
     script:
