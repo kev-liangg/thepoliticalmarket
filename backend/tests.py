@@ -47,7 +47,7 @@ class TestBackend(TestCase):
         assert data["IPO_Year"] == 1980
         assert data["Industry"] == "Computer Manufacturing"
         assert data["Last_Sale"] == 123.01
-        assert data["Market_Cap"] == 2147483647
+        assert data["Market_Cap"] == 2130000000
         assert data["Net_Change"] == -2.56
         assert data["Orgname"] == "Apple Inc"
         assert data["Percentage_Change"] == "-2.04%"
