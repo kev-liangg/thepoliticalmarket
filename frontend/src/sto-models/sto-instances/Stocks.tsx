@@ -48,9 +48,9 @@ const columns: GridColDef[] = [
 
     {
       field: 'Market_Cap',
-      headerName: 'Market Capacity',
+      headerName: 'Market Capacity (k)',
       type: 'number',
-      width: 160,
+      width: 200,
     },
 
     {

@@ -34,7 +34,7 @@ const StockPage = ({match}) => {
               <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
                 <h1> Symbol: {data.Symbol}</h1>
               </div>
-              <div className="col-sm-3" style={{'textAlign':'center','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
+              <div className="col-sm-5" style={{'textAlign':'center','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
                 <h3>Full Name: {data.Full_Name}</h3>
               </div>
               <br></br>
@@ -44,7 +44,7 @@ const StockPage = ({match}) => {
               <div className="col-sm-6" style={{'textAlign':'left','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
                 <h3>Net Change: {data.Net_Change}%</h3></div>
               <div className="col-sm-8" style={{'textAlign':'left','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
-                <h2>Market Cap: {data.Market_Cap}</h2></div> <h2>Volume: {data.Volume}</h2>
+                <h2>Market Cap (k): {data.Market_Cap}</h2></div> <h2>Volume: {data.Volume}</h2>
                 <h3>Sector: {data.Sector}</h3><br></br>
               <div className="col-sm-8" style={{'textAlign':'right','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
                 <h2>Industry: {data.Industry}</h2>
