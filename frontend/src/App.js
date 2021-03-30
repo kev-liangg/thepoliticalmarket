@@ -14,10 +14,11 @@ import {NavigationBar, About, Home} from "./Components";
 class App extends Component {
   render() {
     return (
-      <header className="App-background">
+      
       <React.Fragment>
         <Router>
         <NavigationBar/>
+        <header className="App-background">
           <Switch>
             <Route exact path = "/" component = {Home} />
             <Route exact path = "/Government" component = {Government} />
@@ -34,9 +35,9 @@ class App extends Component {
             <Route path = "/gov-models/State" component = {State} /> */}
             {/* <Route component = {NoMatch} /> */}
           </Switch>
+          </header>
         </Router>
       </React.Fragment>
-      </header>
     );
   }
 }

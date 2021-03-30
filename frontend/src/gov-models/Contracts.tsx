@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import {Pagination} from "@material-ui/lab";
+import {Pagination} from "@material-ui/core";
 import { DataGrid, GridRowsProp, GridColDef, GridCellParams } from '@material-ui/data-grid';
 
 const columns: GridColDef[] = [
@@ -71,7 +71,7 @@ function Contracts(){
     <> {
       <div>
       <div style={{ height: 800, width: '100%' }}>
-        <DataGrid 
+        <DataGrid
           rows={data} 
           columns={columns} 
           pageSize={10}
