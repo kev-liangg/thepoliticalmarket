@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import {Pagination} from "@material-ui/core";
-import { DataGrid, GridRowsProp, GridColDef, GridCellParams } from '@material-ui/data-grid';
+import { DataGrid, 
+         GridRowsProp, 
+         GridColDef, 
+         GridCellParams,
+         GridSortModel,
+         GridSortModelParams } from '@material-ui/data-grid';
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'Contract Page', width: 150,
@@ -46,15 +51,24 @@ const columns: GridColDef[] = [
       width: 140
     }
   ];
+
+const url = "https://api.thepoliticalmarket.tech/v1/contract"
+
 function Contracts(){
   
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<GridRowsProp>([] as GridRowsProp);
   const [page, setPage] = useState(1);
   const [numPages, setNumPages] = useState(0)
+  const [sortCol, setSortCol] = useState<GridSortModel>([{field:'id', sort:'asc'}])
 
   useEffect(() => {
-    fetch(`https://api.thepoliticalmarket.tech/v1/contract?page=${page}`, {})
+    let toFetch = url+`?page=${page}`;
+    if (sortCol.length !== 0) {
+      let query = {field: sortCol[0].field, direction:sortCol[0].sort};
+      toFetch = toFetch+`&q={"order_by":[${JSON.stringify(query)}]}`
+    }
+    fetch(toFetch, {})
       .then((res) => res.json())
       .then((response) => {
         setData(response["objects"]);
@@ -62,7 +76,14 @@ function Contracts(){
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, [page]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [page, sortCol]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // function to handle server-side sort
+  const handleSort = (params: GridSortModelParams) => {
+    if (params.sortModel != sortCol) {
+      setSortCol(params.sortModel);
+    }
+  };
 
   if (isLoading) {
     return <h2>Loading...</h2>
@@ -77,6 +98,8 @@ function Contracts(){
           pageSize={10}
           hideFooterPagination={true}
           checkboxSelection 
+          sortingMode="server"
+          onSortModelChange={handleSort}
         />
       </div>
       <h5>
