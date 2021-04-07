@@ -80,7 +80,7 @@ function Contracts(){
 
   // function to handle server-side sort
   const handleSort = (params: GridSortModelParams) => {
-    if (params.sortModel != sortCol) {
+    if (params.sortModel !== sortCol) {
       setSortCol(params.sortModel);
     }
   };

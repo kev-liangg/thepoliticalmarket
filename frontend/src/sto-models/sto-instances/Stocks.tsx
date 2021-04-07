@@ -102,7 +102,7 @@ function Stocks(){
   const [data, setData] = useState<GridRowsProp>([] as GridRowsProp);
   const [page, setPage] = useState(1);
   const [numPages, setNumPages] = useState(0)
-  const [sortCol, setSortCol] = useState<GridSortModel>([{field:'id', sort:'asc'}])
+  const [sortCol, setSortCol] = useState<GridSortModel>([{field:'Symbol', sort:'asc'}])
 
   useEffect(() => {
     let toFetch = url+`?page=${page}`;
@@ -133,7 +133,7 @@ function Stocks(){
   return (
     <> {
       <div>
-      <div style={{ height: 500, width: '100%' }}>
+      <div style={{ height: 800, width: '100%' }}>
         <DataGrid 
           getRowId={(row)=>row.Symbol} 
           rows={data} columns={columns} 
