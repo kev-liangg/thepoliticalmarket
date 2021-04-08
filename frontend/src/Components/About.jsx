@@ -334,14 +334,11 @@ class About extends Component {
                             <a href="https://www.propublica.org/datastore/api/campaign-finance-api">Propublica API</a> - 
                             documentation of how to scrape can be found <a href="https://propublica.github.io/campaign-finance-api-docs/">here</a>
                             <br></br>
-                            <a href="https://api.usaspending.gov/">USA Spending API</a> - 
-                            [Description]
+                            <a href="https://api.usaspending.gov/">USA Spending API</a> - Includes data on government contracts and contractors
                             <br></br>
-                            <a href="https://www.opensecrets.org/open-data/api">OpenSecrets API</a> - 
-                            [Description]
+                            <a href="https://www.opensecrets.org/open-data/api">OpenSecrets API</a> - Per-politician campaign pinance and portfolio data including specific organizations
                             <br></br>
-                            <a href="https://finnhub.io/">Finnhub API</a> - 
-                            [Description]
+                            <a href="https://finnhub.io/">Finnhub API</a> - Historic stock market performance and per-company specifics
                             <br></br>
                         <br></br>
                         <h2>Tools Used</h2>
