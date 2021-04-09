@@ -60,6 +60,7 @@ function Contracts(){
   const [data, setData] = useState<GridRowsProp>([] as GridRowsProp);
   const [page, setPage] = useState(1);
   const [numPages, setNumPages] = useState(0)
+  const [numResults, setNumResults] = useState(0);
   const [sortCol, setSortCol] = useState<GridSortModel>([{field:'id', sort:'asc'}])
 
   useEffect(() => {
@@ -72,6 +73,7 @@ function Contracts(){
       .then((res) => res.json())
       .then((response) => {
         setData(response["objects"]);
+        setNumResults(response["num_results"]);
         setNumPages(response["total_pages"]);
         setIsLoading(false);
       })
@@ -91,6 +93,7 @@ function Contracts(){
   return (
     <> {
       <div>
+        Number of Instances: {numResults}
       <div style={{ height: 800, width: '100%' }}>
         <DataGrid
           rows={data} 
