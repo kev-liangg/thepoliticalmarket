@@ -28,6 +28,7 @@ function Members() {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
+  const [numResults, setNumResults] = useState(0);
   const [numPages, setNumPages] = useState(0)
 
    useEffect(() => {
@@ -36,6 +37,7 @@ function Members() {
       .then((res) => {
         setData(res["objects"]);
         setNumPages(res["total_pages"]);
+        setNumResults(res["num_results"])
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
@@ -48,6 +50,7 @@ function Members() {
     <div className={classes.root}>
       <div className="container">
         <h1 style={{'textAlign':'center'}}>Campaign Finance</h1>
+        Number of Instances: {numResults}
         <div className="row">
         {
           data.map((memb) => {

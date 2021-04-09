@@ -67,6 +67,8 @@ function Contracts() {
   const [numPages, setNumPages] = useState(0)
   const [searchTerm, setSearchTerm] = useState("");
   const [sortCol, setSortCol] = useState<GridSortModel>([{ field: 'id', sort: 'asc' }])
+  const [numResults, setNumResults] = useState(0);
+
   useEffect(() => {
     let toFetch = url + `?page=${page}`;
     if (sortCol.length !== 0) {
@@ -77,6 +79,7 @@ function Contracts() {
       .then((res) => res.json())
       .then((response) => {
         setData(response["objects"]);
+        setNumResults(response["num_results"]);
         setNumPages(response["total_pages"]);
         setIsLoading(false);
       })
@@ -136,9 +139,14 @@ function Contracts() {
         </div>
         <h5>
         </h5>
-        <Pagination
-          count={numPages}
-          onChange={(event, page) => setPage(page)}
+      <div>
+      Number of Instances: {numResults}
+      </div>
+      <h5>
+      </h5>
+      <Pagination 
+          count = {numPages}
+          onChange = {(event, page) => setPage(page)}
           showFirstButton
           showLastButton
           variant="outlined"
