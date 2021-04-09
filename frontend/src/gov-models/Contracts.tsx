@@ -11,6 +11,7 @@ import {
   GridSortModelParams
 } from '@material-ui/data-grid';
 import Dropdown from 'react-bootstrap/Dropdown'
+import './ContractTable.css'
 const columns: GridColDef[] = [
   {
     field: 'id', headerName: 'Contract Page', width: 150,
@@ -59,14 +60,13 @@ const columns: GridColDef[] = [
 const url = "https://api.thepoliticalmarket.tech/v1/contract"
 
 function Contracts() {
-
+  const cancel = ""
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<GridRowsProp>([] as GridRowsProp);
   const [page, setPage] = useState(1);
   const [numPages, setNumPages] = useState(0)
   const [searchTerm, setSearchTerm] = useState("");
   const [sortCol, setSortCol] = useState<GridSortModel>([{ field: 'id', sort: 'asc' }])
-
   useEffect(() => {
     let toFetch = url + `?page=${page}`;
     if (sortCol.length !== 0) {
@@ -89,14 +89,17 @@ function Contracts() {
       setSortCol(params.sortModel);
     }
   };
-
+  const fetchSearchResults = (pageNumber = '',query : string) =>{
+    
+  }
   if (isLoading) {
     return <h2>Loading...</h2>
   }
   return (
     <> {
       <div>
-        <div style = {{textAlign: "right"}}>
+        <div className = "wrapper">
+        <div className = "block">
         <input
           type="text"
           placeholder="Search..."
@@ -105,17 +108,21 @@ function Contracts() {
             console.log(event.target.value)
           }}></input>
           </div>
-        <Dropdown>
+        <div className = "block2">
+          <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic">
             Filters
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">States</Dropdown.Item>
+            <Dropdown.Item href="#/action-1">Listed on Stock Market</Dropdown.Item>
             <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
             <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
+        </div>
+          </div>
+        
         <div style={{ height: 800, width: '100%' }}>
           <DataGrid
             rows={data}
