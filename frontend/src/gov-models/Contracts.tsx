@@ -109,8 +109,20 @@ function Contracts() {
     let filter : any = {name: item.columnField};
     switch (item.operatorValue) {
       case "contains":
+        filter.op="like";
+        filter.val="%"+item.value+"%";  // any characters before or after
+        break;
+      case "equals":
+        filter.op="like";
+        filter.val=item.value           // must contain exact value
+        break;
+      case "starts_with":
+        filter.op="like";
+        filter.val=item.value+"%";      // any characters after only
+        break;
+      case "ends_with":
         filter.op="like"
-        filter.val="%"+item.value+"%";
+        filter.val="%"+item.value;      // any characters before only
         break;
       default:
         filter.op=undefined;
