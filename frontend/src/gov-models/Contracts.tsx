@@ -8,7 +8,9 @@ import {
   GridColDef,
   GridCellParams,
   GridSortModel,
-  GridSortModelParams
+  GridSortModelParams,
+  GridFilterItem,
+  GridFilterModelParams
 } from '@material-ui/data-grid';
 import Dropdown from 'react-bootstrap/Dropdown'
 import './ContractTable.css'
@@ -67,24 +69,30 @@ function Contracts() {
   const [numPages, setNumPages] = useState(0)
   const [searchTerm, setSearchTerm] = useState("");
   const [sortCol, setSortCol] = useState<GridSortModel>([{ field: 'id', sort: 'asc' }])
+  const [filter, setFilter] = useState<GridFilterItem>();
   const [numResults, setNumResults] = useState(0);
 
   useEffect(() => {
+    let query : any = {};
     let toFetch = url + `?page=${page}`;
     if (sortCol.length !== 0) {
-      let query = { field: sortCol[0].field, direction: sortCol[0].sort };
-      toFetch = toFetch + `&q={"order_by":[${JSON.stringify(query)}]}`
+      query.order_by = [{ field: sortCol[0].field, direction: sortCol[0].sort }];
     }
+    if (typeof filter !== "undefined" && filter.value) {
+      query.filters = constructFilter(filter);
+    }
+    toFetch = toFetch + `&q=${JSON.stringify(query)}`;
     fetch(toFetch, {})
       .then((res) => res.json())
       .then((response) => {
+        console.log(toFetch);
         setData(response["objects"]);
         setNumResults(response["num_results"]);
         setNumPages(response["total_pages"]);
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, [page, sortCol]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [page, sortCol, filter]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // function to handle server-side sort
   const handleSort = (params: GridSortModelParams) => {
@@ -92,6 +100,37 @@ function Contracts() {
       setSortCol(params.sortModel);
     }
   };
+
+  const handleFilter = (params: GridFilterModelParams) => {
+    setFilter(params.filterModel.items[0]);
+  };
+
+  const constructFilter = (item: GridFilterItem) => {
+    let filter : any = {name: item.columnField};
+    switch (item.operatorValue) {
+      case "contains":
+        filter.op="like";
+        filter.val="%"+item.value+"%";  // any characters before or after
+        break;
+      case "equals":
+        filter.op="like";
+        filter.val=item.value           // must contain exact value
+        break;
+      case "starts_with":
+        filter.op="like";
+        filter.val=item.value+"%";      // any characters after only
+        break;
+      case "ends_with":
+        filter.op="like"
+        filter.val="%"+item.value;      // any characters before only
+        break;
+      default:
+        filter.op=undefined;
+        filter.val=undefined;
+    }
+    return [filter];
+  }
+
   const fetchSearchResults = (pageNumber = '',query : string) =>{
     
   }
@@ -116,7 +155,6 @@ function Contracts() {
           <Dropdown.Toggle variant="success" id="dropdown-basic">
             Filters
           </Dropdown.Toggle>
-
           <Dropdown.Menu>
             <Dropdown.Item href="#/action-1">Listed on Stock Market</Dropdown.Item>
             <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
@@ -134,7 +172,9 @@ function Contracts() {
             hideFooterPagination={true}
             checkboxSelection
             sortingMode="server"
+            filterMode="server"
             onSortModelChange={handleSort}
+            onFilterModelChange={handleFilter}
           />
         </div>
         <h5>
