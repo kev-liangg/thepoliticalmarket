@@ -7,12 +7,15 @@ class Home extends Component {
     render() {
         return (
             <div className="wrapper"> 
-                <img src={bg} class="img-fluid w-100" alt="bg" />
+                <img src={bg} className="img-fluid w-100" alt="bg" />
                 <div className="centered">
                     <div className="backing"></div>
                 </div>
                 <div className="centered">
                     The Political Market
+                </div>
+                <div className="centered-small">
+                    Exploring the links between government contracts, stock performance, and campaign finance. See "About" for more details.
                 </div>
             </div>
         )

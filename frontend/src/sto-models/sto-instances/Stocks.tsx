@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
-import { DataGrid, GridRowsProp, GridColDef, GridCellParams } from '@material-ui/data-grid';
+import {Pagination} from "@material-ui/core";
+import { DataGrid, 
+         GridRowsProp, 
+         GridColDef, 
+         GridCellParams,
+         GridSortModel,
+         GridSortModelParams } from '@material-ui/data-grid';
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'Index', width: 100,
@@ -47,9 +53,9 @@ const columns: GridColDef[] = [
 
     {
       field: 'Market_Cap',
-      headerName: 'Market Capacity',
+      headerName: 'Market Capacity (k)',
       type: 'number',
-      width: 160,
+      width: 200,
     },
 
     {
@@ -87,31 +93,71 @@ const columns: GridColDef[] = [
     },
 
   ];
+
+const url = "https://api.thepoliticalmarket.tech/v1/matchedstock"
+
 function Stocks(){
   
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<GridRowsProp>([] as GridRowsProp);
+  const [page, setPage] = useState(1);
+  const [numPages, setNumPages] = useState(0)
+  const [numResults, setNumResults] = useState(0);
+  const [sortCol, setSortCol] = useState<GridSortModel>([{field:'Symbol', sort:'asc'}])
 
   useEffect(() => {
-    fetch(`http://127.0.0.1:8081/api/matchedstock`, {})
+    let toFetch = url+`?page=${page}`;
+    if (sortCol.length !== 0) {
+      let query = {field: sortCol[0].field, direction:sortCol[0].sort};
+      toFetch = toFetch+`&q={"order_by":[${JSON.stringify(query)}]}`
+    }
+    fetch(toFetch, {})
       .then((res) => res.json())
       .then((response) => {
-        setData(response.objects);
-        console.log(data)
+        setData(response["objects"]);
+        setNumPages(response["total_pages"]);
+        setNumResults(response["num_results"]);
+        // console.log(response["objects"]);
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  });
+  }, [page, sortCol]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  
+  const handleSort = (params : GridSortModelParams) => {
+    if (params.sortModel !== sortCol) {
+      setSortCol(params.sortModel);
+    }
+  }
+
+  if (isLoading) {
+    return <h2>Loading...</h2>
+  } 
   return (
     <> {
-      !isLoading && (
-      <div style={{ height: 500, width: '100%' }}>
-        <DataGrid getRowId={(row)=>row.Symbol} rows={data} columns={columns} pageSize={5} checkboxSelection />
+      <div>
+      Number of Instances: {numResults}
+      <div style={{ height: 800, width: '100%' }}>
+        <DataGrid 
+          getRowId={(row)=>row.Symbol} 
+          rows={data} columns={columns} 
+          pageSize={10} 
+          hideFooterPagination={true}
+          checkboxSelection
+          sortingMode="server"
+          onSortModelChange={handleSort}
+        />
       </div>
-      
-      )} </>
+      <Pagination 
+          count = {numPages}
+          onChange = {(event, page) => setPage(page)}
+          showFirstButton
+          showLastButton
+          variant = "outlined"
+          color="primary"
+          size="large"
+      />
+      </div>
+      }</>
   );
 }
 export default Stocks

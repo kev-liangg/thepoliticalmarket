@@ -12,7 +12,7 @@ const ContractPage = ({match}) => {
     const [data, setData] = useState();
   
     useEffect(() => {
-      fetch(`http://api.thepoliticalmarket.tech/v1/contract/${awardId}`, {})
+      fetch(`https://api.thepoliticalmarket.tech/v1/contract/${awardId}`, {})
         .then((res) => res.json())
         .then((response) => {
           console.log(response)
@@ -69,7 +69,7 @@ const ContractPage = ({match}) => {
            <Link to="/">Back to homepage</Link>
            <div className = "row">
            <div className="col-sm-6">
-              <h2 style={{'textAlign':'center'}}> Federal Politicians in {data.contract_sop}</h2>
+              <h2 style={{'textAlign':'center'}}> Congress Politicians in {data.contract_sop}</h2>
                 <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
                 {
                   data.cands_in_state.slice(0,5).map((candidate)=>{
@@ -86,7 +86,7 @@ const ContractPage = ({match}) => {
                 {
                   data.stocks_in_state.slice(0,5).map((stock)=>{
                     return <li>
-                            <Link to={`/CampFin/${stock.Symbol}`}> {stock.Full_Name} </Link>
+                            <Link to={`/Stocks/${stock.Symbol}`}> {stock.Full_Name} </Link>
                           </li>;
                   })
                 }

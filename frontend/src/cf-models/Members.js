@@ -1,42 +1,43 @@
 import React, { useState, useEffect } from "react";
 import MemberCard from "./MemberCard";
-import {Pagination} from "@material-ui/lab";
-// import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import {Box} from "@material-ui/core"
+import { Pagination, Box } from "@material-ui/core";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 
-// const useStyles = makeStyles((theme) => {
-//   createStyles({
-//     button: {
-//       alignItems: "center",
-//       justifyContent: "center",
-//       display: "flex",
-//       "& > *": {
-//         margin: theme.spacing(1)
-//       }
-//     },
-//     formControl: {
-//       margin: theme.spacing(1),
-//       minWidth: 200,
-//       maxWidth: 300
-//     }
-//   })
-// });
+const useStyles = makeStyles((theme) => {
+  createStyles({
+    button: {
+      alignItems: "center",
+      justifyContent: "center",
+      display: "flex",
+      "& > *": {
+        margin: theme.spacing(1)
+      }
+    },
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 200,
+      maxWidth: 300
+    }
+  })
+});
 
 function Members() {
 
   //let numPerPage = 0;
-  //const classes = useStyles();
+  const classes = useStyles();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
   const [page, setPage] = useState(1);
+  const [numResults, setNumResults] = useState(0);
   const [numPages, setNumPages] = useState(0)
 
    useEffect(() => {
-    fetch(`http://127.0.0.1:8081/api/candidate?page=${page}`, {})
+    fetch(`https://api.thepoliticalmarket.tech/v1/candidate?page=${page}`, {})
       .then((response) => response.json())
       .then((res) => {
         setData(res["objects"]);
-        setNumPages(res["total_pages"])
+        setNumPages(res["total_pages"]);
+        setNumResults(res["num_results"])
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
@@ -46,9 +47,10 @@ function Members() {
     return <h2>Loading...</h2>
   }
   return (
-    <div>
+    <div className={classes.root}>
       <div className="container">
-        <h1 style={{'text-align':'center'}}>Campaign Finance</h1>
+        <h1 style={{'textAlign':'center'}}>Campaign Finance</h1>
+        Number of Instances: {numResults}
         <div className="row">
         {
           data.map((memb) => {
@@ -72,7 +74,7 @@ function Members() {
           showFirstButton
           showLastButton
           variant = "outlined"
-          color="black"
+          color="primary"
           size="large"
         />
       </Box>

@@ -19,7 +19,8 @@ class About extends Component {
 
     state = {
         commitVals: [0, 0, 0, 0, 0, 0],
-        issueVals: [0, 0, 0, 0, 0, 0]
+        issueVals: [0, 0, 0, 0, 0, 0],
+        unitTests : [7, 7, 0, 13, 0, 27]
     }
 
     // API calls are asynchronous. use await for the GET, returns a Promise.
@@ -176,12 +177,23 @@ class About extends Component {
                                 them to aggregated market data, government contracts, and campaign financing history.
                                 <br></br>
                                 <br></br>
-                                [Interesting result of integrating disparate data...]
+                                Our disparate data is definitely interesting because the most obvious integration is through state. Members of congress
+                                have jobs to represent their state, which includes corporations and the people working for them. Corporation headquarters
+                                likely hold more influence, and contracts awarded through government are very beneficial for companies. Company performance
+                                and influence can also be tracked through stock market performance if they are publicly listed, so there is much potential
+                                to uncover connections and correlations.
+                                <br></br>
+                                <br></br>
+                                From the data we worked with so far, we anticipate the trend will be that large companies, indicated by their market share or
+                                trading volume, will be the the most frequent contract recipients. The headquarters and operational states of those companies 
+                                might see increased contribution to candidates in that state. If we are able to get candidate portfolios as a reliable attribute,
+                                we feel we might see a correlation between the richest candidates and campaign contributions, scaled up if they are in a major
+                                state of operations for large companies as well or if they themselves are major shareholders.
                                 <br></br>
                                 <br></br>
                             </p>
                         </div>
-                        <h1>Members</h1>
+                        <h1>Team Members</h1>
                         <div className="row">
                             
                             <div className='card' style={cardStyle}>
@@ -263,37 +275,37 @@ class About extends Component {
                             <td>Kevin Liang</td>
                             <td>{this.state.commitVals[0]}</td>
                             <td>{this.state.issueVals[0]}</td>
-                            <td>0</td>
+                            <td>{this.state.unitTests[0]}</td>
                         </tr>
                         <tr>
                             <td>Kevin Chen</td>
                             <td>{this.state.commitVals[1]}</td>
                             <td>{this.state.issueVals[1]}</td>
-                            <td>0</td>
+                            <td>{this.state.unitTests[1]}</td>
                         </tr>
                         <tr>
                             <td>Diyuan Dai</td>
                             <td>{this.state.commitVals[2]}</td>
                             <td>{this.state.issueVals[2]}</td>
-                            <td>0</td>
+                            <td>{this.state.unitTests[2]}</td>
                         </tr>
                         <tr>
                             <td>Vaishnav Bipin</td>
                             <td>{this.state.commitVals[3]}</td>
                             <td>{this.state.issueVals[3]}</td>
-                            <td>0</td>
+                            <td>{this.state.unitTests[3]}</td>
                         </tr>
                         <tr>
                             <td>Anisha Kollareddy</td>
                             <td>{this.state.commitVals[4]}</td>
                             <td>{this.state.issueVals[4]}</td>
-                            <td>0</td>
+                            <td>{this.state.unitTests[4]}</td>
                         </tr>
                         <tr style={{"font-weight":"bold"}}>
                             <td>Total</td>
                             <td>{this.state.commitVals[5]}</td>
                             <td>{this.state.issueVals[5]}</td>
-                            <td>0</td>
+                            <td>{this.state.unitTests[5]}</td>
                         </tr>    
 
                     </table>
@@ -322,28 +334,34 @@ class About extends Component {
                             <a href="https://www.propublica.org/datastore/api/campaign-finance-api">Propublica API</a> - 
                             documentation of how to scrape can be found <a href="https://propublica.github.io/campaign-finance-api-docs/">here</a>
                             <br></br>
-                            <a href="https://discovery.gsa.gov/api/">Discovery API</a> - 
-                            [Description]
+                            <a href="https://api.usaspending.gov/">USA Spending API</a> - Includes data on government contracts and contractors
                             <br></br>
-                            <a href="https://www.opensecrets.org/open-data/api">OpenSecrets API</a> - 
-                            [Description]
+                            <a href="https://www.opensecrets.org/open-data/api">OpenSecrets API</a> - Per-politician campaign pinance and portfolio data including specific organizations
                             <br></br>
-                            <a href="https://finnhub.io/">Finnhub API</a> - 
-                            [Description]
+                            <a href="https://finnhub.io/">Finnhub API</a> - Historic stock market performance and per-company specifics
                             <br></br>
                         <br></br>
                         <h2>Tools Used</h2>
                         <h4>Development</h4>
                         <li>Postman - creates and hosts ThePoliticalMarket RESTful API Documentation</li>
                         <li>Gitlab - issue tracking, project management, version control, continuous integration</li>
+                        <li>Gitlab CI - a continuous integration pipeline specifically integrated into our repository</li>
                         <h4>Backend</h4>
                         <li>Docker - gives our specific environment for the backend for any user or provider</li>
                         <li>wsgi - allows our web server to forward requests to a Python web framework</li>
                         <li>Flask - the lightweight Python web framework communicating with through wsgi</li>
+                        <li>Flask-SQLAlchemy - provides a powerful coding framework for accessing a SQL database </li>
+                        <li>Flask-Restless - simplifies generation of backend RESTful API from database calls</li>
+                        <li>MySQL - a relational database management system to store all website data</li>
+                        <li>Pytest - a unit testing library for all our backend Python code</li>
                         <h4>Frontend</h4>
                         <li>yarn - a package manager for our modules, allows us to locally compile and develop</li>
                         <li>React - a library to develop and render our User Interface and visual components</li>
                         <li>React-Bootstrap - a library to further construct and stylize our frontend interface</li>
+                        <li>Jest - a unit testing library for our frontend Javascript code with React integration</li>
+                        <li>Splinter - a unit testing library for our frontend GUI and user experience</li>
+                        <h2>Hosting Services</h2>
+                        <li>AWS (S3, ECR, EB, EC2, RDS), Namecheap</li>
                         
                     </div>
                     </div>

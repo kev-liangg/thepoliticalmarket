@@ -32,6 +32,15 @@ function DELL() {
             </div>
             <br></br>
             {/*Plan to put hitory trend here for next time</p>*/}
+
+            <div className = "container">
+        <div className='row'>
+          <div className="col-sm-12" style={{'textAlign':'center','backgroundColor':'pink', 'color':'white'}}>
+          </div>
+        </div>
+      </div>
+
+      
         </div>
     )
 }
