@@ -2,14 +2,20 @@ import React, { useState, useEffect } from "react";
 import MemberCard from "./MemberCard";
 import { Pagination, Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+
+// For selects
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel from '@material-ui/core/InputLabel';
+
+// For pop-up
 import Dialog from '@material-ui/core/Dialog';
 import ListItem from '@material-ui/core/ListItem';
 
 
+
+// formatting for material-ui selects (constant width 200)
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -19,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Members() {
 
-  //let numPerPage = 0;
   const attributes = ['cand_firstname', 'cand_lastname', 'cand_crp_id', 'cand_office', 'cand_party', 'cand_state'];
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(true);
@@ -39,15 +44,23 @@ function Members() {
   const [searchTerm, setSearchTerm] = useState("");
 
 
-   useEffect(() => {
-    // setIsLoading(true);
+  
+  useEffect(() => {
     let query = {};
+
+    // filtering
     if (filters.length !== 0) {
       query.filters = filters.map((filter)=>constructFilter(filter));
     }
+
+    // sorting
     if (orderField !== "" && orderDirection !== "none") {
       query.order_by = constructOrderBy();
     }
+    
+    // searching
+    // searching is done by union-ing the set of candidate table rows that have an attribute that contains searchTerm
+    // can specify this with just another filter (which can be boolean formulas thanks to flask-restless)
     if (searchTerm !== "") {
       if (filters.length === 0) {
         query.filters = [];
@@ -59,8 +72,10 @@ function Members() {
         return filter;
       })});
     }
+
     let toFetch = `https://api.thepoliticalmarket.tech/v1/candidate?page=${page}&q=${JSON.stringify(query)}`;
     console.log(toFetch); 
+
     fetch(toFetch, {})
       .then((response) => response.json())
       .then((res) => {
@@ -71,8 +86,11 @@ function Members() {
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
+
   }, [page, filters, orderField, orderDirection, searchTerm]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  
+// start of switch case functions to reformat select input into backend attributes
   const constructOrderBy = () => {
     let orderby = {};
     switch (orderField) {
@@ -112,6 +130,7 @@ function Members() {
     }
     return [orderby];
   }
+
   const constructFilter = (item) => {
     let filter = {};
     switch (item.name) {
@@ -170,6 +189,10 @@ function Members() {
     }
     return filter;
   }
+// end of switch case functions
+
+
+  // for displaying instance member cards
   function mapData () {
     if (typeof data != "undefined") {
       return data.map((memb) => {
@@ -178,18 +201,30 @@ function Members() {
     }
     return [];
   }
+
+
   if (isLoading) {
     return <h2>Loading...</h2>
   }
   return (
     <div className={classes.root}>
+
+      {/*Start of bootstrap container*/}
       <div className="container">
         <h1 style={{'textAlign':'center'}}>Campaign Finance</h1>
+
+        {/*Start of row for filtering, sorting, and searching*/}
         <div className="row">
+
+          {/*Start of filtering column*/}
           <div className="col-sm-5" style={{'backgroundColor':'lightgray'}}>
             <h1>1. Filter </h1>
             <div className="row">
+
+              {/*Start of filtering subcolumn for material-ui selects and input text box*/}
               <div className="col-sm-6">
+
+                {/*Start of 2 material-ui selects in 2 separate rows for filtering*/}
                 <div className="row">
                   <FormControl required className={classes.formControl}>
                     <InputLabel id="filter-field-label">Attribute</InputLabel>
@@ -227,7 +262,11 @@ function Members() {
                     </Select>
                   </FormControl>
                 </div>
+                {/*End of 2 material-ui selects in 2 separate rows for filtering*/}
+
                 <br></br>
+
+                {/*Start of value text box on a 3rd row for filtering*/}
                 <div className="row">
                   <input
                     type="text"
@@ -241,6 +280,8 @@ function Members() {
                           // newFilters.push({name: filterField, op: filterOp, val: event.target.value});
                           // console.log(newFilters);
                           // setIsLoading(true);
+
+                          // Update a state array like this to avoid race conditions
                           setFilters([...filters, {name: filterField, op: filterOp, val: event.target.value}]);
                         }
                       }
@@ -248,10 +289,16 @@ function Members() {
                   >
                   </input>
                 </div>
+                {/*End of value text box on a 3rd row for filtering*/}
+
                 <div className="row">
                   <p style={{'color':'black'}}>(Press Enter to Add Filter)</p>
                 </div>
+
               </div>
+              {/*End of filtering subcolumn for material-ui selects and input text box*/}
+
+              {/*Start of filtering subcolumn for Clear Filters and View Filters buttons*/}
               <div className="col-sm-6">
                 <div className="row">
                   <button 
@@ -267,16 +314,20 @@ function Members() {
                   >View Filters</button>
                 </div>
               </div>
+              {/*End of filtering subcolumn for Clear Filters and View Filters buttons*/}
+
             </div>
+
           </div>
+          {/*End of filtering column*/}
 
 
-
-
-
+          {/*Start of sorting column*/}
           <div className="col-sm-4" style={{'backgroundColor':'white'}}>
             <h1>2. Sort </h1>
             <div className="row">
+
+              {/*Start of sorting subcolumn for 2 material-ui selects on 2 separate rows for sorting*/}
               <div className="col-sm-8">
                 <div className="row">
                   <FormControl required className={classes.formControl}>
@@ -313,11 +364,25 @@ function Members() {
                   </FormControl>
                 </div>
               </div>
+              {/*End of sorting subcolumn for 2 material-ui selects on 2 separate rows for sorting*/}
+              
+              {/*Start of sorting subcolumn for Clear Sorting button*/}
               <div className="col-sm-4">
-
+                <div className="row">
+                  <button 
+                    type="button"
+                    onClick={()=>{setOrderField("");setOrderDirection("none");}}
+                  >Clear Sorting</button>
+                </div>
               </div>
+              {/*End of sorting subcolumn for Clear Sorting button*/}
+
             </div>
           </div>
+          {/*End of sorting column*/}
+
+
+          {/*Start of searching column*/}
           <div className="col-sm-2.5" style={{'backgroundColor':'lightgray'}}>
             <h1>3. Search</h1>
             <input
@@ -332,7 +397,13 @@ function Members() {
             >
             </input>
           </div>
+          {/*End of searching column*/}
+
         </div>
+        {/*End of row for filtering, sorting, and searching*/}
+
+
+        {/*Pop-up - when View Filters button is clicked, setView(true); pop-up closed by clicking anywhere else by default*/}
         <Dialog open={view} onClose={()=>setView(false)}>
         {
           filters.map((filter)=>{
@@ -340,17 +411,20 @@ function Members() {
           })
         }
         </Dialog>
+
         Number of Instances: {numResults}
+
+        {/*Displaying instance cards*/}
         <div className="row">
-        {
-          mapData()
-        }  
-          
+          {mapData()}  
         </div>
         
       </div>
-      <br></br>
+      {/*End of bootstrap container*/}
 
+      <br></br>
+      
+      {/*Pagination component*/}
       <Box
         display="flex"
         alignItems="center"
@@ -366,7 +440,9 @@ function Members() {
           size="large"
         />
       </Box>
+
       <br></br>
+
     </div>
   )
 }
