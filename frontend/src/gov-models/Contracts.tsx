@@ -145,11 +145,18 @@ function Contracts() {
         <input
           type="text"
           placeholder="Search..."
-          onChange={(event) => {
-            setSearchTerm(event.target.value)
-            console.log(event.target.value)
-          }}></input>
-          </div>
+          // onChange={(event) => {
+          //   setSearchTerm(event.target.value)
+          //   console.log(event.target.value)
+          // }}
+          onKeyPress={(event) => {
+            if (event.key === 'Enter') {
+              setSearchTerm((event.target as HTMLInputElement).value)
+              console.log((event.target as HTMLInputElement).value)
+            }
+          }}
+        ></input>
+        </div>
         <div className = "block2">
           <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic">

@@ -7,6 +7,7 @@ contract_cand = db.Table('contract_cand',
 )
 
 class Contract(db.Model):
+    __tablename__ = 'contract'
     id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     # contract_award_unique = db.Column(db.String(75))
     contract_award_id = db.Column(db.String(30))

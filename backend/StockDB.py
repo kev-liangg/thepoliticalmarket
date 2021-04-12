@@ -7,6 +7,7 @@ stock_contract = db.Table('stock_contract',
 )
 
 class Matchedstock(db.Model):
+    __tablename__ = 'matchedstock'
     Symbol = db.Column(db.String(10), nullable=False,primary_key=True)
     Full_Name = db.Column(db.String(100), nullable=False)
     Last_Sale = db.Column(db.Float, nullable=False)

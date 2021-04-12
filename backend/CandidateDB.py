@@ -7,6 +7,7 @@ cand_stock = db.Table('cand_stock',
 )
 
 class Candidate(db.Model):
+    __tablename__ = 'candidate'
     cand_crp_id = db.Column(db.String(9), primary_key=True)
     cand_firstname = db.Column(db.String(50), nullable=False)
     cand_lastname = db.Column(db.String(50), nullable=False)
@@ -23,6 +24,7 @@ class Candidate(db.Model):
         return f"Candidate('{self.cand_crp_id}', '{self.cand_firstname}', '{self.cand_lastname}')"
 
 class Contribution(db.Model):
+    __tablename__ = 'contribution'
     contrib_id = db.Column(db.String(150), primary_key=True)
     org_name = db.Column(db.String(100), nullable=False)
     total = db.Column(db.Float)
