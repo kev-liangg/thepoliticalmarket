@@ -18,6 +18,10 @@ import './ContractTable.css'
 import { ITableProps, kaReducer, Table } from 'ka-table';
 import { DataType, SortingMode } from 'ka-table/enums';
 import { DispatchFunc } from 'ka-table/types';
+import {
+  hideLoading, loadData, setSingleAction, showLoading, updateData,
+} from 'ka-table/actionCreators';
+import '../Components/table-style.css'
 
 const columns: GridColDef[] = [
   {
@@ -66,7 +70,7 @@ const columns: GridColDef[] = [
 
 const tablePropsInit: ITableProps = {
   columns: [
-    {key: 'id', title: 'View Contract', style: {width: 150, textAlign: 'center'}},
+    {key: 'id', title: 'Contract Page', style: {width: 150, textAlign: 'center'}},
     {key: 'contract_award_id', title: 'Award ID', dataType: DataType.String},
     {key: 'contract_recipient', title: 'Recipient', dataType: DataType.String},
     {key: 'contract_currentval', title: 'Contract Value', dataType: DataType.Number},
@@ -76,6 +80,11 @@ const tablePropsInit: ITableProps = {
     {key: 'contract_recipient_district', title: 'Congressional District', dataType: DataType.String},
   ],
   data: [],
+  loading: {
+    enabled: true
+  },
+  singleAction: loadData(),
+  sortingMode: SortingMode.MultipleTripleStateRemote,
   rowKeyField: 'id'
 }
 
@@ -99,6 +108,7 @@ function Contracts() {
   };
 
   useEffect(() => {
+    dispatch(showLoading());
     let query : any = {};
     let toFetch = url + `?page=${page}`;
     if (sortCol.length !== 0) {
@@ -113,14 +123,13 @@ function Contracts() {
       .then((response) => {
         console.log(toFetch);
         setData(response["objects"]);
-        setIsLoading(true);
+        // setIsLoading(true);
 
-        let newProps = tableProps;
-        newProps.data = response["objects"];
-        changeTableProps(newProps);
+        dispatch(updateData(response["objects"]))
 
         setNumResults(response["num_results"]);
         setNumPages(response["total_pages"]);
+        dispatch(hideLoading());
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
@@ -167,7 +176,7 @@ function Contracts() {
     
   }
 
-  return !isLoading && (
+  return (
     <> {
       <div>
         <div className = "wrapper">
@@ -199,42 +208,32 @@ function Contracts() {
           </Dropdown.Menu>
         </Dropdown>
         </div>
-          </div>
+        </div>
         
-        <div style={{ height: 800, width: '100%' }}>
-          {/* <DataGrid
-            rows={data}
-            columns={columns}
-            pageSize={10}
-            hideFooterPagination={true}
-            checkboxSelection
-            sortingMode="server"
-            filterMode="server"
-            onSortModelChange={handleSort}
-            onFilterModelChange={handleFilter}
-          /> */}
-              <Table
-                {...tableProps}
-                childComponents={{
-                  cellText: {
-                    content: (props) => {
-                      switch (props.column.key){
-                        case 'command1': return (           
+        <div>
+            <Table
+              {...tableProps}
+              childComponents={{
+                cellText: {
+                  // for id column in each row, make button to contract page
+                  content: (props) => {
+                    switch (props.column.key){
+                      case 'id': return (           
                         <Button
-                          component={Link} to={`/Contracts/1`}
+                          component={Link} to={`/Contracts/${props.rowData.id}`}
                           variant="contained"
                           color="primary"
                           size="small"
                           style={{ marginLeft: 16 }}>
                           Open
                         </Button>
-                        )
-                      }
+                      )
                     }
                   }
-                }}
-                dispatch={dispatch}
-              />
+                }
+              }}
+              dispatch={dispatch}
+            />
         </div>
         <h5>
         </h5>
