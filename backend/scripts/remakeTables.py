@@ -60,7 +60,22 @@
 # for i in range(len(df_cands)):
 #     df = df_cands.iloc[i]
 
-#     candidate = Candidate(cand_crp_id=df['cand_crp_id'], cand_firstname=df['cand_firstname'], cand_lastname=df['cand_lastname'], cand_party=df['cand_party'], cand_office=df['cand_office'], cand_state=df['cand_state'], cycle=df['cycle'], cand_image=df['cand_image'])
+#     cand_office = 'House'
+#     if df['cand_office'] == 's':
+#         cand_office = 'Senate'
+
+#     cand_party = 'Republican'
+#     if df['cand_party'] == 'D':
+#         cand_party = 'Democrat'
+#     if df['cand_party'] == 'I':
+#         cand_party = 'Independent'
+#     if df['cand_party'] == 'L':
+#         cand_party = 'Libertarian'
+
+#     cand_contribs = df_contribs[df_contribs['candidate_cand_crp_id'] == df['cand_crp_id']]
+#     total = cand_contribs['total'].sum()
+
+#     candidate = Candidate(cand_crp_id=df['cand_crp_id'], cand_firstname=df['cand_firstname'], cand_lastname=df['cand_lastname'], cand_party=cand_party, cand_office=cand_office, cand_state=df['cand_state'], cycle=df['cycle'], cand_image=df['cand_image'], total_received=total)
 
 #     db.session.add(candidate)
 
