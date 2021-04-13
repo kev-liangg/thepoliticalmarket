@@ -6,4 +6,5 @@ EXPOSE 3000
 COPY . .
 CMD yarn start
 
-# docker run -p 3000:3000 -t image_name
+# to access website on port 3000, make sure to include the port options:
+# docker run -p 3000:3000 -t your_image_name
