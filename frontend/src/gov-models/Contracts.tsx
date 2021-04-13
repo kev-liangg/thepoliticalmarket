@@ -14,6 +14,11 @@ import {
 } from '@material-ui/data-grid';
 import Dropdown from 'react-bootstrap/Dropdown'
 import './ContractTable.css'
+
+import { ITableProps, kaReducer, Table } from 'ka-table';
+import { DataType, SortingMode } from 'ka-table/enums';
+import { DispatchFunc } from 'ka-table/types';
+
 const columns: GridColDef[] = [
   {
     field: 'id', headerName: 'Contract Page', width: 150,
@@ -59,9 +64,25 @@ const columns: GridColDef[] = [
   }
 ];
 
+const tablePropsInit: ITableProps = {
+  columns: [
+    {key: 'id', title: 'View Contract', style: {width: 150, textAlign: 'center'}},
+    {key: 'contract_award_id', title: 'Award ID', dataType: DataType.String},
+    {key: 'contract_recipient', title: 'Recipient', dataType: DataType.String},
+    {key: 'contract_currentval', title: 'Contract Value', dataType: DataType.Number},
+    {key: 'contract_date', title: 'Award Date', dataType: DataType.String},
+    {key: 'contract_naics', title: 'NAICS', dataType: DataType.String},
+    {key: 'contract_sop', title: 'State', dataType: DataType.String},
+    {key: 'contract_recipient_district', title: 'Congressional District', dataType: DataType.String},
+  ],
+  data: [],
+  rowKeyField: 'id'
+}
+
 const url = "https://api.thepoliticalmarket.tech/v1/contract"
 
 function Contracts() {
+
   const cancel = ""
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState<GridRowsProp>([] as GridRowsProp);
@@ -71,6 +92,11 @@ function Contracts() {
   const [sortCol, setSortCol] = useState<GridSortModel>([{ field: 'id', sort: 'asc' }])
   const [filter, setFilter] = useState<GridFilterItem>();
   const [numResults, setNumResults] = useState(0);
+  const [tableProps, changeTableProps] = useState(tablePropsInit);
+
+  const dispatch: DispatchFunc = (action) => {
+    changeTableProps((prevState: ITableProps) => kaReducer(prevState, action));
+  };
 
   useEffect(() => {
     let query : any = {};
@@ -87,6 +113,12 @@ function Contracts() {
       .then((response) => {
         console.log(toFetch);
         setData(response["objects"]);
+        setIsLoading(true);
+
+        let newProps = tableProps;
+        newProps.data = response["objects"];
+        changeTableProps(newProps);
+
         setNumResults(response["num_results"]);
         setNumPages(response["total_pages"]);
         setIsLoading(false);
@@ -134,10 +166,8 @@ function Contracts() {
   const fetchSearchResults = (pageNumber = '',query : string) =>{
     
   }
-  if (isLoading) {
-    return <h2>Loading...</h2>
-  }
-  return (
+
+  return !isLoading && (
     <> {
       <div>
         <div className = "wrapper">
@@ -172,7 +202,7 @@ function Contracts() {
           </div>
         
         <div style={{ height: 800, width: '100%' }}>
-          <DataGrid
+          {/* <DataGrid
             rows={data}
             columns={columns}
             pageSize={10}
@@ -182,7 +212,29 @@ function Contracts() {
             filterMode="server"
             onSortModelChange={handleSort}
             onFilterModelChange={handleFilter}
-          />
+          /> */}
+              <Table
+                {...tableProps}
+                childComponents={{
+                  cellText: {
+                    content: (props) => {
+                      switch (props.column.key){
+                        case 'command1': return (           
+                        <Button
+                          component={Link} to={`/Contracts/1`}
+                          variant="contained"
+                          color="primary"
+                          size="small"
+                          style={{ marginLeft: 16 }}>
+                          Open
+                        </Button>
+                        )
+                      }
+                    }
+                  }
+                }}
+                dispatch={dispatch}
+              />
         </div>
         <h5>
         </h5>
@@ -193,6 +245,7 @@ function Contracts() {
       </h5>
       <Pagination 
           count = {numPages}
+          page={page} // need to preserve old page number on render reset
           onChange = {(event, page) => setPage(page)}
           showFirstButton
           showLastButton
