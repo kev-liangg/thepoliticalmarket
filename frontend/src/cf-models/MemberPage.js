@@ -81,6 +81,7 @@ const MemberPage = ({match}) => {
                   Office <br></br><br></br>
                   Party <br></br><br></br>
                   State <br></br><br></br>
+                  Total Received <br></br><br></br>
                 </div>
                 <div className="col-sm-8">
                   <br></br>
@@ -88,9 +89,10 @@ const MemberPage = ({match}) => {
                   {data.cand_firstname} <br></br><br></br>
                   {data.cand_lastname} <br></br><br></br>
                   {data.cand_crp_id} <br></br><br></br>
-                  {data.cand_office==='s'?'Senate':'House'} <br></br><br></br>
+                  {data.cand_office} <br></br><br></br>
                   {data.cand_party} <br></br><br></br>
                   {data.cand_state} <br></br><br></br>
+                  {data.total_received} <br></br><br></br>
                 </div>
               </div>
             </div>

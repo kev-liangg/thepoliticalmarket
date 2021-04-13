@@ -13,7 +13,7 @@ class Matchedstock(db.Model):
     Last_Sale = db.Column(db.Float, nullable=False)
     Net_Change = db.Column(db.Float, nullable=False)
     Percentage_Change = db.Column(db.String(10), nullable=False)
-    Market_Cap = db.Column(db.Integer, nullable=False)
+    Market_Cap = db.Column(db.BigInteger, nullable=False)
     Country = db.Column(db.String(30), nullable=False)
     IPO_Year = db.Column(db.Integer, nullable=False)
     Volume = db.Column(db.Integer, nullable=False)
