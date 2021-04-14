@@ -2,110 +2,87 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { Pagination } from "@material-ui/core";
-import {
-  DataGrid,
-  GridRowsProp,
-  GridColDef,
-  GridCellParams,
-  GridSortModel,
-  GridSortModelParams,
-  GridFilterItem,
-  GridFilterModelParams
-} from '@material-ui/data-grid';
 import Dropdown from 'react-bootstrap/Dropdown'
 import './ContractTable.css'
-const columns: GridColDef[] = [
-  {
-    field: 'id', headerName: 'Contract Page', width: 150,
-    renderCell: (params: GridCellParams) => (
-      <strong>
-        <Button
-          component={Link} to={`/Contracts/${params.value}`}
-          variant="contained"
-          color="primary"
-          size="small"
-          style={{ marginLeft: 16 }}>
-          Open
-        </Button>
-      </strong>
-    ),
+import '../Components/table-style.css'
+// import 'ka-table/style.css'
+
+import { ITableProps, kaReducer, Table } from 'ka-table';
+import { DataType, SortingMode } from 'ka-table/enums';
+import { DispatchFunc } from 'ka-table/types';
+import {
+  hideLoading, loadData, showLoading, updateData,
+} from 'ka-table/actionCreators';
+import { getSortedColumns } from 'ka-table/Utils/PropsUtils';
+
+
+const tablePropsInit: ITableProps = {
+  columns: [
+    {key: 'id', title: 'Contract Page', style: {width: 150, textAlign: 'center'}},
+    {key: 'contract_award_id', title: 'Award ID', dataType: DataType.String},
+    {key: 'contract_recipient', title: 'Recipient', dataType: DataType.String},
+    {key: 'contract_currentval', title: 'Contract Value', dataType: DataType.Number},
+    {key: 'contract_date', title: 'Award Date', dataType: DataType.String},
+    {key: 'contract_naics', title: 'NAICS', dataType: DataType.String},
+    {key: 'contract_sop', title: 'State', dataType: DataType.String},
+    {key: 'contract_recipient_district', title: 'Congressional District', dataType: DataType.String},
+  ],
+  data: [],
+  loading: {
+    enabled: true
   },
-  { field: 'contract_award_id', headerName: 'Award ID', width: 200 },
-  { field: 'contract_recipient', headerName: 'Recipient', width: 200 },
-  {
-    field: 'contract_currentval', headerName: 'Contract Value',
-    type: 'number',
-    width: 160,
-  },
-  {
-    field: 'contract_date',
-    headerName: 'Award Date',
-    width: 160,
-  },
-  {
-    field: 'contract_naics', headerName: 'NAICS',
-    type: 'string',
-    width: 150,
-  },
-  {
-    field: 'contract_sop',
-    headerName: 'State',
-    width: 160,
-  },
-  {
-    field: 'contract_recipient_district',
-    headerName: 'Congressional District',
-    width: 140
-  }
-];
+  sortingMode: SortingMode.MultipleTripleStateRemote,
+  rowKeyField: 'id'
+}
 
 const url = "https://api.thepoliticalmarket.tech/v1/contract"
 
 function Contracts() {
+
   const cancel = ""
   const [isLoading, setIsLoading] = useState(true);
-  const [data, setData] = useState<GridRowsProp>([] as GridRowsProp);
   const [page, setPage] = useState(1);
   const [numPages, setNumPages] = useState(0)
   const [searchTerm, setSearchTerm] = useState("");
-  const [sortCol, setSortCol] = useState<GridSortModel>([{ field: 'id', sort: 'asc' }])
-  const [filter, setFilter] = useState<GridFilterItem>();
   const [numResults, setNumResults] = useState(0);
+  const [tableProps, changeTableProps] = useState(tablePropsInit);
+
+  const dispatch: DispatchFunc = (action) => {
+    changeTableProps((prevState: ITableProps) => kaReducer(prevState, action));
+  };
 
   useEffect(() => {
+    // start loading animation
+    dispatch(showLoading());
+
     let query : any = {};
     let toFetch = url + `?page=${page}`;
-    if (sortCol.length !== 0) {
-      query.order_by = [{ field: sortCol[0].field, direction: sortCol[0].sort }];
-    }
-    if (typeof filter !== "undefined" && filter.value) {
-      query.filters = constructFilter(filter);
+    let sorts = getSortedColumns(tableProps);
+    if (sorts.length !== 0) {
+      query.order_by = sorts.map(c => ({ 
+        field: c.key, 
+        direction: c.sortDirection == 'ascend' ? 'asc' : 'desc' 
+      }));
     }
     toFetch = toFetch + `&q=${JSON.stringify(query)}`;
     fetch(toFetch, {})
       .then((res) => res.json())
       .then((response) => {
         console.log(toFetch);
-        setData(response["objects"]);
+        // setIsLoading(true);
+
+        dispatch(updateData(response["objects"]))
         setNumResults(response["num_results"]);
         setNumPages(response["total_pages"]);
+
+        // finished loading all data, components updated
+        dispatch(hideLoading());
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, [page, sortCol, filter]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [page, tableProps.columns]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // function to handle server-side sort
-  const handleSort = (params: GridSortModelParams) => {
-    if (params.sortModel !== sortCol) {
-      setSortCol(params.sortModel);
-    }
-  };
-
-  const handleFilter = (params: GridFilterModelParams) => {
-    setFilter(params.filterModel.items[0]);
-  };
-
-  const constructFilter = (item: GridFilterItem) => {
+  const constructFilter = (item : any) => {
     let filter : any = {name: item.columnField};
     switch (item.operatorValue) {
       case "contains":
@@ -134,9 +111,10 @@ function Contracts() {
   const fetchSearchResults = (pageNumber = '',query : string) =>{
     
   }
+
   if (isLoading) {
     return <h2>Loading...</h2>
-  }
+  } 
   return (
     <> {
       <div>
@@ -169,30 +147,44 @@ function Contracts() {
           </Dropdown.Menu>
         </Dropdown>
         </div>
-          </div>
+        </div>
         
-        <div style={{ height: 800, width: '100%' }}>
-          <DataGrid
-            rows={data}
-            columns={columns}
-            pageSize={10}
-            hideFooterPagination={true}
-            checkboxSelection
-            sortingMode="server"
-            filterMode="server"
-            onSortModelChange={handleSort}
-            onFilterModelChange={handleFilter}
-          />
+        <div>
+            <Table
+              {...tableProps}
+              childComponents={{
+                cellText: {
+                  // for id column in each row, make button to contract page
+                  content: (props) => {
+                    switch (props.column.key){
+                      case 'id': return (           
+                        <Button
+                          component={Link} to={`/Contracts/${props.rowData.id}`}
+                          variant="contained"
+                          color="primary"
+                          size="small"
+                          style={{ marginLeft: 16 }}>
+                          Open
+                        </Button>
+                      )
+                    }
+                  }
+                }
+              }}
+              dispatch={dispatch}
+            />
         </div>
         <h5>
         </h5>
       <div>
       Number of Instances: {numResults}
+      <div>Sorted Columns: {getSortedColumns(tableProps).map(c => `${c.key}: ${c.sortDirection}; `)}</div>
       </div>
       <h5>
       </h5>
       <Pagination 
           count = {numPages}
+          page={page} // need to preserve old page number on render reset
           onChange = {(event, page) => setPage(page)}
           showFirstButton
           showLastButton

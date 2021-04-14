@@ -7520,6 +7520,11 @@ jss@10.6.0, jss@^10.0.3:
     array-includes "^3.1.2"
     object.assign "^4.1.2"
 
+ka-table@^6.8.2:
+  version "6.8.2"
+  resolved "https://registry.yarnpkg.com/ka-table/-/ka-table-6.8.2.tgz#ddf53ec2bcf354dc97b91a79fca69ab4cace5e5d"
+  integrity sha512-CrnMfsAc9n52swUvjI7JMudpBqWZzm7uaTP/Vge7PmE6mSWZKylss0gSGHd+XdeUmRRHIdjI9lxuyxEArHEAbw==
+
 killable@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"
