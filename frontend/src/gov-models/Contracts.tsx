@@ -2,16 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { Pagination } from "@material-ui/core";
-import {
-  DataGrid,
-  GridRowsProp,
-  GridColDef,
-  GridCellParams,
-  GridSortModel,
-  GridSortModelParams,
-  GridFilterItem,
-  GridFilterModelParams
-} from '@material-ui/data-grid';
 import Dropdown from 'react-bootstrap/Dropdown'
 import './ContractTable.css'
 import '../Components/table-style.css'
@@ -21,7 +11,7 @@ import { ITableProps, kaReducer, Table } from 'ka-table';
 import { DataType, SortingMode } from 'ka-table/enums';
 import { DispatchFunc } from 'ka-table/types';
 import {
-  hideLoading, loadData, setSingleAction, showLoading, updateData,
+  hideLoading, loadData, showLoading, updateData,
 } from 'ka-table/actionCreators';
 import { getSortedColumns } from 'ka-table/Utils/PropsUtils';
 
@@ -41,7 +31,6 @@ const tablePropsInit: ITableProps = {
   loading: {
     enabled: true
   },
-  singleAction: loadData(),
   sortingMode: SortingMode.MultipleTripleStateRemote,
   rowKeyField: 'id'
 }
@@ -55,7 +44,6 @@ function Contracts() {
   const [page, setPage] = useState(1);
   const [numPages, setNumPages] = useState(0)
   const [searchTerm, setSearchTerm] = useState("");
-  const [filter, setFilter] = useState<GridFilterItem>();
   const [numResults, setNumResults] = useState(0);
   const [tableProps, changeTableProps] = useState(tablePropsInit);
 
@@ -64,7 +52,9 @@ function Contracts() {
   };
 
   useEffect(() => {
+    // start loading animation
     dispatch(showLoading());
+
     let query : any = {};
     let toFetch = url + `?page=${page}`;
     let sorts = getSortedColumns(tableProps);
@@ -74,9 +64,6 @@ function Contracts() {
         direction: c.sortDirection == 'ascend' ? 'asc' : 'desc' 
       }));
     }
-    if (typeof filter !== "undefined" && filter.value) {
-      query.filters = constructFilter(filter);
-    }
     toFetch = toFetch + `&q=${JSON.stringify(query)}`;
     fetch(toFetch, {})
       .then((res) => res.json())
@@ -85,21 +72,17 @@ function Contracts() {
         // setIsLoading(true);
 
         dispatch(updateData(response["objects"]))
-
         setNumResults(response["num_results"]);
         setNumPages(response["total_pages"]);
+
+        // finished loading all data, components updated
         dispatch(hideLoading());
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, [page, filter, tableProps.columns]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [page, tableProps.columns]); // eslint-disable-line react-hooks/exhaustive-deps
 
-
-  const handleFilter = (params: GridFilterModelParams) => {
-    setFilter(params.filterModel.items[0]);
-  };
-
-  const constructFilter = (item: GridFilterItem) => {
+  const constructFilter = (item : any) => {
     let filter : any = {name: item.columnField};
     switch (item.operatorValue) {
       case "contains":
@@ -129,6 +112,9 @@ function Contracts() {
     
   }
 
+  if (isLoading) {
+    return <h2>Loading...</h2>
+  } 
   return (
     <> {
       <div>
