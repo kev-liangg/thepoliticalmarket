@@ -28,8 +28,8 @@ class TestBackend(TestCase):
             data["cand_image"]
             == "https://www.govtrack.us/static/legislator-photos/400251-200px.jpeg"
         )
-        assert data["cand_office"] == "r"
-        assert data["cand_party"] == "D"
+        assert data["cand_office"] == "House"
+        assert data["cand_party"] == "Democrat"
         assert data["cand_state"] == "NY"
         assert data["cycle"] == 2020
 
@@ -47,7 +47,7 @@ class TestBackend(TestCase):
         assert data["IPO_Year"] == 1980
         assert data["Industry"] == "Computer Manufacturing"
         assert data["Last_Sale"] == 123.01
-        assert data["Market_Cap"] == 2130000000
+        assert data["Market_Cap"] == 2130000000000
         assert data["Net_Change"] == -2.56
         assert data["Orgname"] == "Apple Inc"
         assert data["Percentage_Change"] == "-2.04%"

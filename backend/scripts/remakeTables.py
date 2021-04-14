@@ -1,8 +1,11 @@
 # import pandas as pd 
-# from app import Candidate, Contribution, Matchedstock, Contract
-# from app import db
+# from CandidateDB import Candidate, Contribution
+# from StockDB import Matchedstock
+# from ContractDB import Contract
+# from init import db
 
-# Exported database tables into csvs, df_states is just csv of states and their codes
+# db.create_all()
+# # Exported database tables into csvs, df_states is just csv of states and their codes
 # df_states = pd.read_csv(r'./states.csv')
 # df_cands = pd.read_csv(r'./candidateTable.csv', sep=';')
 # df_contribs = pd.read_csv(r'./contributionTable.csv', sep=';')
@@ -30,11 +33,13 @@
 #     df = df_contracts.iloc[i]
 
 #     contract = Contract(id = df['id'], contract_award_id = df['contract_award_id'], contract_parentagency = df['contract_parentagency'], contract_currentval = df['contract_currentval'],
-#     contract_recipient = df['contract_recipient'], contract_naics = df['contract_naics'], contract_sop = df['contract_sop'], contract_recipient_district = df['contract_recipient_district'],
+#     contract_recipient = df['contract_recipient'], contract_naics = int(df['contract_naics']), contract_sop = df['contract_sop'], contract_recipient_district = df['contract_recipient_district'],
 #     contract_date = df['contract_date'], contract_recipient_address = df['contract_recipient_address'], contract_stateflag = df['contract_stateflag'], contract_agencylogo = df['contract_agencylogo'],
 #     contract_naics_description = df['contract_naics_description'],contract_award_description = df['contract_award_description'] )
     
 #     db.session.add(contract)
+
+#     db.session.commit()
 
 # db.session.commit()
 
@@ -55,7 +60,22 @@
 # for i in range(len(df_cands)):
 #     df = df_cands.iloc[i]
 
-#     candidate = Candidate(cand_crp_id=df['cand_crp_id'], cand_firstname=df['cand_firstname'], cand_lastname=df['cand_lastname'], cand_party=df['cand_party'], cand_office=df['cand_office'], cand_state=df['cand_state'], cycle=df['cycle'], cand_image=df['cand_image'])
+#     cand_office = 'House'
+#     if df['cand_office'] == 's':
+#         cand_office = 'Senate'
+
+#     cand_party = 'Republican'
+#     if df['cand_party'] == 'D':
+#         cand_party = 'Democrat'
+#     if df['cand_party'] == 'I':
+#         cand_party = 'Independent'
+#     if df['cand_party'] == 'L':
+#         cand_party = 'Libertarian'
+
+#     cand_contribs = df_contribs[df_contribs['candidate_cand_crp_id'] == df['cand_crp_id']]
+#     total = cand_contribs['total'].sum()
+
+#     candidate = Candidate(cand_crp_id=df['cand_crp_id'], cand_firstname=df['cand_firstname'], cand_lastname=df['cand_lastname'], cand_party=cand_party, cand_office=cand_office, cand_state=df['cand_state'], cycle=df['cycle'], cand_image=df['cand_image'], total_received=total)
 
 #     db.session.add(candidate)
 

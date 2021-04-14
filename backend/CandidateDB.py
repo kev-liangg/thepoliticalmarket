@@ -7,14 +7,16 @@ cand_stock = db.Table('cand_stock',
 )
 
 class Candidate(db.Model):
+    __tablename__ = 'candidate'
     cand_crp_id = db.Column(db.String(9), primary_key=True)
     cand_firstname = db.Column(db.String(50), nullable=False)
     cand_lastname = db.Column(db.String(50), nullable=False)
-    cand_party = db.Column(db.String(1), nullable=False)
-    cand_office = db.Column(db.String(1), nullable=False)
+    cand_party = db.Column(db.String(20), nullable=False)
+    cand_office = db.Column(db.String(10), nullable=False)
     cand_state = db.Column(db.String(2), nullable=False)
     cycle = db.Column(db.Integer, nullable=False)
     cand_image = db.Column(db.String(100), nullable=False, default='blank-profile3x2.png')
+    total_received = db.Column(db.Float, nullable=False)
     contributions = db.relationship('Contribution', backref='recipient', lazy=True)
 
     stocks_in_state = db.relationship('Matchedstock', secondary=cand_stock, backref=db.backref('cands_in_state', lazy='dynamic'))
@@ -23,6 +25,7 @@ class Candidate(db.Model):
         return f"Candidate('{self.cand_crp_id}', '{self.cand_firstname}', '{self.cand_lastname}')"
 
 class Contribution(db.Model):
+    __tablename__ = 'contribution'
     contrib_id = db.Column(db.String(150), primary_key=True)
     org_name = db.Column(db.String(100), nullable=False)
     total = db.Column(db.Float)
