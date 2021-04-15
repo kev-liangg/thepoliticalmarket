@@ -11,7 +11,7 @@ import diyuan from "./diyuan.png"
 
 const cardStyle = {
     'backgroundColor': '#82b3c9', 
-    'width': '13.5rem', 
+    'width': '16.5rem', 
     'margin':'0.25rem'
 }
 
