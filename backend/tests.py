@@ -2,7 +2,7 @@
 from unittest import main, TestCase
 import requests
 import csv
-import pandas as pd
+
 
 
 class TestBackend(TestCase):
