@@ -194,7 +194,7 @@ class About extends Component {
                             </p>
                         </div>
                         <h1>Team Members</h1>
-                        <div className="row">
+                        <div className="row justify-content-center">
                             
                             <div className='card' style={cardStyle}>
                             <img className="card-img-top" src={vaishnav} alt=""></img>
