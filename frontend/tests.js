@@ -68,6 +68,19 @@ test('render stock model page', async () => {
     expect(screen.getByText("Symbol")).toBeInTheDocument();
 });
 
+test('render stock model instance page', async () => {
+    global.fetch = jest.fn(() => Promise.resolve({
+        json: () => Promise.resolve({objects: []})
+    }));
+
+    await act(async () => {
+        render(<StockPage />);
+    });
+
+    expect(screen.getByText("Contracts Performed in TX")).toBeInTheDocument();
+    expect(screen.getByText("Congress Politicians in TX")).toBeInTheDocument();
+});
+
 test('render candidate model page', async () => {
     global.fetch = jest.fn(() => Promise.resolve({
         json: () => Promise.resolve({objects: []})
