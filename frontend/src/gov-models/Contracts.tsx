@@ -53,6 +53,7 @@ function Contracts() {
 
   useEffect(() => {
     // start loading animation
+    
     dispatch(showLoading());
 
     let query : any = {};

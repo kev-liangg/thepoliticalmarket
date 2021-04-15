@@ -10,7 +10,7 @@ import { DataGrid,
          GridSortModelParams } from '@material-ui/data-grid';
 
 const columns: GridColDef[] = [
-    { field: 'id', headerName: 'Index', width: 100,
+    { field: 'id', headerName: 'StockPage', width: 130,
     renderCell: (params: GridCellParams) => (
       <strong>
         <Button
@@ -23,7 +23,9 @@ const columns: GridColDef[] = [
         </Button>
       </strong>
     ),},
-    { field: 'Symbol', headerName: 'Symbol', width: 100 },
+    { field: 'Symbol', headerName: 'Symbol', width: 130 
+  
+  },
     // { field: 'contract_recipient', headerName: 'Recipient', width: 200, 
     // renderCell: (params: GridCellParams) => (
     //   <strong>
@@ -53,7 +55,7 @@ const columns: GridColDef[] = [
 
     {
       field: 'Market_Cap',
-      headerName: 'Market Capacity (k)',
+      headerName: 'Market Capacity',
       type: 'number',
       width: 200,
     },
