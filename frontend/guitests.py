@@ -1,6 +1,6 @@
 from splinter import Browser
 import unittest
-class GUIHarness(unittest.TestCase):
+class GUIHaResourceWarning: unclosed file <_io.TextIOWrapper name='stockinstancestest.csv' mode='r' encoding='UTF-8'>rness(unittest.TestCase):
     def test_title(self):
         browser = Browser('chrome')
         browser.visit('https://www.thepoliticalmarket.tech/')
