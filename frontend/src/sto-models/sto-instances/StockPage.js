@@ -2,8 +2,47 @@ import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom"
 import StateMap from "../../Components/StateMap";
 
+
+
+
+
 function getRandomColor () {
-  return '#'+(Math.random()*0xffffff<<0).toString(16); 
+  var x = (Math.random()*0.3)*0xffffff<<0;
+ 
+  var contrastFactor = 80;
+
+  // smaller number, bigger contrast.
+
+  var r = Math.random()*contrastFactor + 16;
+  var g = Math.random()*contrastFactor + 16;
+  var b = Math.random()*contrastFactor + 16;
+
+  var lighterFix = 32;
+
+  // bigger number, brighter text
+
+  var dark =
+  Math.floor(r +lighterFix).toString(16) +
+  Math.floor(g+lighterFix).toString(16) +
+  Math.floor(b+lighterFix).toString(16);
+   // + 16 to prevent any chanels of the color overflow
+
+
+  var reverse = 
+  Math.floor(256 - r +16).toString(16) +
+  Math.floor(256 - g +16).toString(16) +
+  Math.floor(256 - b +16).toString(16);
+
+  return new Array(reverse,dark);
+}
+
+
+function getDarkColor() {
+  return '#' + getRandomColor()[1];
+}
+
+function getBrightColor() {
+  return '#' + getRandomColor()[0];
 }
 
 const StockPage = ({match}) => {
@@ -29,41 +68,45 @@ const StockPage = ({match}) => {
       return <h2>Loading...</h2>
     }
     return (
+          
           <div className = "container">
             <div className='row'>
-              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
+              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
                 <h1> Symbol: {data.Symbol}</h1>
               </div>
-              <div className="col-sm-5" style={{'textAlign':'center','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
+              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
                 <h3>Full Name: {data.Full_Name}</h3>
               </div>
               <br></br>
-              <div className="col-sm-4" style={{'textAlign':'left','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
+              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
                 <h3>Last Sale: {data.Last_Sale}</h3>
               </div>
-              <div className="col-sm-6" style={{'textAlign':'left','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
+              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
                 <h3>Net Change: {data.Net_Change}%</h3></div>
-              <div className="col-sm-8" style={{'textAlign':'left','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
-                <h2>Market Cap (k): {data.Market_Cap}</h2></div> <h2>Volume: {data.Volume}</h2>
-                <h3>Sector: {data.Sector}</h3><br></br>
-              <div className="col-sm-8" style={{'textAlign':'right','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
+              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
+                <h2>Market Cap: {data.Market_Cap}</h2></div> 
+              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
+                <h2>Volume: {data.Volume}</h2></div>
+
+              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
+                <h3>Sector: {data.Sector}</h3></div>
+    
+              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
                 <h2>Industry: {data.Industry}</h2>
               </div>
-              <div className="col-sm-2" style={{'textAlign':'right','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
-                <h2>Country:</h2>
+              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
+                <h2>Country: {data.Country}</h2>
               </div> 
-              <h2>{data.Country}</h2>
-              
-              <div className="col-sm-9" style={{'textAlign':'left','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
+              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
                 <h2>State: {data.State}</h2>
               </div>
-              <div className="col-sm-7" style={{'textAlign':'left','backgroundColor':getRandomColor(), 'color':getRandomColor()}}>
+              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
                 <h2>IPO Year: {data.IPO_Year}</h2>
               </div>
             </div>
             <br></br>
             <h2>Stock Prices for the 2020 Cycle (2018-2020)</h2>
-            <iframe title='chart' frameBorder='0' scrolling='no' width='800' height='420' src={'https://api.stockdio.com/visualization/financial/charts/v1/HistoricalPrices?app-key=A184C371FC7341B4BFFA592228916F4A&symbol='+data.Symbol+'&days=730&dividends=true&splits=true&palette=Financial-Light'}>
+            <iframe title='chart' frameBorder='0' scrolling='no' width='930' height='420' src={'https://api.stockdio.com/visualization/financial/charts/v1/HistoricalPrices?app-key=A184C371FC7341B4BFFA592228916F4A&symbol='+data.Symbol+'&days=730&dividends=true&splits=true&palette=Financial-Light'}>
             </iframe>
             <StateMap state={data.State} />
             <br></br>
@@ -94,17 +137,15 @@ const StockPage = ({match}) => {
               </div>
             </div>
             <div className="row">
-              <div className="col-sm-6" style={{'textAlign':'left','backgroundColor':getRandomColor()}}>
-                <Link to=".">  <h2>Back to StockModel</h2></Link>
+              <div className="col-sm-12" style={{'textAlign':'left'}}>
+                <Link to=".">  <h3>Back to StockModel</h3></Link>
               </div>
-            </div>
-            <div className="row">
-              <div className="col-sm-9" style={{'textAlign':'center','backgroundColor':getRandomColor()}}>
-                <Link to="/">  <h2>Back to homepage</h2></Link>
+              <div className="col-sm-6" style={{'textAlign':'left'}}>
+                <Link to="/">  <h3>Back to homepage</h3></Link>
               </div>
             </div>
           </div>
-        
+          
     );
 }
 export default StockPage;

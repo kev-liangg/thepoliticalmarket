@@ -15,6 +15,10 @@ import {
 } from 'ka-table/actionCreators';
 import { getSortedColumns } from 'ka-table/Utils/PropsUtils';
 
+import FilterControl from 'react-filter-control';
+import { IFilterControlFilterValue } from 'react-filter-control/interfaces';
+import { fields, groups } from './ContractFilter'
+
 
 const tablePropsInit: ITableProps = {
   columns: [
@@ -35,6 +39,11 @@ const tablePropsInit: ITableProps = {
   rowKeyField: 'id'
 }
 
+export const filter: IFilterControlFilterValue = {
+  groupName: 'and',
+  items: []
+};
+
 const url = "https://api.thepoliticalmarket.tech/v1/contract"
 
 function Contracts() {
@@ -43,6 +52,7 @@ function Contracts() {
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [numPages, setNumPages] = useState(0)
+  const [filterValue, setFilterValue] = useState(filter);
   const [searchTerm, setSearchTerm] = useState("");
   const [numResults, setNumResults] = useState(0);
   const [tableProps, changeTableProps] = useState(tablePropsInit);
@@ -53,17 +63,28 @@ function Contracts() {
 
   useEffect(() => {
     // start loading animation
+    
     dispatch(showLoading());
 
     let query : any = {};
+
+    // process pagination
     let toFetch = url + `?page=${page}`;
+
+    // process (multi)sort field of query
     let sorts = getSortedColumns(tableProps);
     if (sorts.length !== 0) {
       query.order_by = sorts.map(c => ({ 
         field: c.key, 
-        direction: c.sortDirection == 'ascend' ? 'asc' : 'desc' 
+        direction: c.sortDirection === 'ascend' ? 'asc' : 'desc' 
       }));
     }
+
+    // process filtering field of query
+    console.log(filterValue);
+    query.filters = [{[filterValue.groupName]: filterValue.items.map(makeFilter)}]
+
+    // apply entire query to URL and fetch
     toFetch = toFetch + `&q=${JSON.stringify(query)}`;
     fetch(toFetch, {})
       .then((res) => res.json())
@@ -80,32 +101,26 @@ function Contracts() {
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, [page, tableProps.columns]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [page, tableProps.columns, filterValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const constructFilter = (item : any) => {
-    let filter : any = {name: item.columnField};
-    switch (item.operatorValue) {
-      case "contains":
-        filter.op="like";
-        filter.val="%"+item.value+"%";  // any characters before or after
-        break;
-      case "equals":
-        filter.op="like";
-        filter.val=item.value           // must contain exact value
-        break;
-      case "starts_with":
-        filter.op="like";
-        filter.val=item.value+"%";      // any characters after only
-        break;
-      case "ends_with":
-        filter.op="like"
-        filter.val="%"+item.value;      // any characters before only
-        break;
-      default:
-        filter.op=undefined;
-        filter.val=undefined;
+  const makeFilter = (item : any) : any => {
+    if (item.groupName !== undefined) {
+      return {[item.groupName]: item.items.map(makeFilter)};
     }
-    return [filter];
+    let ret : any = {};
+    ret.name = item.field;
+    ret.op = item.operator;
+    if (ret.op === 'like' || ret.op === 'not_like') {
+      ret.val = '%'+item.value+'%';
+    }
+    else {
+      ret.val = item.value;
+    }
+    return ret;
+  }
+
+  const handleFilter = (newFilterValue: IFilterControlFilterValue) => {
+    setFilterValue(newFilterValue);
   }
 
   const fetchSearchResults = (pageNumber = '',query : string) =>{
@@ -148,7 +163,10 @@ function Contracts() {
         </Dropdown>
         </div>
         </div>
-        
+        <div>
+          <FilterControl {...{fields, groups, filterValue, 
+            onFilterValueChanged: handleFilter}} />
+        </div>
         <div>
             <Table
               {...tableProps}
