@@ -15,6 +15,10 @@ import {
 } from 'ka-table/actionCreators';
 import { getSortedColumns } from 'ka-table/Utils/PropsUtils';
 
+import FilterControl from 'react-filter-control';
+import { IFilterControlFilterValue } from 'react-filter-control/interfaces';
+import { fields, groups } from './ContractFilter'
+
 
 const tablePropsInit: ITableProps = {
   columns: [
@@ -35,6 +39,11 @@ const tablePropsInit: ITableProps = {
   rowKeyField: 'id'
 }
 
+export const filter: IFilterControlFilterValue = {
+  groupName: 'and',
+  items: []
+};
+
 const url = "https://api.thepoliticalmarket.tech/v1/contract"
 
 function Contracts() {
@@ -43,6 +52,7 @@ function Contracts() {
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [numPages, setNumPages] = useState(0)
+  const [filterValue, setFilterValue] = useState(filter);
   const [searchTerm, setSearchTerm] = useState("");
   const [numResults, setNumResults] = useState(0);
   const [tableProps, changeTableProps] = useState(tablePropsInit);
@@ -56,14 +66,23 @@ function Contracts() {
     dispatch(showLoading());
 
     let query : any = {};
+
+    // process pagination
     let toFetch = url + `?page=${page}`;
+
+    // process (multi)sort field of query
     let sorts = getSortedColumns(tableProps);
     if (sorts.length !== 0) {
       query.order_by = sorts.map(c => ({ 
         field: c.key, 
-        direction: c.sortDirection == 'ascend' ? 'asc' : 'desc' 
+        direction: c.sortDirection === 'ascend' ? 'asc' : 'desc' 
       }));
     }
+
+    // process filtering field of query
+
+
+    // apply entire query to URL and fetch
     toFetch = toFetch + `&q=${JSON.stringify(query)}`;
     fetch(toFetch, {})
       .then((res) => res.json())
@@ -108,6 +127,10 @@ function Contracts() {
     return [filter];
   }
 
+  const handleFilter = (newFilterValue: IFilterControlFilterValue) => {
+    setFilterValue(newFilterValue);
+  }
+
   const fetchSearchResults = (pageNumber = '',query : string) =>{
     
   }
@@ -148,7 +171,10 @@ function Contracts() {
         </Dropdown>
         </div>
         </div>
-        
+        <div>
+          <FilterControl {...{fields, groups, filterValue, 
+            onFilterValueChanged: handleFilter}} />
+        </div>
         <div>
             <Table
               {...tableProps}
