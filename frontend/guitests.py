@@ -5,45 +5,37 @@ class GUIHarness(unittest.TestCase):
         browser = Browser('chrome')
         browser.visit('https://www.thepoliticalmarket.tech/')
         title = browser.title
-        browser.quit()
         self.assertEqual(title, 'The Political Market')
     def test_url(self):
         browser = Browser('chrome')
         browser.visit('https://www.thepoliticalmarket.tech/')
         title = browser.title
-        browser.quit()
-        self.assertEqual(title, 'The Political Market')
+        self.assertTrue(browser.is_text_present("The Political Market"))
     def test_navBarLinks(self):
         browser = Browser('chrome')
         browser.visit('https://www.thepoliticalmarket.tech/')
-        link = browser.links.find_by_href('http://thepoliticalmarket.tech/Contracts')
-        browser.quit()
-        self.assertEqual(link, 'http://thepoliticalmarket.tech/Contracts')
+        browser.click_link_by_text('Contracts')
+        self.assertEqual(browser.url, 'https://www.thepoliticalmarket.tech/Contracts')
     def test_contractsTest(self):
         browser = Browser('chrome')
         browser.visit('https://www.thepoliticalmarket.tech/Contracts')
         text = browser.find_by_text('Contract Page')
-        browser.quit()
-        self.assertEqual(text, 'Contract Page') 
+        self.assertTrue(browser.is_text_present("Contract Page")) 
     def test_politiciansTest(self):
         browser = Browser('chrome')
         browser.visit('https://www.thepoliticalmarket.tech/CampFin')
         text = browser.find_by_text('OpenSecrets ID')
-        browser.quit()
-        self.assertEqual(text, 'OpenSecrets ID')
+        self.assertTrue(browser.is_text_present("OpenSecrets ID")) 
     def test_stocksTest(self):
         browser = Browser('chrome')
         browser.visit('https://www.thepoliticalmarket.tech/Stocks')
         text = browser.find_by_text('Symbol')
-        browser.quit()
-        self.assertEqual(text, 'Symbol')    
+        self.assertTrue(browser.is_text_present("Symbol")) 
     def test_aboutPage(self):
         browser = Browser('chrome')
         browser.visit('https://www.thepoliticalmarket.tech/about')
-        text = browser.find_by_text('Members')
-        browser.quit()
-        self.assertEqual(text, 'Members')
-
+        text = browser.find_by_text('Team Members')
+        self.assertTrue(browser.is_text_present("Team Members"))
 
 
 if __name__ == '__main__':
