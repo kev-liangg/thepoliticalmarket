@@ -43,6 +43,15 @@ class GUIHarness(unittest.TestCase):
         text = browser.find_by_text('Members')
         browser.quit()
         self.assertEqual(text, 'Members')
+    def test_stockInstancePage1(self):
+        browser = Browser('chrome')
+        browser.visit('https://www.thepoliticalmarket.tech/Stocks/AAL')
+        text1 = browser.find_by_text('American Airlines Group Inc. Common Stock')
+        text2 = browser.find_by_text('Contracts Performed in TX')
+        browser.quit()
+        self.assertEqual(text1, 'American Airlines Group Inc. Common Stock')
+        self.assertEqual(text2, 'Contracts Performed in TX')
+
 
 
 
