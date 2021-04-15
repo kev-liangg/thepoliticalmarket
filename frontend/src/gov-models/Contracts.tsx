@@ -80,7 +80,8 @@ function Contracts() {
     }
 
     // process filtering field of query
-
+    console.log(filterValue);
+    query.filters = [{[filterValue.groupName]: filterValue.items.map(makeFilter)}]
 
     // apply entire query to URL and fetch
     toFetch = toFetch + `&q=${JSON.stringify(query)}`;
@@ -99,32 +100,22 @@ function Contracts() {
         setIsLoading(false);
       })
       .catch((error) => console.log(error));
-  }, [page, tableProps.columns]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [page, tableProps.columns, filterValue]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const constructFilter = (item : any) => {
-    let filter : any = {name: item.columnField};
-    switch (item.operatorValue) {
-      case "contains":
-        filter.op="like";
-        filter.val="%"+item.value+"%";  // any characters before or after
-        break;
-      case "equals":
-        filter.op="like";
-        filter.val=item.value           // must contain exact value
-        break;
-      case "starts_with":
-        filter.op="like";
-        filter.val=item.value+"%";      // any characters after only
-        break;
-      case "ends_with":
-        filter.op="like"
-        filter.val="%"+item.value;      // any characters before only
-        break;
-      default:
-        filter.op=undefined;
-        filter.val=undefined;
+  const makeFilter = (item : any) : any => {
+    if (item.groupName !== undefined) {
+      return {[item.groupName]: item.items.map(makeFilter)};
     }
-    return [filter];
+    let ret : any = {};
+    ret.name = item.field;
+    ret.op = item.operator;
+    if (ret.op === 'like' || ret.op === 'not_like') {
+      ret.val = '%'+item.value+'%';
+    }
+    else {
+      ret.val = item.value;
+    }
+    return ret;
   }
 
   const handleFilter = (newFilterValue: IFilterControlFilterValue) => {
