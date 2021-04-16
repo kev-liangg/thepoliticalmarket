@@ -26,9 +26,15 @@ frontend:
     - yarn install --cache-folder .yarn --frozen-lockfile
     - yarn lint
     - yarn test --verbose
+    only:
+        refs:
+            - merge_requests
+        changes:
+            - frontend/**/*
 
 postman:
     image: node:14.16.0
+    cache: {}
     script:
     - npm install -g newman
     - newman --version
@@ -48,3 +54,16 @@ backend:
       fi
     - source localvenv/bin/activate
     - pytest -v
+    only:
+        refs:
+            - merge_requests
+        changes:
+            - backend/**/*
+
+gui_tests:
+    image: burningion/firefox-splinter-scraper
+    script:
+    - cd frontend
+    - apt-get install python3
+    - python3 guitests.py
+
