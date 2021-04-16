@@ -63,5 +63,5 @@ gui_tests:
     - apt-get update -qy && apt-get install -y google-chrome-stable
     - pip3 install pipenv
     - cd frontend
-    - pipenv install --system
+    - pipenv install
     - python3 guitests.py
