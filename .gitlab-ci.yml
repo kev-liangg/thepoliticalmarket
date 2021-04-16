@@ -50,7 +50,7 @@ backend:
     - pytest -v
 
 gui_tests:
-    image: python: 3.9.4
+    image: python:3.9.4
     script:
     - cd frontend
     - pip install splinter
