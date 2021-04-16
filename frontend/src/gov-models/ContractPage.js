@@ -94,9 +94,21 @@ const ContractPage = ({match}) => {
                 <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
                 {
                   data.stocks_in_state.slice(0,5).map((stock)=>{
-                    return <li>
-                            <Link to={`/Stocks/${stock.Symbol}`}> {stock.Full_Name} </Link>
-                          </li>;
+                    return <tr>
+                          <td>
+                          <Link to={`/Stocks/${stock.Symbol}`}>{stock.Full_Name} </Link>
+                          </td>
+                          <td>
+                          <Button
+                        component={Link} to={`/Stocks/${stock.Symbol}`}
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        style={{ marginLeft: 16 }}>
+                        Page
+                      </Button>
+                          </td>
+                        </tr>;
                   })
                 }
                 </ul>
