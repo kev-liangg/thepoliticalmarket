@@ -5,9 +5,9 @@ import Button from 'react-bootstrap/Button'
 // import blank_profile from "./blank-profile.png"
 import vaishnav from "./Vaishnav.png"
 import kevinl from "./kevin.png"
-import kevinc from "./kevinchen.jpeg"
+import kevinc from "./kevinchen.jpeg" 
 import anisha from "./anisha.png"
-import diyuan from "./diyuan.png"
+import diyuan from "./diyuan.png" 
 import { BsChevronCompactDown } from 'react-icons/all';
 const cardStyle = {
     'backgroundColor': '#82b3c9', 
