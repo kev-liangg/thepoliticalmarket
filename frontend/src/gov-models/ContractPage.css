@@ -12,3 +12,12 @@ img{
     margin-right: auto;
     width: 50%;
 }
+body {
+    overflow-x: hidden;
+    }
+.container {
+  max-width: 100%  
+}
+li{
+    font-size: large;
+}

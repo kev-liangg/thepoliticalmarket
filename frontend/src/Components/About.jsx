@@ -5,14 +5,13 @@ import Button from 'react-bootstrap/Button'
 // import blank_profile from "./blank-profile.png"
 import vaishnav from "./Vaishnav.png"
 import kevinl from "./kevin.png"
-import kevinc from "./kevinchen.jpeg"
+import kevinc from "./kevinchen.jpeg" 
 import anisha from "./anisha.png"
-import diyuan from "./diyuan.png"
-
+import diyuan from "./diyuan.png" 
 const cardStyle = {
     'backgroundColor': '#82b3c9', 
-    'width': '13.5rem', 
-    'margin':'0.25rem'
+    'width': '16.5rem', 
+    'margin':'0.20rem',
 }
 
 class About extends Component {
@@ -20,7 +19,7 @@ class About extends Component {
     state = {
         commitVals: [0, 0, 0, 0, 0, 0],
         issueVals: [0, 0, 0, 0, 0, 0],
-        unitTests : [7, 7, 0, 13, 0, 27]
+        unitTests : [7, 7, 0, 13, 14, 27]
     }
 
     // API calls are asynchronous. use await for the GET, returns a Promise.
@@ -167,13 +166,12 @@ class About extends Component {
         return (
             <div className="App">
                 <header className="App-header">
+                    <div className="container" style={{ marginTop: '0vh', marginBottom: '20vh' }}>
                     <br></br>
                     <h1>About The Political Market</h1>
-                    
-                    <div className="container">
                         <div className="row">
                             <p>
-                                This website that allows its users, the general public, to view the stock positions of Congress members and compare
+                                This website allows its users, the general public, to view the stock positions of Congress members and compare
                                 them to aggregated market data, government contracts, and campaign financing history.
                                 <br></br>
                                 <br></br>
@@ -192,9 +190,13 @@ class About extends Component {
                                 <br></br>
                                 <br></br>
                             </p>
-                        </div>
+                            </div>
+
+                            </div>
+                        
+                        <div className="section" style={{ marginTop: '-20vh', marginBottom: '0vh' }}>
                         <h1>Team Members</h1>
-                        <div className="row">
+                        <div className="row justify-content-center">
                             
                             <div className='card' style={cardStyle}>
                             <img className="card-img-top" src={vaishnav} alt=""></img>
@@ -260,7 +262,8 @@ class About extends Component {
                             </div>
                             
                         </div>
-                    </div>
+                        </div>
+                    
                     <br></br>
                     <br></br>
                     <h1>Contribution Statistics</h1>

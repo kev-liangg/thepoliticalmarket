@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Members() {
 
-  const attributes = ['cand_firstname', 'cand_lastname', 'cand_crp_id', 'cand_office', 'cand_party', 'cand_state'];
+  const search_attributes = ['cand_firstname', 'cand_lastname', 'cand_crp_id', 'cand_office', 'cand_party', 'cand_state', 'total_received'];
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -65,7 +65,7 @@ function Members() {
       if (filters.length === 0) {
         query.filters = [];
       }
-      query.filters.push({"or": attributes.map((attribute)=>{
+      query.filters.push({"or": search_attributes.map((attribute)=>{
         let filter = {name: attribute};
         filter.op = "like";
         filter.val = "%"+searchTerm+"%";
@@ -112,8 +112,8 @@ function Members() {
       case "State":
         orderby.field='cand_state';
         break;
-      case "Contributions Received":
-        orderby.field='total_contributions';
+      case "Total Received":
+        orderby.field='total_received';
         break;
       default:
         orderby.field=undefined;
@@ -152,8 +152,8 @@ function Members() {
       case "State":
         filter.name='cand_state';
         break;
-      case "Contributions Received":
-        filter.name='total_contributions';
+      case "Total Received":
+        filter.name='total_received';
         break;
       default:
         filter.name=undefined;
@@ -240,7 +240,7 @@ function Members() {
                       <MenuItem value={'Office'}>Office</MenuItem>
                       <MenuItem value={'Party'}>Party</MenuItem>
                       <MenuItem value={'State'}>State</MenuItem>
-                      <MenuItem value={'Contributions Received'}>Contributions Received</MenuItem>
+                      <MenuItem value={'Total Received'}>Total Received</MenuItem>
                     </Select>
                   </FormControl>
                 </div>
@@ -344,7 +344,7 @@ function Members() {
                       <MenuItem value={'Office'}>Office</MenuItem>
                       <MenuItem value={'Party'}>Party</MenuItem>
                       <MenuItem value={'State'}>State</MenuItem>
-                      <MenuItem value={'Contributions Received'}>Contributions Received</MenuItem>
+                      <MenuItem value={'Total Received'}>Total Received</MenuItem>
                     </Select>
                   </FormControl>
                 </div>

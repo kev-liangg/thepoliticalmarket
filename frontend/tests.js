@@ -64,7 +64,7 @@ test('render stock model page', async () => {
         render(<Stocks />);
     });
 
-    expect(screen.getByText("Index")).toBeInTheDocument();
+    expect(screen.getByText("Stock Page")).toBeInTheDocument();
     expect(screen.getByText("Symbol")).toBeInTheDocument();
 });
 

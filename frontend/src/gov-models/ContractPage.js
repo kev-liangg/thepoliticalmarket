@@ -26,7 +26,7 @@ const ContractPage = ({match}) => {
       <>
       {!isLoading && (
         <div>
-          <div className = "container">
+          <div className = "container" fluid = 'true'>
             <div className="row">
               <div className="col-sm-12" style={{'textAlign':'center', 'color':'black'}}>
                 <h1> Contract ID</h1>
@@ -37,13 +37,12 @@ const ContractPage = ({match}) => {
           <div className="col-lg-6" style={{'textAlign':'center', 'color':'black'}}>
                 <h3> Contract Information</h3>
               <div className = "row" style = {{'textAlign':'left'}}>
+              <img alt="" src = {data.contract_agencylogo}></img>
                 <h4>
                   Awarding Agency: {data.contract_recipient}
                 </h4>
-                <img alt="" src = {data.contract_agencylogo}></img>
                 <h4>Award Description: {data.contract_award_description}</h4>
                 <h3> Place of Performance: {data.contract_sop}</h3>
-      
                 <img alt="" src = {data.contract_stateflag} ></img>
                 <h4>
                   Date Awarded: {data.contract_date}</h4>
@@ -63,13 +62,10 @@ const ContractPage = ({match}) => {
                 <h4>Contractor's Congressional District: {data.contract_recipient_district}</h4>
               </div>
           </div>
-          </div>
-          <StateMap state = {data.contract_sop}>
-           </StateMap>
-           <Link to="/">Back to homepage</Link>
+          
            <div className = "row">
            <div className="col-sm-6">
-              <h2 style={{'textAlign':'center'}}> Congress Politicians in {data.contract_sop}</h2>
+              <h2 style={{'textAlign':'center','color':'black'}}> Congress Politicians in {data.contract_sop}</h2>
                 <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
                 {
                   data.cands_in_state.slice(0,5).map((candidate)=>{
@@ -81,7 +77,7 @@ const ContractPage = ({match}) => {
                 </ul>
             </div>
             <div className="col-sm-6">
-              <h2 style={{'textAlign':'center'}}> Companies Headquartered in {data.contract_sop}</h2>
+              <h2 style={{'textAlign':'center','color':'black'}}> Companies Headquartered in {data.contract_sop}</h2>
                 <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
                 {
                   data.stocks_in_state.slice(0,5).map((stock)=>{
@@ -92,26 +88,25 @@ const ContractPage = ({match}) => {
                 }
                 </ul>
             </div>
+           
+           </div>
+           <div className = "row">
+           <div className="col-lg-12" style={{'textAlign':'center'}}>
+           <StateMap state = {data.contract_sop}>
+           </StateMap>      
+           </div>
+           
+           </div>
+           <div className = "row"> 
+           <div className="col-lg-6" >
+           <Link to="/">Back to homepage</Link>
+           </div>
+           <div className="col-lg-6" style={{'textAlign':'right'}}>
+           <Link to="/Contracts">Back to Contracts</Link>
+           </div>
            </div>
         </div>
-        // <>
-        //   <h1 className = "primary"> Award ID: {data.contract_award_id}</h1>
-        //   <h2>Awarding Agency: {data.contract_parentagency}</h2>
-        //   <img alt="" src = {data.contract_agencylogo}></img>
-        //   <h2>Current value: ${data.contract_currentval}</h2>
-        //   <h2>Award Description: {data.contract_award_description}</h2>
-        //   <h2>Recipient Name: {data.contract_recipient}</h2>
-        //   <h2>Contract Naics Code: {data.contract_naics}</h2>
-        //   <h2>Contract Naics Description: {data.contract_naics_description}</h2>
-        //   <h2>Contract State of Performance: {data.contract_sop}</h2>
-        //   <h2>Date Awarded: {data.contract_date}</h2>
-        //   <h2>Contract Recipient's Congressional District: {data.contract_recipient_district}</h2>
-        //   <h2>Contract Recipient's Address: {data.contract_recipient_address}</h2>
-        //   <img alt="" src = {data.contract_stateflag} ></img>
-        //   <StateMap state = {data.contract_sop}>
-        //   </StateMap>
-        //   <Link to="/">Back to homepage</Link>
-        // </>
+        </div>
       )}
     </>
     );
