@@ -37,7 +37,8 @@
     "build": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "clear_jest": "jest --clearCache"
   },
   "jest": {
     "testMatch": [
