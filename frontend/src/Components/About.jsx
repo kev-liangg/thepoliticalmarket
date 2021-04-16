@@ -8,7 +8,6 @@ import kevinl from "./kevin.png"
 import kevinc from "./kevinchen.jpeg" 
 import anisha from "./anisha.png"
 import diyuan from "./diyuan.png" 
-import { BsChevronCompactDown } from 'react-icons/all';
 const cardStyle = {
     'backgroundColor': '#82b3c9', 
     'width': '16.5rem', 
@@ -192,7 +191,7 @@ class About extends Component {
                                 <br></br>
                             </p>
                             </div>
-                            <BsChevronCompactDown size={75} />
+
                             </div>
                         
                         <div className="section" style={{ marginTop: '-20vh', marginBottom: '0vh' }}>
