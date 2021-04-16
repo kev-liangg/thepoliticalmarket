@@ -35,10 +35,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "clear_jest": "jest --clearCache",
     "test": "jest",
     "eject": "react-scripts eject",
-    "lint": "eslint .",
-    "clear_jest": "jest --clearCache"
+    "lint": "eslint ."
   },
   "jest": {
     "testMatch": [
