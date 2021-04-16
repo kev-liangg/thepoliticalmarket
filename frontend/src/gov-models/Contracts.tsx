@@ -10,7 +10,7 @@ import '../Components/table-style.css'
 import { ITableProps, kaReducer, Table } from 'ka-table';
 import { DataType, SortingMode } from 'ka-table/enums';
 import { DispatchFunc } from 'ka-table/types';
-import {
+import { 
   hideLoading, loadData, showLoading, updateData,
 } from 'ka-table/actionCreators';
 import { getSortedColumns } from 'ka-table/Utils/PropsUtils';
@@ -151,22 +151,14 @@ function Contracts() {
         ></input>
         </div>
         <div className = "block2">
-          <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Filters
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Listed on Stock Market</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        </div>
-        </div>
         <div>
+          <h2>Filters</h2>
           <FilterControl {...{fields, groups, filterValue, 
             onFilterValueChanged: handleFilter}} />
         </div>
+        </div>
+        </div>
+       
         <div>
             <Table
               {...tableProps}
