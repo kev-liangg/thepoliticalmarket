@@ -17,7 +17,7 @@ import { getSortedColumns } from 'ka-table/Utils/PropsUtils';
 
 import FilterControl from 'react-filter-control';
 import { IFilterControlFilterValue } from 'react-filter-control/interfaces';
-import { fields, groups } from './ContractFilter'
+import { fields, groups, fieldToName } from './ContractFilter'
 
 
 const tablePropsInit: ITableProps = {
@@ -108,7 +108,7 @@ function Contracts() {
       return {[item.groupName]: item.items.map(makeFilter)};
     }
     let ret : any = {};
-    ret.name = item.field;
+    ret.name = fieldToName[item.field];
     ret.op = item.operator;
     if (ret.op === 'like' || ret.op === 'not_like') {
       ret.val = '%'+item.value+'%';

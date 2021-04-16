@@ -2,29 +2,38 @@ import {
     containsOp, notContainsOp, eqOp, neqOp, ltOp, gtOp, lteOp, gteOp 
 } from '../filtering-logic/Operators.js'
 
+export const fieldToName : { [key: string]: string }= {
+    "Recipient": "contract_recipient",
+    "Contract Value": "contract_currentval",
+    "Award Date": "contract_date",
+    "NAICS": "contract_naics",
+    "State": "contract_sop",
+    "Congressional District": "contract_recipient_district"
+}
+
 export const fields = [{
-    name: 'contract_recipient',
+    name: 'Recipient',
     caption: 'Recipient',
     operators: [containsOp, notContainsOp]
 }, {
+    name: 'Contract Value',
     caption: 'Contract Value',
-    name: 'contract_currentval',
     operators: [eqOp, neqOp, ltOp, gtOp, lteOp, gteOp]
 }, {
+    name: 'Award Date',
     caption: 'Award Date',
-    name: 'contract_date',
     operators: [containsOp, notContainsOp]
 }, {
+    name: 'NAICS',
     caption: 'NAICS',
-    name: 'contract_naics',
     operators: [eqOp, neqOp]
 }, {
+    name: 'State',
     caption: 'State',
-    name: 'contract_sop',
     operators: [containsOp, notContainsOp]
 }, {
+    name: 'Congressional District',
     caption: 'Congressional District',
-    name: 'contract_recipient_district',
     operators: [eqOp, neqOp]
 }]
 
