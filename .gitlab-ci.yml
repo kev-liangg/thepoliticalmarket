@@ -53,6 +53,4 @@ gui_tests:
     image: burningion/firefox-splinter-scraper
     script:
     - cd frontend
-    - apt-get install -y nodejs npm
-    - npm install
     - python guitests.py
