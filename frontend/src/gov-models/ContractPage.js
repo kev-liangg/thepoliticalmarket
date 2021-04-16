@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom"
 import './ContractPage.css'
 import StateMap from "../Components/StateMap";
+import Button from '@material-ui/core/Button';
 const ContractPage = ({match}) => {
     const {
         params: { awardId },
@@ -66,24 +67,48 @@ const ContractPage = ({match}) => {
            <div className = "row">
            <div className="col-sm-6">
               <h2 style={{'textAlign':'center','color':'black'}}> Congress Politicians in {data.contract_sop}</h2>
-                <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
+                <table style={{'textAlign':'center', 'listStylePosition':'inside', 'border': '1px solid black'}}>
                 {
                   data.cands_in_state.slice(0,5).map((candidate)=>{
-                    return <li>
+                    return <tr>
+                            <td>
                             <Link to={`/CampFin/${candidate.cand_crp_id}`}>{candidate.cand_firstname} {candidate.cand_lastname} </Link>
-                          </li>;
+                            </td>
+                            <td>
+                            <Button
+                          component={Link} to={`/CampFin/${candidate.cand_crp_id}`}
+                          variant="contained"
+                          color="primary"
+                          size="small"
+                          style={{ marginLeft: 16 }}>
+                          Page
+                        </Button>
+                            </td>
+                          </tr>;
                   })
                 }
-                </ul>
+                </table>
             </div>
             <div className="col-sm-6">
               <h2 style={{'textAlign':'center','color':'black'}}> Companies Headquartered in {data.contract_sop}</h2>
                 <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
                 {
                   data.stocks_in_state.slice(0,5).map((stock)=>{
-                    return <li>
-                            <Link to={`/Stocks/${stock.Symbol}`}> {stock.Full_Name} </Link>
-                          </li>;
+                    return <tr>
+                          <td>
+                          <Link to={`/Stocks/${stock.Symbol}`}>{stock.Full_Name} </Link>
+                          </td>
+                          <td>
+                          <Button
+                        component={Link} to={`/Stocks/${stock.Symbol}`}
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        style={{ marginLeft: 16 }}>
+                        Page
+                      </Button>
+                          </td>
+                        </tr>;
                   })
                 }
                 </ul>
