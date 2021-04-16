@@ -3,8 +3,8 @@ import {
 } from '../filtering-logic/Operators.js'
 
 export const fields = [{
-    caption: 'Recipient',
     name: 'contract_recipient',
+    caption: 'Recipient',
     operators: [containsOp, notContainsOp]
 }, {
     caption: 'Contract Value',
