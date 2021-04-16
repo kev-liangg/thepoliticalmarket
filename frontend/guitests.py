@@ -1,15 +1,16 @@
 import argparse
 from splinter import Browser
-from selenium.webdriver import ChromeOptions
+# from selenium.webdriver import ChromeOptions
 import unittest
 
-CHROMEDRIVER_PATH = '/usr/bin/chromedriver'
+# CHROMEDRIVER_PATH = '/usr/bin/chromedriver'
 
-options = ChromeOptions()
-options.add_argument("--headless")
-# options.add_argument("--no-sandbox")
-# options.add_argument("--disable-dev-shm-usage")
-browser = Browser("chrome", executable_path=CHROMEDRIVER_PATH, chrome_options=options)
+# options = ChromeOptions()
+# options.add_argument("--headless")
+# # options.add_argument("--no-sandbox")
+# # options.add_argument("--disable-dev-shm-usage")
+# browser = Browser("chrome", executable_path=CHROMEDRIVER_PATH, chrome_options=options)
+browser = Browser('firefox', headless=True)
 
 
 class GUIHarness(unittest.TestCase):
