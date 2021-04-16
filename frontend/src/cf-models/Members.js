@@ -196,7 +196,7 @@ function Members() {
   function mapData () {
     if (typeof data != "undefined") {
       return data.map((memb) => {
-        return <MemberCard member={memb} />;
+        return <MemberCard member={memb} toHighlight={searchTerm} />;
       });
     }
     return [];
