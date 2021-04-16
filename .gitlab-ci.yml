@@ -62,5 +62,4 @@ gui_tests:
     - sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
     - apt-get update -qy && apt-get install -y google-chrome-stable
     - cd frontend
-    - npm install
     - python3 guitests.py
