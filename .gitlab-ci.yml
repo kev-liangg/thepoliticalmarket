@@ -26,6 +26,9 @@ frontend:
     - yarn install --cache-folder .yarn --frozen-lockfile
     - yarn lint
     - yarn test --verbose
+    only:
+        changes:
+            - frontend/**/*
 
 postman:
     image: node:14.16.0
@@ -33,6 +36,9 @@ postman:
     - npm install -g newman
     - newman --version
     - newman run Postman.json
+    only:
+        changes:
+            - Postman.json
 
 backend:
     image: python:3.7
@@ -48,3 +54,6 @@ backend:
       fi
     - source localvenv/bin/activate
     - pytest -v
+    only:
+        changes:
+            - backend/**/*
