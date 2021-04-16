@@ -3,11 +3,13 @@ from splinter import Browser
 from selenium.webdriver import ChromeOptions
 import unittest
 
+CHROMEDRIVER_PATH = '/usr/bin/chromedriver'
+
 options = ChromeOptions()
 options.add_argument("--headless")
 # options.add_argument("--no-sandbox")
 # options.add_argument("--disable-dev-shm-usage")
-browser = Browser("chrome", chrome_options=options)
+browser = Browser("chrome", executable_path=CHROMEDRIVER_PATH, chrome_options=options)
 
 
 class GUIHarness(unittest.TestCase):
