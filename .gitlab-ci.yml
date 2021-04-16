@@ -38,11 +38,6 @@ postman:
     - npm install -g newman
     - newman --version
     - newman run Postman.json
-    only:
-        refs:
-            - merge_requests
-        changes:
-            - Postman.json
 
 backend:
     image: python:3.7
