@@ -50,7 +50,10 @@
     "moduleNameMapper": {
       "\\.(css|scss)$": "<rootDir>/__mocks__/css.js",
       "\\.(jpg|png|jpeg)$": "<rootDir>/__mocks__/img.js"
-    }
+    },
+    "transformIgnorePatterns": [
+      "node_modules/?!(react-icons)"
+    ]
   },
   "eslintConfig": {
     "extends": [
