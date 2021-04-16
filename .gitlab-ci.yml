@@ -54,4 +54,12 @@ gui_tests:
     script:
     - cd frontend
     - pip install splinter
+    - wget https://chromedriver.storage.googleapis.com/89.0.4389.23/chromedriver_linux64.zip
+    - unzip chromedriver_linux64.zip
+    - mv chromedriver /usr/bin/chromedriver
+    - chown root:root /usr/bin/chromedriver
+    - chmod +x /usr/bin/chromedriver
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    - sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+    - apt-get update -qy && apt-get install -y google-chrome-stable
     - python3 guitests.py
