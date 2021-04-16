@@ -89,7 +89,7 @@ class GUIHarness(unittest.TestCase):
         browser.quit()
         self.assertEqual(text1, 'Last Sale: 25.37')
         self.assertEqual(text2, 'Industry: None')
-     def test_campFinInstancePage1(self):
+    def test_campFinInstancePage1(self):
         browser.visit('https://www.thepoliticalmarket.tech/CampFin/N00000153')
         text1 = browser.find_by_text('Democrat')
         text2 = browser.find_by_text('Individual Contributions ($)')
