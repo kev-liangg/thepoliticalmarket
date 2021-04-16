@@ -55,4 +55,5 @@ gui_tests:
     - pip install splinter
     - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     - apt-get update; apt install -y ./google-chrome-stable_current_amd64.deb
+    - cd frontend
     - python3 guitests.py
