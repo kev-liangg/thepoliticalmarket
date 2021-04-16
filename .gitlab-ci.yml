@@ -63,4 +63,4 @@ gui_tests:
     - apt-get update -qy && apt-get install -y google-chrome-stable
     - cd frontend
     - npm install
-    - python guitests.py
+    - python3 guitests.py
