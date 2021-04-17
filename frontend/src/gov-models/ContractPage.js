@@ -38,13 +38,13 @@ const ContractPage = ({match}) => {
           <div className="col-lg-6" style={{'textAlign':'center', 'color':'black'}}>
                 <h3> Contract Information</h3>
               <div className = "row" style = {{'textAlign':'left'}}>
-              <img alt="" src = {data.contract_agencylogo}></img>
+              <img alt="" src = {data.contract_agencylogo} width="50%"></img>
                 <h4>
                   Awarding Agency: {data.contract_recipient}
                 </h4>
                 <h4>Award Description: {data.contract_award_description}</h4>
                 <h3> Place of Performance: {data.contract_sop}</h3>
-                <img alt="" src = {data.contract_stateflag} ></img>
+                <img alt="" src = {data.contract_stateflag} width="50%"></img>
                 <h4>
                   Date Awarded: {data.contract_date}</h4>
               </div>
