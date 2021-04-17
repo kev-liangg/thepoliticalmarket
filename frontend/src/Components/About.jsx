@@ -19,7 +19,7 @@ class About extends Component {
     state = {
         commitVals: [0, 0, 0, 0, 0, 0],
         issueVals: [0, 0, 0, 0, 0, 0],
-        unitTests : [7, 7, 0, 13, 14, 27]
+        unitTests : [7, 7, 14, 13, 0, 41]
     }
 
     // API calls are asynchronous. use await for the GET, returns a Promise.
