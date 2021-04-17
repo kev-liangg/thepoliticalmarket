@@ -68,7 +68,7 @@ function Members() {
       query.filters.push({"or": search_attributes.map((attribute)=>{
         let filter = {name: attribute};
         filter.op = "like";
-        filter.val = "%"+searchTerm+"%";
+        filter.val = "%25"+searchTerm+"%25";
         return filter;
       })});
     }
@@ -161,7 +161,7 @@ function Members() {
     switch (item.op) {
       case "contains":
         filter.op="like";
-        filter.val="%"+item.val+"%";  // any characters before or after
+        filter.val="%25"+item.val+"%25";  // any characters before or after
         break;
       case "equals":
         filter.op="like";
@@ -169,11 +169,11 @@ function Members() {
         break;
       case "starts with":
         filter.op="like";
-        filter.val=item.val+"%";      // any characters after only
+        filter.val=item.val+"%25";      // any characters after only
         break;
       case "ends with":
         filter.op="like";
-        filter.val="%"+item.val;      // any characters before only
+        filter.val="%25"+item.val;      // any characters before only
         break;
       case "is greater than":
         filter.op="gt";
@@ -196,7 +196,7 @@ function Members() {
   function mapData () {
     if (typeof data != "undefined") {
       return data.map((memb) => {
-        return <MemberCard member={memb} />;
+        return <MemberCard member={memb} toHighlight={searchTerm} />;
       });
     }
     return [];

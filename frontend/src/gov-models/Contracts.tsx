@@ -111,7 +111,7 @@ function Contracts() {
     ret.name = item.field;
     ret.op = item.operator;
     if (ret.op === 'like' || ret.op === 'not_like') {
-      ret.val = '%'+item.value+'%';
+      ret.val = '%25'+item.value+'%25';
     }
     else {
       ret.val = item.value;
