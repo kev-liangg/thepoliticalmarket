@@ -135,7 +135,7 @@ function Contracts() {
       <div>
         <div className = "wrapper">
         <div className = "block">
-        <input
+        {/* <input
           type="text"
           placeholder="Search..."
           // onChange={(event) => {
@@ -148,7 +148,15 @@ function Contracts() {
               console.log((event.target as HTMLInputElement).value)
             }
           }}
-        ></input>
+        ></input> */}
+        <Button
+          component={Link} to={`/Contracts/Search`}
+          variant="contained"
+          color="primary"
+          size="small"
+          style={{ marginLeft: 16 }}>
+          Search
+        </Button>
         </div>
         <div className = "block2">
         <div>
