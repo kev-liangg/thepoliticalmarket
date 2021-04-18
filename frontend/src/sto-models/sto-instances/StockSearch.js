@@ -28,7 +28,7 @@ function ContractSearchCard({item, toHl}) {
                     <b>Country:</b> {hl(toHl, item.Country)} &emsp;
                     <b>Sector:</b> {hl(toHl, item.Sector)} &emsp;
                     <b>Industry:</b> {hl(toHl, item.Industry)} &emsp;
-                    <b>State:</b> {hl(toHl, item.State)} &emsp;         
+                    <b>State:</b> {hl(toHl, item.State)} <br></br>         
                     <Link to={`/Stocks/${item.Symbol}`}>Go to Page...</Link>
                 </p>               
                 </div>

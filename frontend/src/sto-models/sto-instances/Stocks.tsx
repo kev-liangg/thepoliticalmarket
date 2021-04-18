@@ -136,45 +136,22 @@ function Stocks(){
   return (
     <> {
       <div>
+        <br></br>
         <div className = "wrapper">
         <div className = "block">
-        {/* <input
-          type="text"
-          placeholder="Search..."
-          // onChange={(event) => {
-          //   setSearchTerm(event.target.value)
-          //   console.log(event.target.value)
-          // }}
-          onKeyPress={(event) => {
-            if (event.key === 'Enter') {
-              setSearchTerm((event.target as HTMLInputElement).value)
-              console.log((event.target as HTMLInputElement).value)
-            }
-          }}
-        ></input> */}
         <Button
           component={Link} to={`/Stocks/Search`}
           variant="contained"
           color="primary"
           size="small"
           style={{ marginLeft: 16 }}>
-          Search
+          Search Stocks
         </Button>
-        </div>
-        <div className = "block2">
-          <Dropdown>
-          <Dropdown.Toggle variant="success" id="dropdown-basic">
-            Filters
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/action-1">Listed on Stock Market</Dropdown.Item>
-            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
         </div>
         </div>
         <div>
+          <br></br>
+          <h4>Filters:</h4>
           <FilterControl {...{fields, groups, filterValue, 
             onFilterValueChanged: handleFilter}} />
         </div>

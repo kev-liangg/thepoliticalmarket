@@ -230,7 +230,7 @@ function Members() {
                   <FormControl required className={classes.formControl}>
                     <InputLabel id="filter-field-label">Attribute</InputLabel>
                     <Select
-                      labelID="filter-field-label"
+                      labelId="filter-field-label"
                       id="filter-field"
                       value={filterField}
                       onChange={(event) => {setFilterField(event.target.value);console.log(event.target.value);}}
@@ -249,7 +249,7 @@ function Members() {
                   <FormControl required className={classes.formControl}>
                     <InputLabel id="filter-op-label">Operator</InputLabel>
                     <Select
-                      labelID="filter-op-label"
+                      labelId="filter-op-label"
                       id="filter-op"
                       value={filterOp}
                       onChange={(event) => setFilterOp(event.target.value)}
@@ -334,7 +334,7 @@ function Members() {
                   <FormControl required className={classes.formControl}>
                     <InputLabel id="order-field-label">Attribute</InputLabel>
                     <Select
-                      labelID="order-field-label"
+                      labelId="order-field-label"
                       id="order-field"
                       value={orderField}
                       onChange={(event) => {setOrderField(event.target.value);console.log(event.target.value);}}
@@ -353,7 +353,7 @@ function Members() {
                 <FormControl required className={classes.formControl}>
                     <InputLabel id="order-direction-label">Order</InputLabel>
                     <Select
-                      labelID="order-direction-label"
+                      labelId="order-direction-label"
                       id="order-direction"
                       value={orderDirection}
                       onChange={(event) => {setOrderDirection(event.target.value);console.log(event.target.value);}}
