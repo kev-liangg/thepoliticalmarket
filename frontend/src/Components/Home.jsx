@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import bg from "../1393726.jpg";
 import './Home.css'
 import { Card, Button, CardDeck } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, BrowserRouter } from 'react-router-dom';
 import Contract from './ContractLaw.jpg';
 import Stock from './StockIMG.jpg';
 import Congress from './Congress.png';
@@ -47,7 +47,7 @@ class Home extends Component {
                                 <Card.Text>
                                    Track changes in the stock market and find market information about various companies
                                 </Card.Text>
-                                <Link to="/Stocks"><Button variant="btn btn-outline-success">Stocks</Button></Link>
+                                <Link to="/Stocks"> <Button variant="btn btn-outline-success">Stocks</Button></Link>
                             </Card.Body>
                         </Card>
                         <Card className="text-center" style={{ width: '18rem' }} border="dark">
