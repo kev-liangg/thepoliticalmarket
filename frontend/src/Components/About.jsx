@@ -346,25 +346,25 @@ class About extends Component {
                         <br></br>
                         <h2>Tools Used</h2>
                         <h4>Development</h4>
-                        <li>Postman - creates and hosts ThePoliticalMarket RESTful API Documentation</li>
-                        <li>Gitlab - issue tracking, project management, version control, continuous integration</li>
-                        <li>Gitlab CI - a continuous integration pipeline specifically integrated into our repository</li>
+                        <li> <a href="https://www.postman.com/">Postman</a> - creates and hosts ThePoliticalMarket RESTful API Documentation</li>
+                        <li> <a href="https://gitlab.com/">Gitlab</a> - issue tracking, project management, version control, continuous integration</li>
+                        <li> <a href="https://docs.gitlab.com/ee/ci/">Gitlab CI</a> - a continuous integration pipeline specifically integrated into our repository</li>
                         <h4>Backend</h4>
-                        <li>Docker - gives our specific environment for the backend for any user or provider</li>
-                        <li>wsgi - allows our web server to forward requests to a Python web framework</li>
-                        <li>Flask - the lightweight Python web framework communicating with through wsgi</li>
-                        <li>Flask-SQLAlchemy - provides a powerful coding framework for accessing a SQL database </li>
-                        <li>Flask-Restless - simplifies generation of backend RESTful API from database calls</li>
-                        <li>MySQL - a relational database management system to store all website data</li>
-                        <li>Pytest - a unit testing library for all our backend Python code</li>
+                        <li> <a href="https://www.docker.com/">Docker</a> - gives our specific environment for the backend for any user or provider</li>
+                        <li> <a href="https://wsgi.readthedocs.io/en/latest/what.html">wsgi</a> - allows our web server to forward requests to a Python web framework</li>
+                        <li> <a href="https://flask.palletsprojects.com/en/1.1.x/">Flask</a> - the lightweight Python web framework communicating with through wsgi</li>
+                        <li> <a href="https://flask-sqlalchemy.palletsprojects.com/en/2.x/">Flask-SQLAlchemy</a> - provides a powerful coding framework for accessing a SQL database </li>
+                        <li> <a href="https://flask-restless.readthedocs.io/en/stable/">Flask-Restless</a> - simplifies generation of backend RESTful API from database calls</li>
+                        <li> <a href="https://www.mysql.com/">MySQL</a> - a relational database management system to store all website data</li>
+                        <li> <a href="https://docs.pytest.org/en/6.2.x/">Pytest</a> - a unit testing library for all our backend Python code</li>
                         <h4>Frontend</h4>
-                        <li>yarn - a package manager for our modules, allows us to locally compile and develop</li>
-                        <li>React - a library to develop and render our User Interface and visual components</li>
-                        <li>React-Bootstrap - a library to further construct and stylize our frontend interface</li>
-                        <li>Jest - a unit testing library for our frontend Javascript code with React integration</li>
-                        <li>Splinter - a unit testing library for our frontend GUI and user experience</li>
+                        <li> <a href="https://yarnpkg.com/">yarn</a> - a package manager for our modules, allows us to locally compile and develop</li>
+                        <li> <a href="https://reactjs.org/">React</a> - a library to develop and render our User Interface and visual components</li>
+                        <li> <a href="https://react-bootstrap.github.io/">React-Bootstrap</a> - a library to further construct and stylize our frontend interface</li>
+                        <li> <a href="https://jestjs.io/">Jest</a> - a unit testing library for our frontend Javascript code with React integration</li>
+                        <li> <a href="https://splinter.readthedocs.io/en/latest/">Splinter</a> - a unit testing library for our frontend GUI and user experience</li>
                         <h2>Hosting Services</h2>
-                        <li>AWS (S3, ECR, EB, EC2, RDS), Namecheap</li>
+                        <li> <a href="https://aws.amazon.com/">AWS</a> (S3, ECR, EB, EC2, RDS), <a href="https://www.namecheap.com/">Namecheap</a></li>
                         
                     </div>
                     </div>
