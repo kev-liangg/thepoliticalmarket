@@ -44,7 +44,7 @@ const ContractPage = ({match}) => {
                 </h4>
                 <h4>Award Description: {data.contract_award_description}</h4>
                 <h3> Place of Performance: {data.contract_sop}</h3>
-                <img alt="" src = {data.contract_stateflag} width="50%"></img>
+                <img alt="" src = {data.contract_stateflag} width="50%" ></img>
                 <h4>
                   Date Awarded: {data.contract_date}</h4>
               </div>
@@ -68,9 +68,10 @@ const ContractPage = ({match}) => {
            <div className="col-sm-6">
               <h2 style={{'textAlign':'center','color':'black'}}> Congress Politicians in {data.contract_sop}</h2>
                 <table style={{'textAlign':'center', 'listStylePosition':'inside', 'border': '1px solid black'}}>
+                <tbody>
                 {
                   data.cands_in_state.slice(0,5).map((candidate)=>{
-                    return <tr>
+                    return <tr key={candidate.cand_crp_id}>
                             <td>
                             <Link to={`/CampFin/${candidate.cand_crp_id}`}>{candidate.cand_firstname} {candidate.cand_lastname} </Link>
                             </td>
@@ -87,14 +88,16 @@ const ContractPage = ({match}) => {
                           </tr>;
                   })
                 }
+                </tbody>
                 </table>
             </div>
             <div className="col-sm-6">
               <h2 style={{'textAlign':'center','color':'black'}}> Companies Headquartered in {data.contract_sop}</h2>
-                <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
+                <table style={{'textAlign':'center', 'listStylePosition':'inside'}}>
+                  <tbody>
                 {
                   data.stocks_in_state.slice(0,5).map((stock)=>{
-                    return <tr>
+                    return <tr key={stock.Symbol}>
                           <td>
                           <Link to={`/Stocks/${stock.Symbol}`}>{stock.Full_Name} </Link>
                           </td>
@@ -111,7 +114,8 @@ const ContractPage = ({match}) => {
                         </tr>;
                   })
                 }
-                </ul>
+                </tbody>
+                </table>
             </div>
            
            </div>

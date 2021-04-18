@@ -10,6 +10,7 @@ import Stocks from './src/sto-models/sto-instances/Stocks'
 import StockPage from './src/sto-models/sto-instances/StockPage'
 import Contracts from './src/gov-models/Contracts'
 import ContractPage from './src/gov-models/ContractPage'
+import { contractData, stockData, candidateData } from './__mocks__/data'
 import '@testing-library/jest-dom'
 
 test('successfully run test harness', () => {
@@ -62,6 +63,9 @@ test('render contract model page', async () => {
     expect(screen.getByText("NAICS")).toBeInTheDocument();
     expect(screen.getByText("State")).toBeInTheDocument();
     expect(screen.getByText("Congressional District")).toBeInTheDocument();
+
+    expect(screen.getByText("Search Contracts")).toBeInTheDocument();
+    expect(screen.getByText("Filters:")).toBeInTheDocument();
 });
 
 test('render stock model page', async () => {
@@ -89,6 +93,9 @@ test('render stock model page', async () => {
     expect(screen.getByText("Industry")).toBeInTheDocument();
     expect(screen.getByText("State")).toBeInTheDocument();
     expect(screen.getByText("Country")).toBeInTheDocument();
+
+    expect(screen.getByText("Search Stocks")).toBeInTheDocument();
+    expect(screen.getByText("Filters:")).toBeInTheDocument();
 });
 
 test('render candidate model page', async () => {
@@ -113,4 +120,52 @@ test('render candidate model page', async () => {
     expect(screen.getByText("Clear Filters")).toBeInTheDocument();
     expect(screen.getByText("View Filters")).toBeInTheDocument();
     expect(screen.getByText("Clear Sorting")).toBeInTheDocument();
+});
+
+test('render contract instance', async () => {
+    global.fetch = jest.fn(() => Promise.resolve({
+        json: () => Promise.resolve(contractData)
+    }));
+
+    const match = { params: 1 }
+
+    await act(async () => {
+        render(
+            <BrowserRouter>
+                <ContractPage match={match}/>
+            </BrowserRouter>
+        );
+    });
+});
+
+test('render stock instance', async () => {
+    global.fetch = jest.fn(() => Promise.resolve({
+        json: () => Promise.resolve(stockData)
+    }));
+
+    const match = { params: "AAPL" }
+
+    await act(async () => {
+        render(
+            <BrowserRouter>
+                <StockPage match={match}/>
+            </BrowserRouter>
+        );
+    });
+});
+
+test('render candidate instance', async () => {
+    global.fetch = jest.fn(() => Promise.resolve({
+        json: () => Promise.resolve(candidateData)
+    }));
+
+    const match = { params: "N00000078" }
+
+    await act(async () => {
+        render(
+            <BrowserRouter>
+                <MemberPage match={match}/>
+            </BrowserRouter>
+        );
+    });
 });
