@@ -36,10 +36,9 @@ test('render navigation bar', () => {
     expect(screen.getByText("Contracts")).toBeInTheDocument();
     expect(screen.getByText("Stocks")).toBeInTheDocument();
     expect(screen.getByText("Campaign Finance")).toBeInTheDocument();
+    expect(screen.getByText("Site Search")).toBeInTheDocument();
     expect(screen.getByText("About")).toBeInTheDocument();
 });
-
-// todo: fix resolve potential formatting warnings related to datagrid
 
 test('render contract model page', async () => {
     // need to mock the api fetch for all dynamically-loading pages
@@ -53,6 +52,12 @@ test('render contract model page', async () => {
 
     expect(screen.getByText("Contract Page")).toBeInTheDocument();
     expect(screen.getByText("Award ID")).toBeInTheDocument();
+    expect(screen.getByText("Recipient")).toBeInTheDocument();
+    expect(screen.getByText("Contract Value")).toBeInTheDocument();
+    expect(screen.getByText("Award Date")).toBeInTheDocument();
+    expect(screen.getByText("NAICS")).toBeInTheDocument();
+    expect(screen.getByText("State")).toBeInTheDocument();
+    expect(screen.getByText("Congressional District")).toBeInTheDocument();
 });
 
 test('render stock model page', async () => {
@@ -66,6 +71,16 @@ test('render stock model page', async () => {
 
     expect(screen.getByText("Stock Page")).toBeInTheDocument();
     expect(screen.getByText("Symbol")).toBeInTheDocument();
+    expect(screen.getByText("Last Sale")).toBeInTheDocument();
+    expect(screen.getByText("Net Change")).toBeInTheDocument();
+    expect(screen.getByText("% Change")).toBeInTheDocument();
+    expect(screen.getByText("Market Capacity (k)")).toBeInTheDocument();
+    expect(screen.getByText("Volume")).toBeInTheDocument();
+    expect(screen.getByText("IPO Year")).toBeInTheDocument();
+    expect(screen.getByText("Sector")).toBeInTheDocument();
+    expect(screen.getByText("Industry")).toBeInTheDocument();
+    expect(screen.getByText("State")).toBeInTheDocument();
+    expect(screen.getByText("Country")).toBeInTheDocument();
 });
 
 test('render candidate model page', async () => {
@@ -78,4 +93,12 @@ test('render candidate model page', async () => {
     });
 
     expect(screen.getByText("Campaign Finance")).toBeInTheDocument();
+
+    expect(screen.getByText("1. Filter")).toBeInTheDocument();
+    expect(screen.getByText("2. Sort")).toBeInTheDocument();
+    expect(screen.getByText("3. Search")).toBeInTheDocument();
+
+    expect(screen.getByText("Clear Filters")).toBeInTheDocument();
+    expect(screen.getByText("View Filters")).toBeInTheDocument();
+    expect(screen.getByText("Clear Sorting")).toBeInTheDocument();
 });
