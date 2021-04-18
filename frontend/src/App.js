@@ -10,7 +10,7 @@ import MemberPage from "./cf-models/MemberPage";
 import ContractPage from "./gov-models/ContractPage";
 import StockPage from "./sto-models/sto-instances/StockPage";
 import Stocks from "./sto-models/sto-instances/Stocks"
-import {NavigationBar, About, Home} from "./Components";
+import {NavigationBar, About, Home, SiteSearch} from "./Components";
 class App extends Component {
   render() {
     return (
@@ -31,6 +31,7 @@ class App extends Component {
             <Route exact path = "/About" component = {About} />
             <Route path = "/Contracts/:awardId" component = {ContractPage} />
             <Route path = "/Stocks/:symbol" component = {StockPage} />
+            <Route exact path = "/SiteSearch" component = {SiteSearch} />
             {/* <Route path = "/gov-models/Contracts" component = {Contracts} />
             <Route path = "/gov-models/State" component = {State} /> */}
             {/* <Route component = {NoMatch} /> */}
