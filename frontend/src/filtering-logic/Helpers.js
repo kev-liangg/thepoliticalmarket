@@ -1,4 +1,3 @@
-import NavbarCollapse from 'react-bootstrap/esm/NavbarCollapse'
 import Highlighter from 'react-highlight-words'
 
 // highlight function
