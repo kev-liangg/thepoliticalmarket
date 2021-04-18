@@ -23,7 +23,7 @@ test('render root app page', () => {
 });
 
 test('render home page', () => {
-    render(<Home />);
+    render( <BrowserRouter><Home /></BrowserRouter>);
     expect(screen.getByText("The Political Market")).toBeInTheDocument();
 });
 
