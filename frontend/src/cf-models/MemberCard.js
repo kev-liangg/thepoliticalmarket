@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-// import blank_image from "./cropped_image.png"
+import Highlighter from "react-highlight-words";
+// import blank_image from "./cropped_image.png" 
 
 function MemberCard({member}, {toHighlight}) {
     // function highlight(str) {

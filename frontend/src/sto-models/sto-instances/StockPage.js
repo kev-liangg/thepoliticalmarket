@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom"
 import StateMap from "../../Components/StateMap";
+import { Card, Container, Row, Col, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
 
 
 
@@ -9,7 +10,7 @@ import StateMap from "../../Components/StateMap";
 function getRandomColor () {
   var x = (Math.random()*0.3)*0xffffff<<0;
  
-  var contrastFactor = 80;
+  var contrastFactor = 70;
 
   // smaller number, bigger contrast.
 
@@ -17,7 +18,7 @@ function getRandomColor () {
   var g = Math.random()*contrastFactor + 16;
   var b = Math.random()*contrastFactor + 16;
 
-  var lighterFix = 32;
+  var lighterFix = 30;
 
   // bigger number, brighter text
 
@@ -67,85 +68,101 @@ const StockPage = ({match}) => {
     if (isLoading) {
       return <h2>Loading...</h2>
     }
-    return (
-          
-          <div className = "container">
-            <div className='row'>
-              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
-                <h1> Symbol: {data.Symbol}</h1>
-              </div>
-              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
-                <h3>Full Name: {data.Full_Name}</h3>
-              </div>
-              <br></br>
-              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
-                <h3>Last Sale: {data.Last_Sale}</h3>
-              </div>
-              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
-                <h3>Net Change: {data.Net_Change}%</h3></div>
-              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
-                <h2>Market Cap: {data.Market_Cap}</h2></div> 
-              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
-                <h2>Volume: {data.Volume}</h2></div>
-
-              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
-                <h3>Sector: {data.Sector}</h3></div>
-    
-              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
-                <h2>Industry: {data.Industry}</h2>
-              </div>
-              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
-                <h2>Country: {data.Country}</h2>
-              </div> 
-              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
-                <h2>State: {data.State}</h2>
-              </div>
-              <div className="col-sm-12" style={{'textAlign':'left','backgroundColor':getBrightColor(), 'color':getDarkColor()}}>
-                <h2>IPO Year: {data.IPO_Year}</h2>
-              </div>
-            </div>
-            <br></br>
-            <h2>Stock Prices for the 2020 Cycle (2018-2020)</h2>
-            <iframe title='chart' frameBorder='0' scrolling='no' width='930' height='420' src={'https://api.stockdio.com/visualization/financial/charts/v1/HistoricalPrices?app-key=A184C371FC7341B4BFFA592228916F4A&symbol='+data.Symbol+'&days=730&dividends=true&splits=true&palette=Financial-Light'}>
-            </iframe>
-            <StateMap state={data.State} />
-            <br></br>
-            <div className="row">
-              <div className="col-sm-4">
-                <h4 style={{'textAlign':'center'}}>Contracts Performed in {data.State}</h4>
-                <ul style={{'textAlign':'left', 'listStylePosition':'inside'}}>
+    return (        
+          <Container fluid style={{
+            display: "flex", justifyContent: "center",
+            alignItems: "center", 
+            textAlign: "center", 'color': getDarkColor(), 'background': getBrightColor()
+        }}>   
+               
+            <Row >             
                 {
-                  data.contracts_in_state.slice(0,5).map((contract)=>{
-                    return <li>
-                            <Link to={`/Contracts/${contract.id}`}>Contract ID = {contract.id}</Link> 
-                           </li>;
-                  })
+                  <>
+                  <Col>
+                    <Card style={{ width: '85vw',marginTop: "5vw",}}>
+                      <Card.Body>
+                        <Card.Title as="h1">{data.Symbol}
+                        </Card.Title>
+                     
+                        <div className='row'>
+                          <div className="col-sm-12" style={{'textAlign':'centered'}}>
+                            <h4>{data.Full_Name}</h4>IPO Year: {data.IPO_Year}
+                            <br></br>                
+                          </div>
+                          <div className="col-sm-12" style={{'textAlign':'centered'}}>
+                            <br></br><h6>Stock Prices for the 2020 Cycle (2019-2021)</h6>
+                          </div>
+                          <br></br>
+                          <iframe title='chart' frameBorder='0' scrolling='no' width='930' height='420' src={'https://api.stockdio.com/visualization/financial/charts/v1/HistoricalPrices?app-key=A184C371FC7341B4BFFA592228916F4A&symbol='+data.Symbol+'&days=730&dividends=true&splits=true&palette=Financial-Light'}>
+                          </iframe>
+                        </div>
+                          <br></br>
+                        <div className='row'>
+                          <div className="col-sm-3" style={{'textAlign':'centered'}}>
+                            <h5>Last Sale</h5> {data.Last_Sale}
+                          </div>
+                          <div className="col-sm-3" style={{'textAlign':'centered'}}>
+                            <h5>Net Change</h5> {data.Net_Change} %
+                          </div>
+                          <div className="col-sm-3" style={{'textAlign':'centered'}}>
+                            <h6>Market Capacity</h6> {data.Market_Cap}
+                          </div>
+                          <div className="col-sm-3" style={{'textAlign':'centered'}}>
+                            <h5>Volume</h5> {data.Volume}
+                          </div>
+                        </div><br></br>       
+                        <div className='row'>
+                          <div className="col-sm-3" style={{'textAlign':'centered'}}>
+                            <h5>Sector</h5>{data.Sector}</div>
+                          <div className="col-sm-3" style={{'textAlign':'centered'}}>
+                            <h5>Industry</h5>{data.Industry}</div>
+                          <div className="col-sm-3" style={{'textAlign':'centered'}}>
+                            <h5>Country</h5>{data.Country}</div>
+                          <div className="col-sm-3" style={{'textAlign':'centered'}}>
+                            <h5>State</h5>{data.State}
+                          </div>
+                        </div>
+                        <br></br>
+                        <StateMap state={data.State} />
+                        <br></br>
+                        <div className="row">
+                          <div className="col-sm-6">
+                            <h5 style={{'textAlign':'center'}}>Contracts Performed in {data.State}</h5>
+                            <h5 style={{'textAlign':'left', 'listStylePosition':'inside'}}>
+                            {
+                              data.contracts_in_state.slice(0,5).map((contract)=>{
+                                return <div>
+                                  
+                                        <Link to={`/Contracts/${contract.id}`}><h6 style={{'textAlign':'center','color':getDarkColor()}}>Contract ID = {contract.id}</h6></Link> 
+                                        </div>;
+                              })
+                            }
+                            </h5>
+                          </div>
+                          <div className="col-sm-6">
+                            <h5 style={{'textAlign':'center'}}>Congress Politicians in {data.State}</h5>
+                            <ul style={{'textAlign':'left', 'listStylePosition':'inside'}}>
+                            {
+                              data.cands_in_state.slice(0,5).map((candidate)=>{
+                                return  <div>
+                                        <Link to={`/CampFin/${candidate.cand_crp_id}`}><h6 style={{'textAlign':'center','color':getDarkColor()}}>{candidate.cand_firstname} {candidate.cand_lastname} </h6></Link>
+                                        </div>;
+                              })
+                            }
+                            </ul>
+                          </div>
+                        </div>
+                      </Card.Body>          
+                    </Card>
+                    <br></br>
+                    <Link to=".">  <h6 style={{'textAlign':'right','color':getDarkColor()}}>Back to StockModel</h6></Link>
+                    <Link to="/">  <h6 style={{'textAlign':'right','color':getDarkColor()}}>Back to Homepage</h6></Link>
+                    <br></br>
+                  </Col>
+                  </>
                 }
-                </ul>
-              </div>
-              <div className="col-sm-4">
-                <h4 style={{'textAlign':'center'}}>Congress Politicians in {data.State}</h4>
-                <ul style={{'textAlign':'left', 'listStylePosition':'inside'}}>
-                {
-                  data.cands_in_state.slice(0,5).map((candidate)=>{
-                    return <li>
-                            <Link to={`/CampFin/${candidate.cand_crp_id}`}>{candidate.cand_firstname} {candidate.cand_lastname} </Link>
-                          </li>;
-                  })
-                }
-                </ul>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-sm-12" style={{'textAlign':'left'}}>
-                <Link to=".">  <h3>Back to StockModel</h3></Link>
-              </div>
-              <div className="col-sm-6" style={{'textAlign':'left'}}>
-                <Link to="/">  <h3>Back to homepage</h3></Link>
-              </div>
-            </div>
-          </div>
-          
-    );
+            </Row>     
+          </Container>
+    )
 }
 export default StockPage;

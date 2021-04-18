@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import MemberCard from "./MemberCard";
-import { Pagination, Box } from "@material-ui/core";
+import { Pagination, Box, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 // For selects
@@ -68,7 +69,7 @@ function Members() {
       query.filters.push({"or": search_attributes.map((attribute)=>{
         let filter = {name: attribute};
         filter.op = "like";
-        filter.val = "%"+searchTerm+"%";
+        filter.val = "%25"+searchTerm+"%25";
         return filter;
       })});
     }
@@ -161,7 +162,7 @@ function Members() {
     switch (item.op) {
       case "contains":
         filter.op="like";
-        filter.val="%"+item.val+"%";  // any characters before or after
+        filter.val="%25"+item.val+"%25";  // any characters before or after
         break;
       case "equals":
         filter.op="like";
@@ -169,11 +170,11 @@ function Members() {
         break;
       case "starts with":
         filter.op="like";
-        filter.val=item.val+"%";      // any characters after only
+        filter.val=item.val+"%25";      // any characters after only
         break;
       case "ends with":
         filter.op="like";
-        filter.val="%"+item.val;      // any characters before only
+        filter.val="%25"+item.val;      // any characters before only
         break;
       case "is greater than":
         filter.op="gt";
@@ -383,9 +384,9 @@ function Members() {
 
 
           {/*Start of searching column*/}
-          <div className="col-sm-2.5" style={{'backgroundColor':'lightgray'}}>
+          <div className="col-sm-3" style={{'backgroundColor':'lightgray'}}>
             <h1>3. Search</h1>
-            <input
+            {/* <input
               type="text"
               placeholder="Search..."
               onKeyPress={(event) => {
@@ -395,7 +396,15 @@ function Members() {
                 }
               }}
             >
-            </input>
+            </input> */}
+            <Button
+              component={Link} to={`/CampFin/Search`}
+              variant="contained"
+              color="primary"
+              size="small"
+              style={{ marginLeft: 16 }}>
+              Search
+            </Button>
           </div>
           {/*End of searching column*/}
 

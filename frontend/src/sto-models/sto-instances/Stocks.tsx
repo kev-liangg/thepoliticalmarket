@@ -114,7 +114,7 @@ function Stocks(){
     ret.name = item.field;
     ret.op = item.operator;
     if (ret.op === 'like' || ret.op === 'not_like') {
-      ret.val = '%'+item.value+'%';
+      ret.val = '%25'+item.value+'%25';
     }
     else {
       ret.val = item.value;
@@ -138,7 +138,7 @@ function Stocks(){
       <div>
         <div className = "wrapper">
         <div className = "block">
-        <input
+        {/* <input
           type="text"
           placeholder="Search..."
           // onChange={(event) => {
@@ -151,7 +151,15 @@ function Stocks(){
               console.log((event.target as HTMLInputElement).value)
             }
           }}
-        ></input>
+        ></input> */}
+        <Button
+          component={Link} to={`/Stocks/Search`}
+          variant="contained"
+          color="primary"
+          size="small"
+          style={{ marginLeft: 16 }}>
+          Search
+        </Button>
         </div>
         <div className = "block2">
           <Dropdown>
