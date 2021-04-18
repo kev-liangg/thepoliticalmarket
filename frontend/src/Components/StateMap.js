@@ -64,7 +64,7 @@ function StateMap({state}) {
     // let src_str = "https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=ny+(StateMap)&amp;t=&amp;z=6&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
     return (
         <div style={{'width': '100%'}}>
-            <iframe title="state" width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src={src_str}></iframe>
+            <iframe title="state" width="100%" height="600" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0" src={src_str}></iframe>
             {/* <a href="https://www.maps.ie/route-planner.htm">some text</a> */}
         </div>
     )
