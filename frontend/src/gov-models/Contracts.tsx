@@ -133,38 +133,24 @@ function Contracts() {
   return (
     <> {
       <div>
+        <br></br>
         <div className = "wrapper">
         <div className = "block">
-        {/* <input
-          type="text"
-          placeholder="Search..."
-          // onChange={(event) => {
-          //   setSearchTerm(event.target.value)
-          //   console.log(event.target.value)
-          // }}
-          onKeyPress={(event) => {
-            if (event.key === 'Enter') {
-              setSearchTerm((event.target as HTMLInputElement).value)
-              console.log((event.target as HTMLInputElement).value)
-            }
-          }}
-        ></input> */}
         <Button
           component={Link} to={`/Contracts/Search`}
           variant="contained"
           color="primary"
           size="small"
           style={{ marginLeft: 16 }}>
-          Search
+          Search Contracts
         </Button>
         </div>
-        <div className = "block2">
+        </div>
         <div>
-          <h2>Filters</h2>
+          <br></br>
+          <h4>Filters:</h4>
           <FilterControl {...{fields, groups, filterValue, 
             onFilterValueChanged: handleFilter}} />
-        </div>
-        </div>
         </div>
        
         <div>

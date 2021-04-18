@@ -37,10 +37,10 @@ const MemberPage = ({match}) => {
                        
         if (count%2===0) {
           count = count + 1;
-          return <div className="row" style={{'backgroundColor':'lightgray', 'color':'gray', 'textAlign':'center'}}>{org_name}{pacs}{indivs}{total}</div>;
+          return <div key={element.contrib_id} className="row" style={{'backgroundColor':'lightgray', 'color':'gray', 'textAlign':'center'}}>{org_name}{pacs}{indivs}{total}</div>;
         } else {
           count = count + 1;
-          return <div className="row" style={{'backgroundColor': 'gray', 'color':'lightgray', 'textAlign':'center'}}>{org_name}{pacs}{indivs}{total}</div>;
+          return <div key={element.contrib_id} className="row" style={{'backgroundColor': 'gray', 'color':'lightgray', 'textAlign':'center'}}>{org_name}{pacs}{indivs}{total}</div>;
         }
       })
     }
@@ -122,7 +122,7 @@ const MemberPage = ({match}) => {
                 <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
                 {
                   data.stocks_in_state.slice(0,5).map((stock)=>{
-                    return <li>
+                    return <li key={stock.Symbol}>
                             <Link to={`/Stocks/${stock.Symbol}`}>{stock.Symbol}</Link>
                           </li>;
                   })
@@ -134,7 +134,7 @@ const MemberPage = ({match}) => {
                 <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
                 {
                   data.contracts_in_state.slice(0,5).map((contract)=>{
-                    return <li>
+                    return <li key={contract.id}>
                              <Link to={`/Contracts/${contract.id}`}>{contract.id}</Link> 
                            </li>;
                   })

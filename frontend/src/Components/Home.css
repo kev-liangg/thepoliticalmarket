@@ -2,7 +2,7 @@
     position: absolute;
     top: 40%;
     left: 50%;
-    font-size: calc(6vw);
+    font-size: calc(5vw);
     transform: translate(-50%, -50%);
     color: #2f566a;
     white-space: nowrap;
@@ -10,20 +10,27 @@
 
   .centered-small {
     text-align: center;
+    top: 45%;
+    left: 10%;
     font-size: calc(1.5vw);
     color: #2f566a;
     white-space: nowrap;
+    position: absolute;
   }
 
   .backing{  
     padding: 20px;
     height: calc(10vw);
     background-color: #9CC3D5FF;
-    opacity: .8;
+    opacity: .9;
     width: 100vw;
     text-align:center;
   }
 
   .wrapper {
       position: relative;
+  }
+  section { height: 100vh; }
+  .SplashInfo{
+    text-align: center;
   }
