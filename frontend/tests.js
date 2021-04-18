@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, act, findByText } from '@testing-library/react';
 import React from 'react';
 import App from './src/App'
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Home from './src/Components/Home'
 import NavigationBar from './src/Components/NavigationBar'
 import Members from './src/cf-models/Members'
@@ -28,9 +28,9 @@ test('render home page', () => {
 
 test('render navigation bar', () => {
     render(
-        <Router>
+        <BrowserRouter>
             <NavigationBar />
-        </Router>
+        </BrowserRouter>
     );
     expect(screen.getByText("Home")).toBeInTheDocument();
     expect(screen.getByText("Contracts")).toBeInTheDocument();
@@ -47,7 +47,11 @@ test('render contract model page', async () => {
     }));
 
     await act(async () => {
-        render(<Contracts />);
+        render(
+            <BrowserRouter>
+                <Contracts />
+            </BrowserRouter>
+            );
     });
 
     expect(screen.getByText("Contract Page")).toBeInTheDocument();
@@ -66,7 +70,11 @@ test('render stock model page', async () => {
     }));
 
     await act(async () => {
-        render(<Stocks />);
+        render(
+            <BrowserRouter>
+                <Stocks />
+            </BrowserRouter>
+        );
     });
 
     expect(screen.getByText("Stock Page")).toBeInTheDocument();
@@ -89,7 +97,11 @@ test('render candidate model page', async () => {
     }));
 
     await act(async () => {
-        render(<Members />);
+        render(
+            <BrowserRouter>
+                <Members />
+            </BrowserRouter>
+        );
     });
 
     expect(screen.getByText("Campaign Finance")).toBeInTheDocument();

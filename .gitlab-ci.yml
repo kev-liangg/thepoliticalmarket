@@ -27,8 +27,6 @@ frontend:
     - yarn lint
     - yarn test --verbose
     only:
-        refs:
-            - merge_requests
         changes:
             - frontend/**/*
 
@@ -55,8 +53,6 @@ backend:
     - source localvenv/bin/activate
     - pytest -v
     only:
-        refs:
-            - merge_requests
         changes:
             - backend/**/*
 

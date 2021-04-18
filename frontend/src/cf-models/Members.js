@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import MemberCard from "./MemberCard";
-import { Pagination, Box } from "@material-ui/core";
+import { Pagination, Box, Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 // For selects
@@ -383,9 +384,9 @@ function Members() {
 
 
           {/*Start of searching column*/}
-          <div className="col-sm-2.5" style={{'backgroundColor':'lightgray'}}>
+          <div className="col-sm-3" style={{'backgroundColor':'lightgray'}}>
             <h1>3. Search</h1>
-            <input
+            {/* <input
               type="text"
               placeholder="Search..."
               onKeyPress={(event) => {
@@ -395,7 +396,15 @@ function Members() {
                 }
               }}
             >
-            </input>
+            </input> */}
+            <Button
+              component={Link} to={`/CampFin/Search`}
+              variant="contained"
+              color="primary"
+              size="small"
+              style={{ marginLeft: 16 }}>
+              Search
+            </Button>
           </div>
           {/*End of searching column*/}
 
