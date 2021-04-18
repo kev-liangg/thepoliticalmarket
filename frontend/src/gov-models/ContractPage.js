@@ -104,7 +104,7 @@ const ContractPage = ({match}) => {
                         variant="contained"
                         color="primary"
                         size="small"
-                        style={{ marginLeft: 16 }}>
+                        style={{ marginLeft: 4 }}>
                         Page
                       </Button>
                           </td>
