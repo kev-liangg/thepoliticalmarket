@@ -7,8 +7,8 @@ import Button from '@material-ui/core/Button';
 import { DataGrid } from '@material-ui/data-grid'
 
 const stockColumns = [
-  { field: 'Full_Name', headerName: 'Company Name', width: 400},
-  { field: 'Symbol', headerName: 'Go to Page', width: 400,
+  { field: 'Full_Name', headerName: 'Company Name', width: 650},
+  { field: 'Symbol', headerName: 'Go to Page', width: 200,
     renderCell: (params) => ( <>
       {console.log(params)}
       <Button
@@ -23,8 +23,8 @@ const stockColumns = [
 ]
 
 const candColumns = [
-  { field: 'cand_firstname', headerName: 'Candidate Name', width: 400},
-  { field: 'cand_crp_id', headerName: 'Go to Page', width: 400,
+  { field: 'cand_firstname', headerName: 'Candidate Name', width: 650},
+  { field: 'cand_crp_id', headerName: 'Go to Page', width: 200,
     renderCell: (params) => ( <>
       {console.log(params)}
       <Button
@@ -101,23 +101,25 @@ const ContractPage = ({match}) => {
            <div className = "row">
            <div className="col-sm-6">
               <h2 style={{'textAlign':'center','color':'black'}}> Congress Politicians in {data.contract_sop}</h2>
-                <DataGrid 
-                    rows={data.cands_in_state} 
-                    columns={candColumns} 
-                    pageSize={10}
-                    getRowId={(row)=>row.cand_crp_id}
-                    autoHeight={true}
-                  />
+                <div style={{height: 650}}>
+                  <DataGrid 
+                      rows={data.cands_in_state} 
+                      columns={candColumns} 
+                      pageSize={10}
+                      getRowId={(row)=>row.cand_crp_id}
+                    />
+                  </div>
             </div>
             <div className="col-sm-6">
               <h2 style={{'textAlign':'center','color':'black'}}> Companies Headquartered in {data.contract_sop}</h2>
-                <DataGrid 
-                  rows={data.stocks_in_state} 
-                  columns={stockColumns} 
-                  pageSize={10}
-                  getRowId={(row)=>row.Symbol}
-                  autoHeight={true}
-                 />
+                <div style={{height: 650}}>
+                  <DataGrid 
+                    rows={data.stocks_in_state} 
+                    columns={stockColumns} 
+                    pageSize={10}
+                    getRowId={(row)=>row.Symbol}
+                  />
+                 </div>
             </div>
            
            </div>

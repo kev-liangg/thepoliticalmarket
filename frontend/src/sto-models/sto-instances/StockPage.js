@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom"
 import StateMap from "../../Components/StateMap";
-import { Card, Container, Row, Col, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Card, Container, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { DataGrid } from '@material-ui/data-grid'
+import { Button } from '@material-ui/core'
 
 const candColumns = [
-  { field: 'cand_firstname', headerName: 'Candidate Name', width: 400},
-  { field: 'cand_crp_id', headerName: 'Go to Page', width: 400,
+  { field: 'cand_firstname', headerName: 'Candidate Name', width: 550},
+  { field: 'cand_crp_id', headerName: 'Go to Page', width: 200,
     renderCell: (params) => ( <>
       {console.log(params)}
       <Button
@@ -21,8 +22,8 @@ const candColumns = [
 ]
 
 const contractColumns = [
-  { field: 'contract_recipient', headerName: 'Recipient', width: 400},
-  { field: 'id', headerName: 'Go to Page', width: 400,
+  { field: 'contract_recipient', headerName: 'Recipient', width: 550},
+  { field: 'id', headerName: 'Go to Page', width: 200,
   renderCell: (params) => ( <>
     {console.log(params)}
     <Button
@@ -157,27 +158,25 @@ const StockPage = ({match}) => {
                         <div className="row">
                           <div className="col-sm-6">
                             <h5 style={{'textAlign':'center'}}>Contracts Performed in {data.State}</h5>
-                            <h5 style={{'textAlign':'left'}}>
-                            <DataGrid 
-                              rows={data.contracts_in_state} 
-                              columns={contractColumns} 
-                              pageSize={10}
-                              getRowId={(row)=>row.id}
-                              autoHeight={true}
-                            />
-                            </h5>
+                            <div style={{height: 700}}>
+                              <DataGrid 
+                                rows={data.contracts_in_state} 
+                                columns={contractColumns} 
+                                pageSize={10}
+                                getRowId={(row)=>row.id}
+                              />
+                            </div>
                           </div>
                           <div className="col-sm-6">
                             <h5 style={{'textAlign':'center'}}>Congress Politicians in {data.State}</h5>
-                            <ul style={{'textAlign':'left'}}>
+                            <div style={{height: 700}}>
                             <DataGrid 
                               rows={data.cands_in_state} 
                               columns={candColumns} 
                               pageSize={10}
                               getRowId={(row)=>row.cand_crp_id}
-                              autoHeight={true}
                             />
-                            </ul>
+                            </div>
                           </div>
                         </div>
                       </Card.Body>          
