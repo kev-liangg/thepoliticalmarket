@@ -1,11 +1,45 @@
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom"
 import StateMap from "../../Components/StateMap";
-import { Card, Container, Row, Col, Button, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Card, Container, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { DataGrid } from '@material-ui/data-grid'
+import { Button } from '@material-ui/core'
 
+const candColumns = [
+  { field: '', headerName: 'Candidate Name', width: 550,
+    renderCell: (params) => {
+      return `${params.row.cand_firstname} ${params.row.cand_lastname}`
+    }
+  },
+  { field: 'cand_crp_id', headerName: 'Go to Page', width: 200,
+    renderCell: (params) => ( <>
+      <Button
+        component={Link} to={`/CampFin/${params.value}`}
+        variant="contained"
+        color="primary"
+        size="small"
+        style={{ marginLeft: 4 }}>
+        Page
+      </Button>
+    </>)
+    }
+]
 
-
-
+const contractColumns = [
+  { field: 'contract_recipient', headerName: 'Recipient', width: 550},
+  { field: 'id', headerName: 'Go to Page', width: 200,
+  renderCell: (params) => ( <>
+    {console.log(params)}
+    <Button
+      component={Link} to={`/Contract/${params.value}`}
+      variant="contained"
+      color="primary"
+      size="small"
+      style={{ marginLeft: 4 }}>
+      Page
+    </Button>
+  </>)}
+]
 
 function getRandomColor () {
   var x = (Math.random()*0.3)*0xffffff<<0;
@@ -128,28 +162,25 @@ const StockPage = ({match}) => {
                         <div className="row">
                           <div className="col-sm-6">
                             <h5 style={{'textAlign':'center'}}>Contracts Performed in {data.State}</h5>
-                            <h5 style={{'textAlign':'left', 'listStylePosition':'inside'}}>
-                            {
-                              data.contracts_in_state.slice(0,5).map((contract)=>{
-                                return <div key={contract.id}>
-                                  
-                                        <Link to={`/Contracts/${contract.id}`}><h6 style={{'textAlign':'center','color':getDarkColor()}}>Contract ID = {contract.id}</h6></Link> 
-                                        </div>;
-                              })
-                            }
-                            </h5>
+                            <div style={{height: 700}}>
+                              <DataGrid 
+                                rows={data.contracts_in_state} 
+                                columns={contractColumns} 
+                                pageSize={10}
+                                getRowId={(row)=>row.id}
+                              />
+                            </div>
                           </div>
                           <div className="col-sm-6">
                             <h5 style={{'textAlign':'center'}}>Congress Politicians in {data.State}</h5>
-                            <ul style={{'textAlign':'left', 'listStylePosition':'inside'}}>
-                            {
-                              data.cands_in_state.slice(0,5).map((candidate)=>{
-                                return  <div key={candidate.cand_crp_id}>
-                                        <Link to={`/CampFin/${candidate.cand_crp_id}`}><h6 style={{'textAlign':'center','color':getDarkColor()}}>{candidate.cand_firstname} {candidate.cand_lastname} </h6></Link>
-                                        </div>;
-                              })
-                            }
-                            </ul>
+                            <div style={{height: 700}}>
+                            <DataGrid 
+                              rows={data.cands_in_state} 
+                              columns={candColumns} 
+                              pageSize={10}
+                              getRowId={(row)=>row.cand_crp_id}
+                            />
+                            </div>
                           </div>
                         </div>
                       </Card.Body>          
