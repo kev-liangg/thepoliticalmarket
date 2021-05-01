@@ -1,6 +1,40 @@
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom";
 import StateMap from "../Components/StateMap";
+import Button from '@material-ui/core/Button';
+import { DataGrid } from '@material-ui/data-grid'
+
+const stockColumns = [
+  { field: 'Full_Name', headerName: 'Company Name', width: 650},
+  { field: 'Symbol', headerName: 'Go to Page', width: 200,
+    renderCell: (params) => ( <>
+      {console.log(params)}
+      <Button
+        component={Link} to={`/Stocks/${params.value}`}
+        variant="contained"
+        color="primary"
+        size="small"
+        style={{ marginLeft: 4 }}>
+        Page
+      </Button>
+    </>)}
+]
+
+const contractColumns = [
+  { field: 'contract_recipient', headerName: 'Recipient', width: 650},
+  { field: 'id', headerName: 'Go to Page', width: 200,
+  renderCell: (params) => ( <>
+    {console.log(params)}
+    <Button
+      component={Link} to={`/Contract/${params.value}`}
+      variant="contained"
+      color="primary"
+      size="small"
+      style={{ marginLeft: 4 }}>
+      Page
+    </Button>
+  </>)}
+]
 
 const MemberPage = ({match}) => {
     const {
@@ -119,27 +153,25 @@ const MemberPage = ({match}) => {
           <div className="row">
             <div className="col-sm-6">
               <h2 style={{'textAlign':'center'}}>Stocks Headquartered in {data.cand_state}</h2>
-                <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
-                {
-                  data.stocks_in_state.slice(0,5).map((stock)=>{
-                    return <li key={stock.Symbol}>
-                            <Link to={`/Stocks/${stock.Symbol}`}>{stock.Symbol}</Link>
-                          </li>;
-                  })
-                }
-                </ul>
+                <div style={{height: 650}}>
+                  <DataGrid 
+                    rows={data.stocks_in_state} 
+                    columns={stockColumns} 
+                    pageSize={10}
+                    getRowId={(row)=>row.Symbol}
+                  />
+                </div>
             </div>
             <div className="col-sm-6">
               <h2 style={{'textAlign':'center'}}>Contracts Performed in {data.cand_state}</h2>
-                <ul style={{'textAlign':'center', 'listStylePosition':'inside'}}>
-                {
-                  data.contracts_in_state.slice(0,5).map((contract)=>{
-                    return <li key={contract.id}>
-                             <Link to={`/Contracts/${contract.id}`}>{contract.id}</Link> 
-                           </li>;
-                  })
-                }
-                </ul>
+                <div style={{height: 650}}>
+                  <DataGrid 
+                    rows={data.contracts_in_state} 
+                    columns={contractColumns} 
+                    pageSize={10}
+                    getRowId={(row)=>row.Symbol}
+                  />
+                </div>
             </div>
           </div>
         </div>
