@@ -23,7 +23,11 @@ const stockColumns = [
 ]
 
 const candColumns = [
-  { field: 'cand_firstname', headerName: 'Candidate Name', width: 650},
+  { field: 'cand_firstname', headerName: 'Candidate Name', width: 650,
+    renderCell: (params) => {
+      return `${params.row.cand_firstname} ${params.row.cand_lastname}`
+    }
+  },
   { field: 'cand_crp_id', headerName: 'Go to Page', width: 200,
     renderCell: (params) => ( <>
       {console.log(params)}

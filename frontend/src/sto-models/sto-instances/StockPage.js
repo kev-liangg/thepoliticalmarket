@@ -6,19 +6,23 @@ import { DataGrid } from '@material-ui/data-grid'
 import { Button } from '@material-ui/core'
 
 const candColumns = [
-  { field: 'cand_firstname', headerName: 'Candidate Name', width: 550},
+  { field: '', headerName: 'Candidate Name', width: 550,
+    renderCell: (params) => {
+      return `${params.row.cand_firstname} ${params.row.cand_lastname}`
+    }
+  },
   { field: 'cand_crp_id', headerName: 'Go to Page', width: 200,
     renderCell: (params) => ( <>
-      {console.log(params)}
       <Button
-        component={Link} to={`/Candidate/${params.value}`}
+        component={Link} to={`/CampFin/${params.value}`}
         variant="contained"
         color="primary"
         size="small"
         style={{ marginLeft: 4 }}>
         Page
       </Button>
-    </>)}
+    </>)
+    }
 ]
 
 const contractColumns = [
