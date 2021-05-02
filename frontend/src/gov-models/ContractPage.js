@@ -4,6 +4,44 @@ import {Link} from "react-router-dom"
 import './ContractPage.css'
 import StateMap from "../Components/StateMap";
 import Button from '@material-ui/core/Button';
+import { DataGrid } from '@material-ui/data-grid'
+
+const stockColumns = [
+  { field: 'Full_Name', headerName: 'Company Name', width: 650},
+  { field: 'Symbol', headerName: 'Go to Page', width: 200,
+    renderCell: (params) => ( <>
+      {console.log(params)}
+      <Button
+        component={Link} to={`/Stocks/${params.value}`}
+        variant="contained"
+        color="primary"
+        size="small"
+        style={{ marginLeft: 4 }}>
+        Page
+      </Button>
+    </>)}
+]
+
+const candColumns = [
+  { field: 'cand_firstname', headerName: 'Candidate Name', width: 650,
+    renderCell: (params) => {
+      return `${params.row.cand_firstname} ${params.row.cand_lastname}`
+    }
+  },
+  { field: 'cand_crp_id', headerName: 'Go to Page', width: 200,
+    renderCell: (params) => ( <>
+      {console.log(params)}
+      <Button
+        component={Link} to={`/Candidate/${params.value}`}
+        variant="contained"
+        color="primary"
+        size="small"
+        style={{ marginLeft: 4 }}>
+        Page
+      </Button>
+    </>)}
+]
+
 const ContractPage = ({match}) => {
     const {
         params: { awardId },
@@ -67,58 +105,29 @@ const ContractPage = ({match}) => {
            <div className = "row">
            <div className="col-sm-6">
               <h2 style={{'textAlign':'center','color':'black'}}> Congress Politicians in {data.contract_sop}</h2>
-                <table style={{'textAlign':'center', 'listStylePosition':'inside', 'border': '1px solid black'}}>
-                <tbody>
-                {
-                  data.cands_in_state.slice(0,5).map((candidate)=>{
-                    return <tr key={candidate.cand_crp_id}>
-                            <td>
-                            <Link to={`/CampFin/${candidate.cand_crp_id}`}>{candidate.cand_firstname} {candidate.cand_lastname} </Link>
-                            </td>
-                            <td>
-                            <Button
-                          component={Link} to={`/CampFin/${candidate.cand_crp_id}`}
-                          variant="contained"
-                          color="primary"
-                          size="small"
-                          style={{ marginLeft: 16 }}>
-                          Page
-                        </Button>
-                            </td>
-                          </tr>;
-                  })
-                }
-                </tbody>
-                </table>
+                <div style={{height: 650}}>
+                  <DataGrid 
+                      rows={data.cands_in_state} 
+                      columns={candColumns} 
+                      pageSize={10}
+                      getRowId={(row)=>row.cand_crp_id}
+                    />
+                  </div>
             </div>
             <div className="col-sm-6">
               <h2 style={{'textAlign':'center','color':'black'}}> Companies Headquartered in {data.contract_sop}</h2>
-                <table style={{'textAlign':'center', 'listStylePosition':'inside'}}>
-                  <tbody>
-                {
-                  data.stocks_in_state.slice(0,5).map((stock)=>{
-                    return <tr key={stock.Symbol}>
-                          <td>
-                          <Link to={`/Stocks/${stock.Symbol}`}>{stock.Full_Name} </Link>
-                          </td>
-                          <td>
-                          <Button
-                        component={Link} to={`/Stocks/${stock.Symbol}`}
-                        variant="contained"
-                        color="primary"
-                        size="small"
-                        style={{ marginLeft: 4 }}>
-                        Page
-                      </Button>
-                          </td>
-                        </tr>;
-                  })
-                }
-                </tbody>
-                </table>
+                <div style={{height: 650}}>
+                  <DataGrid 
+                    rows={data.stocks_in_state} 
+                    columns={stockColumns} 
+                    pageSize={10}
+                    getRowId={(row)=>row.Symbol}
+                  />
+                 </div>
             </div>
            
            </div>
+           <br></br>
            <div className = "row">
            <div className="col-lg-12" style={{'textAlign':'center'}}>
            <StateMap state = {data.contract_sop}>

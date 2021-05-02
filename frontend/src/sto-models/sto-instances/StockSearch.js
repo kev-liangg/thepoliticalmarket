@@ -24,7 +24,7 @@ function ContractSearchCard({item, toHl}) {
                     <b>Company Name</b> {hl(toHl, item.Orgname)} &emsp;
                     <b>Full Name:</b> {hl(toHl, item.Full_Name)} &emsp;
                     <b>Last Sale:</b> {item.Last_Sale} &emsp;
-                    <b>Market Cap:</b> {hl(toHl, item.Market_Cap)} &emsp;
+                    <b>Market Cap:</b> {item.Market_Cap} &emsp;
                     <b>Country:</b> {hl(toHl, item.Country)} &emsp;
                     <b>Sector:</b> {hl(toHl, item.Sector)} &emsp;
                     <b>Industry:</b> {hl(toHl, item.Industry)} &emsp;
