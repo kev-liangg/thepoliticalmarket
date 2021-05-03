@@ -86,7 +86,7 @@ test('render stock model page', async () => {
     expect(screen.getByText("Last Sale")).toBeInTheDocument();
     expect(screen.getByText("Net Change")).toBeInTheDocument();
     expect(screen.getByText("% Change")).toBeInTheDocument();
-    expect(screen.getByText("Market Capacity (k)")).toBeInTheDocument();
+    expect(screen.getByText("Market Cap (k)")).toBeInTheDocument();
     expect(screen.getByText("Volume")).toBeInTheDocument();
     expect(screen.getByText("IPO Year")).toBeInTheDocument();
     expect(screen.getByText("Sector")).toBeInTheDocument();
