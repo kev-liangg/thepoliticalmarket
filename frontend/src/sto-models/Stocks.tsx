@@ -26,7 +26,7 @@ const tablePropsInit: ITableProps = {
     { key: 'Last_Sale', title: 'Last Sale', dataType: DataType.Number},
     { key: 'Net_Change', title: 'Net Change', dataType: DataType.Number},
     { key: 'Percentage_Change', title: '% Change'},
-    { key: 'Market_Cap', title: 'Market Capacity (k)', dataType: DataType.Number},
+    { key: 'Market_Cap', title: 'Market Cap (k)', dataType: DataType.Number},
     { key: 'Volume', title: 'Volume', dataType: DataType.Number},
     { key: 'IPO_Year', title: 'IPO Year'},
     { key: 'Sector', title: 'Sector'},

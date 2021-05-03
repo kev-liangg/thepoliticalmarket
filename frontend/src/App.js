@@ -14,6 +14,7 @@ import StockPage from "./sto-models/StockPage";
 import Stocks from "./sto-models/Stocks";
 import StockSearchPage from "./sto-models/StockSearchPage";
 import {NavigationBar, About, Home, SiteSearch} from "./Components";
+import TPMVisuals from "./Visualizations/TPMVisuals";
 class App extends Component {
   render() {
     return (
@@ -38,6 +39,7 @@ class App extends Component {
             <Route path = "/Contracts/:awardId" component = {ContractPage} />
             <Route path = "/Stocks/:symbol" component = {StockPage} />
             <Route exact path = "/SiteSearch" component = {SiteSearch} />
+            <Route exact path = "/TPMVisuals" component = {TPMVisuals} />
             {/* <Route path = "/gov-models/Contracts" component = {Contracts} />
             <Route path = "/gov-models/State" component = {State} /> */}
             {/* <Route component = {NoMatch} /> */}
