@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import { hl } from '../../filtering-logic/Helpers'
-import { Pager } from '../../Components/Pagination'
+import { hl } from '../filtering-logic/Helpers'
+import { Pager } from '../Components/Pagination'
 
 const stock_atts = [
     'Symbol',
