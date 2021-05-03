@@ -39,7 +39,7 @@ class App extends Component {
             <Route path = "/Contracts/:awardId" component = {ContractPage} />
             <Route path = "/Stocks/:symbol" component = {StockPage} />
             <Route exact path = "/SiteSearch" component = {SiteSearch} />
-            <Route exact path = "/Visualizations" component = {TPMVisuals} />
+            <Route exact path = "/TPMVisuals" component = {TPMVisuals} />
             {/* <Route path = "/gov-models/Contracts" component = {Contracts} />
             <Route path = "/gov-models/State" component = {State} /> */}
             {/* <Route component = {NoMatch} /> */}
