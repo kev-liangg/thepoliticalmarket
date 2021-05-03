@@ -26,7 +26,7 @@ const contractColumns = [
   renderCell: (params) => ( <>
     {console.log(params)}
     <Button
-      component={Link} to={`/Contract/${params.value}`}
+      component={Link} to={`/Contracts/${params.value}`}
       variant="contained"
       color="primary"
       size="small"
