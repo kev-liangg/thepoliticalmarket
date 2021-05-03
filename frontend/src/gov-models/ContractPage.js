@@ -32,7 +32,7 @@ const candColumns = [
     renderCell: (params) => ( <>
       {console.log(params)}
       <Button
-        component={Link} to={`/Candidate/${params.value}`}
+        component={Link} to={`/CampFin/${params.value}`}
         variant="contained"
         color="primary"
         size="small"
