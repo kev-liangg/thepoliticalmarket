@@ -1,6 +1,6 @@
 import {
     containsOp, notContainsOp, eqOp, neqOp, ltOp, gtOp, lteOp, gteOp 
-} from '../../filtering-logic/Operators.js'
+} from '../filtering-logic/Operators.js'
 
 export const fields = [
     { name: 'Symbol', caption: 'Symbol',

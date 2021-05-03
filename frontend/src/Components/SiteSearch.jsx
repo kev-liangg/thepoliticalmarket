@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MemberSearch from '../cf-models/MemberSearch'
 import ContributionSearch from '../cf-models/ContributionSearch'
 import ContractSearch from '../gov-models/ContractSearch'
-import StockSearch from '../sto-models/sto-instances/StockSearch'
+import StockSearch from '../sto-models/StockSearch'
 
 function SiteSearch() {
 

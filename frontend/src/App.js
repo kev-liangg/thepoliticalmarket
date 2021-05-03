@@ -10,9 +10,9 @@ import Members from "./cf-models/Members";
 import MemberPage from "./cf-models/MemberPage";
 import MemberSearchPage from "./cf-models/MemberSearchPage";
 import ContractPage from "./gov-models/ContractPage";
-import StockPage from "./sto-models/sto-instances/StockPage";
-import Stocks from "./sto-models/sto-instances/Stocks";
-import StockSearchPage from "./sto-models/sto-instances/StockSearchPage";
+import StockPage from "./sto-models/StockPage";
+import Stocks from "./sto-models/Stocks";
+import StockSearchPage from "./sto-models/StockSearchPage";
 import {NavigationBar, About, Home, SiteSearch} from "./Components";
 class App extends Component {
   render() {

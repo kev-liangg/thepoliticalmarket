@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { Pagination } from "@material-ui/core";
 import Dropdown from 'react-bootstrap/Dropdown'
-import '../../Components/table-style.css'
-// import 'ka-table/style.css'
+import '../Components/table-style.css'
 
 import { ITableProps, kaReducer, Table } from 'ka-table';
 import { DataType, SortingMode } from 'ka-table/enums';
