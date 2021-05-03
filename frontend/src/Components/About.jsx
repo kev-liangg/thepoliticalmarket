@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import '../App.css';
 import Button from 'react-bootstrap/Button'
-// import blank_profile from "./blank-profile.png"
-import vaishnav from "./Vaishnav.png"
-import kevinl from "./kevin.png"
-import kevinc from "./kevinchen.jpeg" 
-import anisha from "./anisha.png"
-import diyuan from "./diyuan.png" 
+import vaishnav from "./assets/Vaishnav.png"
+import kevinl from "./assets/kevin.png"
+import kevinc from "./assets/kevinchen.jpeg" 
+import anisha from "./assets/anisha.png"
+import diyuan from "./assets/diyuan.png" 
 const cardStyle = {
     'backgroundColor': '#82b3c9', 
     'width': '16.5rem', 

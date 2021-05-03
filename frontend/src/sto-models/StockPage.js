@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom"
-import StateMap from "../../Components/StateMap";
+import StateMap from "../Components/StateMap";
 import { Card, Container, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { DataGrid } from '@material-ui/data-grid'
 import { Button } from '@material-ui/core'
@@ -31,7 +31,7 @@ const contractColumns = [
   renderCell: (params) => ( <>
     {console.log(params)}
     <Button
-      component={Link} to={`/Contract/${params.value}`}
+      component={Link} to={`/Contracts/${params.value}`}
       variant="contained"
       color="primary"
       size="small"
