@@ -1,37 +1,22 @@
 export const dogattributes = [ 
   {
-    "name": "Page A",
-    "uv": 4000,
-    "pv": 2400
+    "name": "Baby",
+    "Female": 5489,
+    "Male": 11455
   },
   {
-    "name": "Page B",
-    "uv": 3000,
-    "pv": 1398
+    "name": "Young",
+    "Female": 8578,
+    "Male": 19313
   },
   {
-    "name": "Page C",
-    "uv": 2000,
-    "pv": 9800
+    "name": "Adult",
+    "Female": 16902,
+    "Male": 36956
   },
   {
-    "name": "Page D",
-    "uv": 2780,
-    "pv": 3908
-  },
-  {
-    "name": "Page E",
-    "uv": 1890,
-    "pv": 4800
-  },
-  {
-    "name": "Page F",
-    "uv": 2390,
-    "pv": 3800
-  },
-  {
-    "name": "Page G",
-    "uv": 3490,
-    "pv": 4300
+    "name": "Senior",
+    "Female": 2709,
+    "Male": 5900
   }
 ]
