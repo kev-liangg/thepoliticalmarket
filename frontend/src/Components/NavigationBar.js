@@ -48,7 +48,12 @@ const NavigationBar = () => (
           </Nav.Item>
           <Nav.Item>
             <Nav.Link as={Link} to="/TPMVisuals">
-              Visualizations
+              Our Data
+            </Nav.Link>
+          </Nav.Item>
+          <Nav.Item>
+            <Nav.Link as={Link} to="/DoggieDBVisuals">
+              Our Provider Data
             </Nav.Link>
           </Nav.Item>
         </Nav>
