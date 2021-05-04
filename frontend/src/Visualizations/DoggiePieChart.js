@@ -7,9 +7,6 @@ class DoggiePieChart extends React.Component {
 
     COLORS = ['#F7F4EA', '#DED9E2', '#473f66', '#80A1D4', '#145453', '#18206F', '#006D77', '#9FA0C3', '#00AFB9'];
 
-    pieData = [
-    ];
-
     CustomTooltip = ({ active, payload, label }) => {
         if (active) {
             return (
