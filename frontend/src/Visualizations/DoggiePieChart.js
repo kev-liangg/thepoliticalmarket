@@ -21,7 +21,7 @@ class DoggiePieChart extends React.Component {
 
     render() {
         return (
-            <PieChart width={900} height={800}>
+            <PieChart width={800} height={800}>
                 <Pie data={breedclass} color="#000000" dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={350} fill="#8884d8" >
                     {
                         breedclass.map((entry, index) => <Cell key={`cell-${index}`} fill={this.COLORS[index % this.COLORS.length]} />)
