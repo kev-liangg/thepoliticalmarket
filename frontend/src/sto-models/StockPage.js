@@ -42,7 +42,6 @@ const contractColumns = [
 ]
 
 function getRandomColor () {
-  var x = (Math.random()*0.3)*0xffffff<<0;
  
   var contrastFactor = 70;
 
@@ -68,7 +67,7 @@ function getRandomColor () {
   Math.floor(256 - g +16).toString(16) +
   Math.floor(256 - b +16).toString(16);
 
-  return new Array(reverse,dark);
+  return [reverse,dark];
 }
 
 
