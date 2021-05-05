@@ -9,6 +9,7 @@ import States from "./gov-models/States";
 import Members from "./cf-models/Members";
 import MemberPage from "./cf-models/MemberPage";
 import MemberSearchPage from "./cf-models/MemberSearchPage";
+import ContributionSearchPage from "./cf-models/ContributionSearchPage"
 import ContractPage from "./gov-models/ContractPage";
 import StockPage from "./sto-models/StockPage";
 import Stocks from "./sto-models/Stocks";
@@ -34,7 +35,8 @@ class App extends Component {
             <Route exact path = "/Contracts" component = {Contracts} />
             <Route exact path = "/Contracts/Search" component = {ContractSearchPage} />
             <Route exact path = "/CampFin" component = {Members} />
-            <Route exact path = "/CampFin/Search" component = {MemberSearchPage} />
+            <Route exact path = "/Members/Search" component = {MemberSearchPage} />
+            <Route exact path = "/Contributions/Search" component = {ContributionSearchPage} />
             <Route path = "/CampFin/:candId" component = {MemberPage} />
             <Route exact path = "/About" component = {About} />
             <Route path = "/Contracts/:awardId" component = {ContractPage} />

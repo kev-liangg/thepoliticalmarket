@@ -362,14 +362,26 @@ function Members() {
           {/*Start of searching column*/}
           <div className="col-sm-3" style={{'backgroundColor':'lightgray'}}>
             <h1>3. Search</h1>
-            <Button
-              component={Link} to={`/CampFin/Search`}
-              variant="contained"
-              color="primary"
-              size="small"
-              style={{ marginLeft: 16 }}>
-              Search
-            </Button>
+            <div style={{"padding-top":"20px"}}>
+              <Button
+                component={Link} to={`/Members/Search`}
+                variant="contained"
+                color="primary"
+                size="small"
+                style={{ marginLeft: 16 }}>
+                Search Members
+              </Button>
+            </div>
+            <div style={{"padding-top":"20px"}}>
+              <Button
+                component={Link} to={`/Contributions/Search`}
+                variant="contained"
+                color="primary"
+                size="small"
+                style={{ marginLeft: 16 }}>
+                Search Contributions
+              </Button>
+            </div>
           </div>
           {/*End of searching column*/}
 
