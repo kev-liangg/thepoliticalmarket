@@ -60,7 +60,7 @@ function StockSearch ({searchTerms}) {
     useEffect(() => {
         let query = {};
         
-        searchTerms.split(" ").map((searchTerm) => {
+        searchTerms.split(" ").forEach((searchTerm) => {
             if (searchTerm !== "") {
                 if (!("filters" in query)) {
                     query.filters = [{"or":[]}]
@@ -92,8 +92,17 @@ function StockSearch ({searchTerms}) {
     
     }, [page, searchTerms]); // eslint-disable-line react-hooks/exhaustive-deps
 
+    if (isLoading) {
+        return (
+            <div>
+                Loading Search Results...
+            </div>
+        )
+    }
+
     return (
         <div>
+            Number of Results: {numResults}
             {mapData(data, searchTerms)} <br></br>
             <Pager
                 page={page}

@@ -18,7 +18,7 @@ function MemberSearchCard({member, toHighlight}) {
             <div className='card mt-5'>
                 <div className='card-body'>
                 <div className="card-text d-flex align-items-center justify-content-center">
-                    <div><img src={member.cand_image} style={{"align":"left","height":"5vw","margin-right":"50px"}}/></div>
+                    <div><img src={member.cand_image} alt="" style={{"align":"left","height":"5vw","margin-right":"50px"}}/></div>
                     <b style={{"margin-right":"100px"}}>{hl(toHighlight, member.cand_firstname)} {hl(toHighlight, member.cand_lastname)} </b>
                     <b>OpenSecrets ID</b>: {hl(toHighlight, member.cand_crp_id)} &emsp;
                     <b>Office</b> {hl(toHighlight, member.cand_office)} &emsp;
@@ -56,7 +56,7 @@ function MemberSearch ({searchTerms}) {
     useEffect(() => {
         let query = {};
         
-        searchTerms.split(" ").map((searchTerm) => {
+        searchTerms.split(" ").forEach((searchTerm) => {
             if (searchTerm !== "") {
                 if (!("filters" in query)) {
                     query.filters = [{"or":[]}]
@@ -88,14 +88,23 @@ function MemberSearch ({searchTerms}) {
     
     }, [candidatePage, searchTerms]); // eslint-disable-line react-hooks/exhaustive-deps
 
+    if (candidateIsLoading) {
+        return (
+            <div>
+                Loading Search Results...
+            </div>
+        )
+    }
+
     return (
         <div>
+            Number of Results: {candidateNumResults}
             {mapData(candidateData, searchTerms)} <br></br>
             <Pager 
                 numPages={candidateNumPages} 
                 page={candidatePage}
                 setPage={setCandidatePage}
-            />
+            />            
         </div>
         
     );
