@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { Pagination } from "@material-ui/core";
-import Dropdown from 'react-bootstrap/Dropdown'
 import './ContractTable.css'
 import '../Components/table-style.css'
-// import 'ka-table/style.css'
 
 import { ITableProps, kaReducer, Table } from 'ka-table';
 import { DataType, SortingMode } from 'ka-table/enums';
 import { DispatchFunc } from 'ka-table/types';
 import { 
-  hideLoading, loadData, showLoading, updateData,
+  hideLoading, showLoading, updateData,
 } from 'ka-table/actionCreators';
 import { getSortedColumns } from 'ka-table/Utils/PropsUtils';
 

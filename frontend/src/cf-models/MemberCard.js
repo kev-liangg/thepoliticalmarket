@@ -1,12 +1,6 @@
-import React from 'react';
 import {Link} from "react-router-dom";
-import Highlighter from "react-highlight-words";
-// import blank_image from "./cropped_image.png" 
 
 function MemberCard({member}, {toHighlight}) {
-    // function highlight(str) {
-    //     return str.replace(new RegExp(to), <mark>str</mark>)
-    // }
     return (
         <div className='col-sm-3'>
             <div className='card mt-5'>

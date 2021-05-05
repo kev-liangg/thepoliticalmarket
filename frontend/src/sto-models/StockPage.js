@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {Link} from "react-router-dom"
 import StateMap from "../Components/StateMap";
-import { Card, Container, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Card, Container, Row, Col } from 'react-bootstrap'
 import { DataGrid } from '@material-ui/data-grid'
 import { Button } from '@material-ui/core'
 

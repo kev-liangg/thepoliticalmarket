@@ -1,5 +1,4 @@
-import React from 'react';
-import {PieChart, Pie, Legend, Tooltip} from "recharts";
+import {PieChart, Pie, Tooltip} from "recharts";
 import {pieData} from "./contractsPieData";
 
 function TPMPieGraph() {

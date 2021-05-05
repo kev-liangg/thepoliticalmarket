@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import bg from "./assets/1393726.jpg";
 import './Home.css'
 import { Card, Button, CardDeck } from 'react-bootstrap';
-import { Link, BrowserRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Contract from './assets/ContractLaw.jpg';
 import Stock from './assets/StockIMG.jpg';
 import Congress from './assets/Congress.png';

@@ -13,15 +13,10 @@ const candidate_atts = [
 ];
 
 function MemberSearchCard({member, toHighlight}) {
-    // function highlight(str) {
-    //     return str.replace(new RegExp(to), <mark>str</mark>)
-    // }
     return (
         <div className='col-sm-12'>
             <div className='card mt-5'>
-            {/* <img className="card-img-left" src={member.cand_image} alt=""></img> */}
                 <div className='card-body'>
-                {/* <h4 className="card-title" style={{'textAlign':'center'}}></h4> */}
                 <div className="card-text d-flex align-items-center justify-content-center">
                     <div><img src={member.cand_image} style={{"align":"left","height":"5vw","margin-right":"50px"}}/></div>
                     <b style={{"margin-right":"100px"}}>{hl(toHighlight, member.cand_firstname)} {hl(toHighlight, member.cand_lastname)} </b>
