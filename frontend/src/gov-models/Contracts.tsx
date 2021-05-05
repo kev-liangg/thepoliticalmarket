@@ -46,12 +46,10 @@ const url = "https://api.thepoliticalmarket.tech/v1/contract"
 
 function Contracts() {
 
-  const cancel = ""
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [numPages, setNumPages] = useState(0)
   const [filterValue, setFilterValue] = useState(filter);
-  const [searchTerm, setSearchTerm] = useState("");
   const [numResults, setNumResults] = useState(0);
   const [tableProps, changeTableProps] = useState(tablePropsInit);
 
@@ -119,10 +117,6 @@ function Contracts() {
 
   const handleFilter = (newFilterValue: IFilterControlFilterValue) => {
     setFilterValue(newFilterValue);
-  }
-
-  const fetchSearchResults = (pageNumber = '',query : string) =>{
-    
   }
 
   if (isLoading) {
