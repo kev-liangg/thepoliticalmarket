@@ -26,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Members() {
 
-  const search_attributes = ['cand_firstname', 'cand_lastname', 'cand_crp_id', 'cand_office', 'cand_party', 'cand_state', 'total_received'];
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -42,8 +41,6 @@ function Members() {
   const [orderField, setOrderField] = useState("");
   const [orderDirection, setOrderDirection] = useState("none");
 
-  const [searchTerm, setSearchTerm] = useState("");
-
 
   
   useEffect(() => {
@@ -57,21 +54,6 @@ function Members() {
     // sorting
     if (orderField !== "" && orderDirection !== "none") {
       query.order_by = constructOrderBy();
-    }
-    
-    // searching
-    // searching is done by union-ing the set of candidate table rows that have an attribute that contains searchTerm
-    // can specify this with just another filter (which can be boolean formulas thanks to flask-restless)
-    if (searchTerm !== "") {
-      if (filters.length === 0) {
-        query.filters = [];
-      }
-      query.filters.push({"or": search_attributes.map((attribute)=>{
-        let filter = {name: attribute};
-        filter.op = "like";
-        filter.val = "%25"+searchTerm+"%25";
-        return filter;
-      })});
     }
 
     let toFetch = `https://api.thepoliticalmarket.tech/v1/candidate?page=${page}&q=${JSON.stringify(query)}`;
@@ -88,7 +70,7 @@ function Members() {
       })
       .catch((error) => console.log(error));
 
-  }, [page, filters, orderField, orderDirection, searchTerm]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [page, filters, orderField, orderDirection]); // eslint-disable-line react-hooks/exhaustive-deps
 
   
 // start of switch case functions to reformat select input into backend attributes
@@ -197,7 +179,7 @@ function Members() {
   function mapData () {
     if (typeof data != "undefined") {
       return data.map((memb) => {
-        return <MemberCard member={memb} toHighlight={searchTerm} />;
+        return <MemberCard member={memb}/>;
       });
     }
     return [];
@@ -276,12 +258,6 @@ function Members() {
                       if (event.key === 'Enter') {
                         console.log(event.target.value)
                         if ((filterField !== "") && (filterOp !== "") && (event.target.value !== "")) {
-                          // let newFilters = JSON.parse(JSON.stringify(filters));
-                          // console.log(newFilters);
-                          // newFilters.push({name: filterField, op: filterOp, val: event.target.value});
-                          // console.log(newFilters);
-                          // setIsLoading(true);
-
                           // Update a state array like this to avoid race conditions
                           setFilters([...filters, {name: filterField, op: filterOp, val: event.target.value}]);
                         }
@@ -386,25 +362,26 @@ function Members() {
           {/*Start of searching column*/}
           <div className="col-sm-3" style={{'backgroundColor':'lightgray'}}>
             <h1>3. Search</h1>
-            {/* <input
-              type="text"
-              placeholder="Search..."
-              onKeyPress={(event) => {
-                if (event.key === 'Enter') {
-                  setSearchTerm(event.target.value);
-                  console.log(event.target.value);
-                }
-              }}
-            >
-            </input> */}
-            <Button
-              component={Link} to={`/CampFin/Search`}
-              variant="contained"
-              color="primary"
-              size="small"
-              style={{ marginLeft: 16 }}>
-              Search
-            </Button>
+            <div style={{"padding-top":"20px"}}>
+              <Button
+                component={Link} to={`/Members/Search`}
+                variant="contained"
+                color="primary"
+                size="small"
+                style={{ marginLeft: 16 }}>
+                Search Members
+              </Button>
+            </div>
+            <div style={{"padding-top":"20px"}}>
+              <Button
+                component={Link} to={`/Contributions/Search`}
+                variant="contained"
+                color="primary"
+                size="small"
+                style={{ marginLeft: 16 }}>
+                Search Contributions
+              </Button>
+            </div>
           </div>
           {/*End of searching column*/}
 

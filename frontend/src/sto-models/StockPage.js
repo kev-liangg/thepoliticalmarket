@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {Link} from "react-router-dom"
 import StateMap from "../Components/StateMap";
-import { Card, Container, Row, Col, OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Card, Container, Row, Col } from 'react-bootstrap'
 import { DataGrid } from '@material-ui/data-grid'
 import { Button } from '@material-ui/core'
 
@@ -42,7 +42,6 @@ const contractColumns = [
 ]
 
 function getRandomColor () {
-  var x = (Math.random()*0.3)*0xffffff<<0;
  
   var contrastFactor = 70;
 
@@ -68,7 +67,7 @@ function getRandomColor () {
   Math.floor(256 - g +16).toString(16) +
   Math.floor(256 - b +16).toString(16);
 
-  return new Array(reverse,dark);
+  return [reverse,dark];
 }
 
 

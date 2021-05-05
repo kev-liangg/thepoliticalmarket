@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { Pagination } from "@material-ui/core";
-import Dropdown from 'react-bootstrap/Dropdown'
 import './ContractTable.css'
 import '../Components/table-style.css'
-// import 'ka-table/style.css'
 
 import { ITableProps, kaReducer, Table } from 'ka-table';
 import { DataType, SortingMode } from 'ka-table/enums';
 import { DispatchFunc } from 'ka-table/types';
 import { 
-  hideLoading, loadData, showLoading, updateData,
+  hideLoading, showLoading, updateData,
 } from 'ka-table/actionCreators';
 import { getSortedColumns } from 'ka-table/Utils/PropsUtils';
 
@@ -48,12 +46,10 @@ const url = "https://api.thepoliticalmarket.tech/v1/contract"
 
 function Contracts() {
 
-  const cancel = ""
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
   const [numPages, setNumPages] = useState(0)
   const [filterValue, setFilterValue] = useState(filter);
-  const [searchTerm, setSearchTerm] = useState("");
   const [numResults, setNumResults] = useState(0);
   const [tableProps, changeTableProps] = useState(tablePropsInit);
 
@@ -121,10 +117,6 @@ function Contracts() {
 
   const handleFilter = (newFilterValue: IFilterControlFilterValue) => {
     setFilterValue(newFilterValue);
-  }
-
-  const fetchSearchResults = (pageNumber = '',query : string) =>{
-    
   }
 
   if (isLoading) {

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import ContractSearch from './ContractSearch'
+import ContributionSearch from './ContributionSearch'
 
-function ContractSearchPage() {
+function ContributionSearchPage() {
 
     const [searchTerms, setSearchTerms] = useState("");
 
@@ -21,10 +21,10 @@ function ContractSearchPage() {
             </input>
             <br></br>
             <br></br>
-            <ContractSearch searchTerms={searchTerms} />
+            <ContributionSearch searchTerms={searchTerms} />
 
         </div>
     )
 }
 
-export default ContractSearchPage
+export default ContributionSearchPage

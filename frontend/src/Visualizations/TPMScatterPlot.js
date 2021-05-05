@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
 import {scatterData} from "./stocksScatterData";
-import {ScatterChart, CartesianGrid, XAxis, YAxis, ZAxis, Tooltip, Legend, Scatter} from "recharts";
+import {ScatterChart, CartesianGrid, XAxis, YAxis, ZAxis, Tooltip, Scatter} from "recharts";
+
 function TPMScatterPlot() {
     
     return (

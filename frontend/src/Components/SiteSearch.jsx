@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import MemberSearch from '../cf-models/MemberSearch'
 import ContributionSearch from '../cf-models/ContributionSearch'
 import ContractSearch from '../gov-models/ContractSearch'
