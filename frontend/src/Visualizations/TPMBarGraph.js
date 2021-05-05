@@ -1,6 +1,5 @@
 import React from 'react';
 import {BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from "recharts";
-
 const data = [
     { name: "0-50K", members: 25 },
     { name: "50-100K", members: 57 },

@@ -1,6 +1,5 @@
 import { ResponsiveCirclePackingCanvas } from '@nivo/circle-packing'
 import { shelterstate } from './shelter-state';
-
 const ShelterBubbleChart = () => (
         
     <ResponsiveCirclePackingCanvas
