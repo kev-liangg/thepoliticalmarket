@@ -72,17 +72,17 @@ const ContractPage = ({match}) => {
                 <h1> {data.contract_award_id}</h1>
               </div>
           </div>
-          <div className = "row">
+          <div className = "row" style = {{'marginLeft':'5%'}}>
           <div className="col-lg-6" style={{'textAlign':'center', 'color':'black'}}>
                 <h3> Contract Information</h3>
               <div className = "row" style = {{'textAlign':'left'}}>
-              <img alt="" src = {data.contract_agencylogo} width="50%"></img>
+              <img alt="" src = {'https://upload.wikimedia.org/wikipedia/commons/e/e0/United_States_Department_of_Defense_Seal.svg'} width="50%"></img>
                 <h4>
                   Awarding Agency: {data.contract_recipient}
                 </h4>
                 <h4>Award Description: {data.contract_award_description}</h4>
                 <h3> Place of Performance: {data.contract_sop}</h3>
-                <img alt="" src = {data.contract_stateflag} width="50%" ></img>
+                <img alt="" src = {data.contract_stateflag} width="30%" ></img>
                 <h4>
                   Date Awarded: {data.contract_date}</h4>
               </div>
