@@ -75,7 +75,7 @@ class TestBackend(TestCase):
         assert res.json()["num_results"] == 482
 
     def test_matchedstock_instance_1for10(self):
-        r = open('scripts/stockinstancestest.csv','r')
+        r = open('tests/stockinstancestest.csv','r')
         tgt = csv.reader(r)
         checklist = []
         for row in tgt:
