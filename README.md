@@ -2,6 +2,7 @@
 
 Website: https://www.thepoliticalmarket.tech/ 
 
+Presentation: https://youtu.be/r-Ka9nCn0c4
 
 ## Team Members
 | Name | EID | GitLab ID |

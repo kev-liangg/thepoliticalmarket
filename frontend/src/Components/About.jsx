@@ -188,9 +188,11 @@ class About extends Component {
                                 state of operations for large companies as well or if they themselves are major shareholders.
                                 <br></br>
                                 <br></br>
+                                <a href="https://youtu.be/r-Ka9nCn0c4" rel="noreferrer" target="_blank">Phase IV Presentation Link</a>
+                                <br></br>
+                                <br></br>
                             </p>
                             </div>
-
                             </div>
                         
                         <div className="section" style={{ marginTop: '-20vh', marginBottom: '0vh' }}>
